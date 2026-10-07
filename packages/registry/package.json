@@ -1,13 +1,12 @@
 {
   "name": "@vert-ui/registry",
+  "version": "0.0.0",
   "private": true,
-  "type": "module",
+  "description": "Component registry for vert-ui",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "build": "node src/build.ts",
-    "typecheck": "tsc --noEmit"
+    "build": "tsc -p tsconfig.json"
   },
-  "devDependencies": {
-    "@types/node": "^26.6.4",
-    "typescript": "^6.0.3"
-  }
+  "license": "MIT"
 }

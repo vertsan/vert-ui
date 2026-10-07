@@ -1,8 +1,27 @@
-/*
- * vert-ui — all bundled themes.
- * Import this after `vert.css` to enable data-theme switching:
- *   slate | sand | midnight   (vert is the default and always available)
- */
-@import './themes/slate.css';
-@import './themes/sand.css';
-@import './themes/midnight.css';
+[data-theme="vert"] {
+  --color-primary: var(--color-vert-600);
+}
+
+[data-theme="slate"] {
+  --color-primary: oklch(0.585 0.03 250);
+}
+
+[data-theme="sand"] {
+  --color-primary: oklch(0.655 0.07 70);
+}
+
+[data-theme="midnight"] {
+  --color-primary: oklch(0.585 0.08 240);
+}
+.dark[data-theme="slate"],
+.dark [data-theme="slate"] {
+  --color-primary: oklch(0.685 0.04 250);
+}
+.dark[data-theme="sand"],
+.dark [data-theme="sand"] {
+  --color-primary: oklch(0.725 0.08 70);
+}
+.dark[data-theme="midnight"],
+.dark [data-theme="midnight"] {
+  --color-primary: oklch(0.715 0.09 240);
+}

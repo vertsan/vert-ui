@@ -1,0 +1,24 @@
+@import "./base.css";
+@import "./dark.css";
+@import "./themes.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Soft grain + luminous thin border signature */
+.grain {
+  background-image: radial-gradient(circle at 50% 50%, rgb(0 0 0 / 0.02) 1px, transparent 1px);
+  background-size: 8px 8px;
+}
+.luminous-border {
+  box-shadow: 0 0 0 1px rgb(16 185 129 / 0.12);
+}
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

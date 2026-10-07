@@ -1,44 +1,15 @@
 {
-  "name": "vert-ui",
-  "version": "0.1.0",
-  "description": "CLI for vert-ui — init, add and diff copy-paste UI components.",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/vert-ui/vert-ui.git",
-    "directory": "packages/cli"
-  },
-  "homepage": "https://vert-ui.dev",
-  "keywords": [
-    "vert-ui",
-    "ui",
-    "cli",
-    "components",
-    "shadcn"
-  ],
-  "type": "module",
+  "name": "@vert-ui/cli",
+  "version": "0.0.0",
+  "private": false,
+  "description": "CLI for vert-ui (init, add, diff)",
   "bin": {
-    "vert-ui": "./dist/bin.js"
+    "vert-ui": "./dist/index.js"
   },
-  "files": [
-    "dist"
-  ],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc -p tsconfig.build.json",
-    "typecheck": "tsc --noEmit",
-    "test": "vitest run"
+    "build": "tsc -p tsconfig.json"
   },
-  "engines": {
-    "node": ">=20.19.0"
-  },
-  "dependencies": {
-    "commander": "^15.0.0",
-    "diff": "^9.0.0",
-    "picocolors": "^1.1.1"
-  },
-  "devDependencies": {
-    "@types/node": "^26.6.4",
-    "typescript": "^6.0.3",
-    "vitest": "^5.0.3"
-  }
+  "license": "MIT"
 }

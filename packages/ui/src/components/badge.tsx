@@ -1,73 +1,32 @@
-import * as React from 'react'
-import { Slot } from '@radix-ui/react-slot'
-import { cva, type VariantProps } from 'class-variance-authority'
-import { cn } from '../lib/cn'
+import { cva, type VariantProps } from "class-variance-authority"
+import * as React from "react"
+import { cn } from "../lib/utils"
 
 const badgeVariants = cva(
-  'inline-flex w-fit shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full font-medium transition-colors duration-fast [&_svg]:size-3 [&_svg]:shrink-0',
+  "inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
   {
     variants: {
       variant: {
-        default: 'bg-brand-soft text-brand-soft-foreground',
-        solid: 'bg-brand text-brand-foreground',
-        outline: 'border border-border-strong bg-transparent text-foreground',
-        muted: 'bg-muted text-muted-foreground',
-        destructive: 'bg-destructive-soft text-destructive-soft-foreground',
-        success: 'bg-success-soft text-success-soft-foreground',
-        warning: 'bg-warning-soft text-warning-soft-foreground',
-        info: 'bg-info-soft text-info-soft-foreground',
-      },
-      size: {
-        sm: 'h-5 px-2 text-[11px]',
-        md: 'h-6 px-2.5 text-xs',
-        lg: 'h-7 px-3 text-sm',
+        default: "border-transparent bg-primary text-primary-foreground hover:bg-primary/80",
+        secondary: "border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80",
+        outline: "text-foreground",
+        ghost: "border-transparent hover:bg-accent hover:text-accent-foreground",
       },
     },
     defaultVariants: {
-      variant: 'default',
-      size: 'md',
+      variant: "default",
     },
-  },
+  }
 )
 
 export interface BadgeProps
-  extends React.ComponentPropsWithRef<'span'>, VariantProps<typeof badgeVariants> {
-  /** Render the child element instead of <span> (links, router components). */
-  asChild?: boolean
-  /** Show a leading status dot that inherits the badge color. */
-  dot?: boolean
-}
+  extends React.HTMLAttributes<HTMLDivElement>,
+    VariantProps<typeof badgeVariants> {}
 
-function Badge({
-  className,
-  variant,
-  size,
-  asChild = false,
-  dot = false,
-  children,
-  ...props
-}: BadgeProps) {
-  const Comp = asChild ? Slot : 'span'
-
+function Badge({ className, variant, ...props }: BadgeProps) {
   return (
-    <Comp
-      data-slot="badge"
-      data-variant={variant ?? 'default'}
-      data-size={size ?? 'md'}
-      className={cn(badgeVariants({ variant, size }), className)}
-      {...props}
-    >
-      {dot ? (
-        <>
-          <span data-slot="badge-dot" aria-hidden className="size-1.5 rounded-full bg-current" />
-          {children}
-        </>
-      ) : (
-        children
-      )}
-    </Comp>
+    <div className={cn(badgeVariants({ variant }), className)} {...props} />
   )
 }
 
 export { Badge, badgeVariants }
-export type { VariantProps as BadgeVariantProps }

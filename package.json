@@ -1,38 +1,26 @@
 {
-  "name": "vert-ui-monorepo",
+  "name": "vert-ui",
+  "version": "0.0.0",
   "private": true,
-  "type": "module",
-  "packageManager": "pnpm@11.8.0",
-  "engines": {
-    "node": ">=20.19.0"
-  },
+  "description": "vert-ui: calm, fresh, green-accented components with soft motion for modern web apps",
+  "packageManager": "pnpm@10.12.4",
+  "license": "MIT",
   "scripts": {
-    "dev": "turbo dev",
-    "build": "turbo build",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
-    "format": "prettier --write .",
-    "format:check": "prettier --check .",
-    "typecheck": "turbo typecheck",
-    "test": "turbo test",
-    "test:coverage": "turbo test:coverage",
-    "contrast": "node scripts/check-contrast.ts",
-    "registry:build": "pnpm --filter @vert-ui/registry build",
-    "routes:generate": "pnpm --filter vert-ui-docs generate-routes",
-    "changeset": "changeset",
-    "version-packages": "changeset version",
-    "release": "pnpm build && changeset publish"
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "typecheck": "turbo run typecheck",
+    "test": "turbo run test",
+    "format": "prettier --write ."
   },
   "devDependencies": {
-    "@changesets/cli": "^3.0.3",
+    "@changesets/cli": "^2.31.1",
+    "@tailwindcss/postcss": "^4.3.3",
     "@types/node": "^26.6.4",
-    "eslint": "^10.12.0",
-    "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-jsx-a11y": "^6.10.2",
-    "eslint-plugin-react-hooks": "^7.1.1",
-    "prettier": "^3.9.9",
-    "typescript-eslint": "^8.71.1",
-    "turbo": "^2.11.7",
-    "typescript": "^6.0.3"
+    "postcss": "^8.5.29",
+    "prettier": "^3.3.3",
+    "tailwindcss": "^4.3.3",
+    "turbo": "^2.3.3",
+    "typescript": "^5.7.2"
   }
 }
