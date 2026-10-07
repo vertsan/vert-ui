@@ -1,23 +1,23 @@
-module.exports = {
-  $schema: "https://turbo.build/schema.json",
-  globalDependencies: ["**/.env.*local"],
-  tasks: {
-    build: {
-      dependsOn: ["^build"],
-      outputs: ["dist/**", ".next/**", ".tanstack/**"],
+{
+  "$schema": "https://turborepo.com/schema.json",
+  "globalDependencies": ["**/.env.*local"],
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**", ".next/**", ".tanstack/**"]
     },
-    lint: {
-      dependsOn: ["^lint"],
+    "lint": {
+      "dependsOn": ["^lint"]
     },
-    typecheck: {
-      dependsOn: ["^typecheck"],
+    "typecheck": {
+      "dependsOn": ["^typecheck"]
     },
-    dev: {
-      cache: false,
-      persistent: true,
+    "dev": {
+      "cache": false,
+      "persistent": true
     },
-    test: {
-      dependsOn: ["^test"],
-    },
-  },
+    "test": {
+      "dependsOn": ["^test"]
+    }
+  }
 }
