@@ -61,7 +61,7 @@ const ITEM_SCHEMA = 'https://ui.shadcn.com/schema/registry-item.json'
 
 /** Import rewrites applied to embedded content (consumer-project layout). */
 const importRewrites: Array<[RegExp, string]> = [
-  [/from '\.\.\/lib\/cn'/g, "from '@/lib/vert-ui/cn'"],
+  [/from (['"])\.\.\/lib\/cn\1/g, "from '@/lib/vert-ui/cn'"],
 ]
 
 const items: ItemDef[] = [

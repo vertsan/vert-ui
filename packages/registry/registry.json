@@ -38,7 +38,7 @@
       "description": "Class name utility: clsx + tailwind-merge.",
       "dependencies": [
         "clsx@^2.1.1",
-        "tailwind-merge@^3.7.0"
+        "tailwind-merge@^3.0.0"
       ],
       "files": [
         {
@@ -53,7 +53,7 @@
       "title": "Button",
       "description": "Button with variants, sizes, loading state and asChild slot support.",
       "dependencies": [
-        "@radix-ui/react-slot@^1.4.0",
+        "@radix-ui/react-slot@^1.1.0",
         "class-variance-authority@^0.7.1"
       ],
       "registryDependencies": [
@@ -127,7 +127,7 @@
       "title": "Badge",
       "description": "Compact status label with semantic color variants and dot mode.",
       "dependencies": [
-        "@radix-ui/react-slot@^1.4.0",
+        "@radix-ui/react-slot@^1.1.0",
         "class-variance-authority@^0.7.1"
       ],
       "registryDependencies": [

@@ -14,6 +14,26 @@
 .luminous-border {
   box-shadow: 0 0 0 1px rgb(16 185 129 / 0.12);
 }
+
+/* Entry animations for overlays, menus and popovers (transform/opacity only) */
+@keyframes vert-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes vert-pop-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 0.01ms !important;

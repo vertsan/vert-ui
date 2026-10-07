@@ -66,6 +66,16 @@
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
 
+  /* Flat aliases so components written against the index.css vocabulary
+     (bg-primary, bg-secondary, bg-card, border-input) work here too. */
+  --color-primary: var(--brand);
+  --color-primary-foreground: var(--brand-foreground);
+  --color-secondary: var(--muted);
+  --color-secondary-foreground: var(--muted-foreground);
+  --color-card: var(--surface);
+  --color-card-foreground: var(--foreground);
+  --color-input: var(--border);
+
   --color-border: var(--border);
   --color-border-strong: var(--border-strong);
   --color-ring: var(--ring);
@@ -114,6 +124,26 @@
   }
   to {
     transform: translateX(-50%);
+  }
+}
+
+/* Entry animations for overlays, menus and popovers (transform/opacity only) */
+@keyframes vert-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes vert-pop-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: none;
   }
 }
 

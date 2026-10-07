@@ -30,12 +30,42 @@
   --color-foreground: oklch(0.141 0.005 260);
   --color-muted: oklch(0.97 0.008 260);
   --color-muted-foreground: oklch(0.554 0.014 260);
-  --color-primary: var(--color-vert-600);
-  --color-primary-foreground: oklch(0.985 0 0);
+  --color-surface: #ffffff;
+  --color-surface-raised: #ffffff;
+  --color-accent: #e9eeec;
+  --color-accent-foreground: #141a17;
+  --color-secondary: #e9eeec;
+  --color-secondary-foreground: #141a17;
+  --color-primary: #158048;
+  --color-primary-foreground: #ffffff;
+  --color-input: #dfe5e2;
   --color-border: oklch(0.932 0.012 260 / 0.6);
-  --color-ring: var(--color-vert-500);
+  --color-border-strong: #7f8a85;
+  --color-ring: #158048;
   --color-card: oklch(1 0 0 / 0.8);
   --color-card-foreground: var(--color-foreground);
+
+  /* Brand + status (same values as styles/vert.css :root) */
+  --color-brand: #158048;
+  --color-brand-foreground: #ffffff;
+  --color-brand-soft: #dcf5e6;
+  --color-brand-soft-foreground: #146c3d;
+  --color-destructive: #c0392f;
+  --color-destructive-foreground: #ffffff;
+  --color-destructive-soft: #fdecea;
+  --color-destructive-soft-foreground: #a92f26;
+  --color-success: #158048;
+  --color-success-foreground: #ffffff;
+  --color-success-soft: #dcf5e6;
+  --color-success-soft-foreground: #146c3d;
+  --color-warning: #a4551a;
+  --color-warning-foreground: #ffffff;
+  --color-warning-soft: #fdf1e4;
+  --color-warning-soft-foreground: #8a4b09;
+  --color-info: #1f5fd0;
+  --color-info-foreground: #ffffff;
+  --color-info-soft: #e8effc;
+  --color-info-soft-foreground: #194fae;
 
   /* Radius */
   --radius-xs: 0.375rem;
@@ -54,6 +84,16 @@
   --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.04), 0 1px 2px -1px rgb(0 0 0 / 0.04);
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.04), 0 2px 4px -2px rgb(0 0 0 / 0.04);
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.05), 0 4px 6px -4px rgb(0 0 0 / 0.05);
+  --shadow-soft: 0 1px 2px rgb(20 26 23 / 0.06), 0 1px 3px rgb(20 26 23 / 0.05);
+  --shadow-raised: 0 4px 12px -2px rgb(20 26 23 / 0.1), 0 2px 6px -2px rgb(20 26 23 / 0.06);
+  --shadow-pop: 0 12px 32px -8px rgb(20 26 23 / 0.18), 0 4px 10px -4px rgb(20 26 23 / 0.08);
+
+  /* Motion (Tailwind duration/ease namespaces — used by components) */
+  --duration-fast: 140ms;
+  --duration-base: 200ms;
+  --duration-slow: 320ms;
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 
   /* Motion */
   --motion-duration-fast: 150ms;

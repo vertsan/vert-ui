@@ -13,7 +13,7 @@
     {
       "path": "styles/themes.css",
       "type": "registry:style",
-      "content": "/*\n * vert-ui — all bundled themes.\n * Import this after `vert.css` to enable data-theme switching:\n *   slate | sand | midnight   (vert is the default and always available)\n */\n@import './themes/slate.css';\n@import './themes/sand.css';\n@import './themes/midnight.css';\n"
+      "content": "[data-theme=\"vert\"] {\n  --color-primary: var(--color-vert-600);\n}\n\n[data-theme=\"slate\"] {\n  --color-primary: oklch(0.585 0.03 250);\n}\n\n[data-theme=\"sand\"] {\n  --color-primary: oklch(0.655 0.07 70);\n}\n\n[data-theme=\"midnight\"] {\n  --color-primary: oklch(0.585 0.08 240);\n}\n.dark[data-theme=\"slate\"],\n.dark [data-theme=\"slate\"] {\n  --color-primary: oklch(0.685 0.04 250);\n}\n.dark[data-theme=\"sand\"],\n.dark [data-theme=\"sand\"] {\n  --color-primary: oklch(0.725 0.08 70);\n}\n.dark[data-theme=\"midnight\"],\n.dark [data-theme=\"midnight\"] {\n  --color-primary: oklch(0.715 0.09 240);\n}"
     },
     {
       "path": "styles/themes/slate.css",
