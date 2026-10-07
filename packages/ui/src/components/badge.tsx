@@ -40,6 +40,35 @@ function Badge({ className, variant, size, dot, asChild, children, ...props }: B
     <span data-slot="badge-dot" className="size-1.5 rounded-full bg-current" />
   ) : null
 
+  if (asChild && dotElement) {
+    return (
+      <Comp
+        data-slot="badge"
+        data-variant={variant || "default"}
+        data-size={size || "md"}
+        className={cn(badgeVariants({ variant, size }), className)}
+        {...props}
+      >
+        {React.Children.map(children, (child) => {
+          if (React.isValidElement(child)) {
+            return (
+              <>
+                {dotElement}
+                {child}
+              </>
+            )
+          }
+          return (
+            <>
+              {dotElement}
+              {child}
+            </>
+          )
+        })}
+      </Comp>
+    )
+  }
+
   if (asChild) {
     return (
       <Comp
@@ -49,7 +78,6 @@ function Badge({ className, variant, size, dot, asChild, children, ...props }: B
         className={cn(badgeVariants({ variant, size }), className)}
         {...props}
       >
-        {dotElement}
         {children}
       </Comp>
     )
