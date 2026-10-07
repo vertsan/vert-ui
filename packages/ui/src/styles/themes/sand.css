@@ -1,0 +1,110 @@
+/*
+ * vert-ui theme: sand — warm parchment neutrals, clay accent.
+ * Usage: import this file, then set data-theme="sand" on <html>.
+ */
+
+[data-theme='sand'] {
+  color-scheme: light;
+  --background: #faf7f1;
+  --foreground: #1d1a14;
+  --surface: #fffdf9;
+  --surface-raised: #fffdf9;
+  --overlay: rgb(29 26 20 / 0.5);
+
+  --brand: #a8452c;
+  --brand-hover: #8f3a25;
+  --brand-active: #7a3120;
+  --brand-foreground: #ffffff;
+  --brand-soft: #f8e9e3;
+  --brand-soft-hover: #f2ddd4;
+  --brand-soft-foreground: #8f3a25;
+  --brand-glow: rgb(168 69 44 / 0.35);
+
+  --muted: #f1ece2;
+  --muted-foreground: #665f52;
+  --accent: #efe9dd;
+  --accent-foreground: #1d1a14;
+
+  --border: #e7e0d3;
+  --border-strong: #857e6f;
+  --ring: #a8452c;
+
+  --destructive: #c0392f;
+  --destructive-hover: #a92f26;
+  --destructive-foreground: #ffffff;
+  --destructive-soft: #fdecea;
+  --destructive-soft-foreground: #a92f26;
+
+  --success: #158048;
+  --success-foreground: #ffffff;
+  --success-soft: #dcf5e6;
+  --success-soft-foreground: #146c3d;
+
+  --warning: #a4551a;
+  --warning-foreground: #ffffff;
+  --warning-soft: #fdf1e4;
+  --warning-soft-foreground: #8a4b09;
+
+  --info: #1f5fd0;
+  --info-foreground: #ffffff;
+  --info-soft: #e8effc;
+  --info-soft-foreground: #194fae;
+
+  --shadow-soft: 0 1px 2px rgb(40 32 20 / 0.06), 0 1px 3px rgb(40 32 20 / 0.05);
+  --shadow-raised: 0 4px 12px -2px rgb(40 32 20 / 0.1), 0 2px 6px -2px rgb(40 32 20 / 0.06);
+  --shadow-pop: 0 12px 32px -8px rgb(40 32 20 / 0.18), 0 4px 10px -4px rgb(40 32 20 / 0.08);
+  --grain-opacity: 0.045;
+}
+
+[data-theme='sand'][data-tone='dark'] {
+  color-scheme: dark;
+  --background: #141110;
+  --foreground: #f0ebe2;
+  --surface: #1c1815;
+  --surface-raised: #241f1b;
+  --overlay: rgb(0 0 0 / 0.65);
+
+  --brand: #e08a6e;
+  --brand-hover: #ea9c84;
+  --brand-active: #f4b39d;
+  --brand-foreground: #1a120c;
+  --brand-soft: #33201a;
+  --brand-soft-hover: #3f2820;
+  --brand-soft-foreground: #f0a991;
+  --brand-glow: rgb(224 138 110 / 0.4);
+
+  --muted: #201b17;
+  --muted-foreground: #a39a8c;
+  --accent: #292320;
+  --accent-foreground: #f0ebe2;
+
+  --border: #ffffff14;
+  --border-strong: #6e655a;
+  --ring: #e08a6e;
+
+  --destructive: #ff7a6e;
+  --destructive-hover: #ff9a90;
+  --destructive-foreground: #141110;
+  --destructive-soft: #3a1a16;
+  --destructive-soft-foreground: #ffb4ab;
+
+  --success: #2fb168;
+  --success-foreground: #141110;
+  --success-soft: #0f2b1d;
+  --success-soft-foreground: #8ddcac;
+
+  --warning: #f0a35c;
+  --warning-foreground: #141110;
+  --warning-soft: #2e1d0e;
+  --warning-soft-foreground: #f0a35c;
+
+  --info: #7aa7ff;
+  --info-foreground: #141110;
+  --info-soft: #131f3a;
+  --info-soft-foreground: #9dbaff;
+
+  --shadow-soft: 0 1px 2px rgb(0 0 0 / 0.45);
+  --shadow-raised: 0 8px 24px -6px rgb(0 0 0 / 0.55), 0 2px 8px -4px rgb(0 0 0 / 0.4);
+  --shadow-pop: 0 16px 48px -12px rgb(0 0 0 / 0.65), 0 4px 12px -6px rgb(0 0 0 / 0.45);
+  --grain-opacity: 0.055;
+}

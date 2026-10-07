@@ -1,0 +1,144 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "vert-ui",
+  "homepage": "https://vert-ui.dev",
+  "items": [
+    {
+      "name": "vert",
+      "type": "registry:style",
+      "title": "Theme",
+      "description": "vert-ui theme engine: design tokens, ready-made themes and base styles. Requires @import \"tailwindcss\" first.",
+      "files": [
+        {
+          "path": "styles/vert.css",
+          "type": "registry:style"
+        },
+        {
+          "path": "styles/themes.css",
+          "type": "registry:style"
+        },
+        {
+          "path": "styles/themes/slate.css",
+          "type": "registry:style"
+        },
+        {
+          "path": "styles/themes/sand.css",
+          "type": "registry:style"
+        },
+        {
+          "path": "styles/themes/midnight.css",
+          "type": "registry:style"
+        }
+      ]
+    },
+    {
+      "name": "vert-cn",
+      "type": "registry:lib",
+      "title": "cn()",
+      "description": "Class name utility: clsx + tailwind-merge.",
+      "dependencies": [
+        "clsx@^2.1.1",
+        "tailwind-merge@^3.7.0"
+      ],
+      "files": [
+        {
+          "path": "lib/vert-ui/cn.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "button",
+      "type": "registry:component",
+      "title": "Button",
+      "description": "Button with variants, sizes, loading state and asChild slot support.",
+      "dependencies": [
+        "@radix-ui/react-slot@^1.4.0",
+        "class-variance-authority@^0.7.1"
+      ],
+      "registryDependencies": [
+        "https://vert-ui.dev/r/vert-cn.json"
+      ],
+      "files": [
+        {
+          "path": "components/vert-ui/button.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "input",
+      "type": "registry:component",
+      "title": "Input",
+      "description": "Single-line text field with validation and adornment-ready sizing.",
+      "dependencies": [
+        "class-variance-authority@^0.7.1"
+      ],
+      "registryDependencies": [
+        "https://vert-ui.dev/r/vert-cn.json"
+      ],
+      "files": [
+        {
+          "path": "components/vert-ui/input.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "textarea",
+      "type": "registry:component",
+      "title": "Textarea",
+      "description": "Multi-line text field with validation and resizable height.",
+      "dependencies": [
+        "class-variance-authority@^0.7.1"
+      ],
+      "registryDependencies": [
+        "https://vert-ui.dev/r/vert-cn.json"
+      ],
+      "files": [
+        {
+          "path": "components/vert-ui/textarea.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "checkbox",
+      "type": "registry:component",
+      "title": "Checkbox",
+      "description": "Accessible checkbox with indeterminate state, powered by Radix UI.",
+      "dependencies": [
+        "@radix-ui/react-checkbox@^1.3.12",
+        "class-variance-authority@^0.7.1"
+      ],
+      "registryDependencies": [
+        "https://vert-ui.dev/r/vert-cn.json"
+      ],
+      "files": [
+        {
+          "path": "components/vert-ui/checkbox.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "badge",
+      "type": "registry:component",
+      "title": "Badge",
+      "description": "Compact status label with semantic color variants and dot mode.",
+      "dependencies": [
+        "@radix-ui/react-slot@^1.4.0",
+        "class-variance-authority@^0.7.1"
+      ],
+      "registryDependencies": [
+        "https://vert-ui.dev/r/vert-cn.json"
+      ],
+      "files": [
+        {
+          "path": "components/vert-ui/badge.tsx",
+          "type": "registry:component"
+        }
+      ]
+    }
+  ]
+}

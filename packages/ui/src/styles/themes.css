@@ -1,0 +1,8 @@
+/*
+ * vert-ui — all bundled themes.
+ * Import this after `vert.css` to enable data-theme switching:
+ *   slate | sand | midnight   (vert is the default and always available)
+ */
+@import './themes/slate.css';
+@import './themes/sand.css';
+@import './themes/midnight.css';

@@ -1,0 +1,286 @@
+/*
+ * vert-ui — theme engine
+ * ---------------------------------------------------------------------------
+ * Copy this file into your project (or `npx vert-ui init`).
+ * Requires: `@import 'tailwindcss';` BEFORE this file in your CSS entry.
+ *
+ * Re-skin by editing the CSS variables below. Switch themes at runtime with
+ * `data-theme="slate|sand|midnight"` and tones with `data-tone="light|dark"`
+ * on the <html> element.
+ */
+
+@custom-variant dark (&:where([data-tone='dark'], [data-tone='dark'] *));
+
+/* ---------------------------------------------------------------------------
+ * Static design tokens (Tailwind v4 theme namespace)
+ * ------------------------------------------------------------------------ */
+@theme {
+  --radius-xs: 6px;
+  --radius-sm: 8px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+  --radius-2xl: 28px;
+
+  --font-sans:
+    ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+    'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  --font-mono:
+    ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', 'Courier New', monospace;
+
+  --duration-fast: 140ms;
+  --duration-base: 200ms;
+  --duration-slow: 320ms;
+  --duration-slower: 480ms;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+
+  --animate-shimmer: shimmer 1.6s ease-in-out infinite;
+  --animate-drift: drift var(--drift-duration, 40s) linear infinite;
+}
+
+/* ---------------------------------------------------------------------------
+ * Runtime color tokens — utilities read these via `inline`
+ * (bg-background → var(--background), so tone/theme switches are instant)
+ * ------------------------------------------------------------------------ */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-overlay: var(--overlay);
+
+  --color-brand: var(--brand);
+  --color-brand-hover: var(--brand-hover);
+  --color-brand-active: var(--brand-active);
+  --color-brand-foreground: var(--brand-foreground);
+  --color-brand-soft: var(--brand-soft);
+  --color-brand-soft-hover: var(--brand-soft-hover);
+  --color-brand-soft-foreground: var(--brand-soft-foreground);
+  --color-brand-glow: var(--brand-glow);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-ring: var(--ring);
+
+  --color-destructive: var(--destructive);
+  --color-destructive-hover: var(--destructive-hover);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-destructive-soft: var(--destructive-soft);
+  --color-destructive-soft-foreground: var(--destructive-soft-foreground);
+
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-success-soft: var(--success-soft);
+  --color-success-soft-foreground: var(--success-soft-foreground);
+
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-warning-soft: var(--warning-soft);
+  --color-warning-soft-foreground: var(--warning-soft-foreground);
+
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+  --color-info-soft: var(--info-soft);
+  --color-info-soft-foreground: var(--info-soft-foreground);
+
+  --shadow-soft: var(--shadow-soft);
+  --shadow-raised: var(--shadow-raised);
+  --shadow-pop: var(--shadow-pop);
+}
+
+/* ---------------------------------------------------------------------------
+ * Keyframes
+ * ------------------------------------------------------------------------ */
+@keyframes shimmer {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes drift {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+ * Utilities
+ * ------------------------------------------------------------------------ */
+
+/* Fine film-grain overlay for gradient surfaces. Parent must be relative. */
+@utility grain {
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    border-radius: inherit;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    opacity: var(--grain-opacity, 0.04);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+ * Base layer
+ * ------------------------------------------------------------------------ */
+@layer base {
+  :root {
+    color-scheme: light;
+    --background: #fafcfb;
+    --foreground: #141a17;
+    --surface: #ffffff;
+    --surface-raised: #ffffff;
+    --overlay: rgb(10 13 12 / 0.5);
+
+    --brand: #158048;
+    --brand-hover: #146c3d;
+    --brand-active: #0f5731;
+    --brand-foreground: #ffffff;
+    --brand-soft: #dcf5e6;
+    --brand-soft-hover: #bdeccd;
+    --brand-soft-foreground: #146c3d;
+    --brand-glow: rgb(21 128 72 / 0.35);
+
+    --muted: #ecf0ee;
+    --muted-foreground: #57625d;
+    --accent: #e9eeec;
+    --accent-foreground: #141a17;
+
+    --border: #dfe5e2;
+    --border-strong: #7f8a85;
+    --ring: #158048;
+
+    --destructive: #c0392f;
+    --destructive-hover: #a92f26;
+    --destructive-foreground: #ffffff;
+    --destructive-soft: #fdecea;
+    --destructive-soft-foreground: #a92f26;
+
+    --success: #158048;
+    --success-foreground: #ffffff;
+    --success-soft: #dcf5e6;
+    --success-soft-foreground: #146c3d;
+
+    --warning: #a4551a;
+    --warning-foreground: #ffffff;
+    --warning-soft: #fdf1e4;
+    --warning-soft-foreground: #8a4b09;
+
+    --info: #1f5fd0;
+    --info-foreground: #ffffff;
+    --info-soft: #e8effc;
+    --info-soft-foreground: #194fae;
+
+    --shadow-soft: 0 1px 2px rgb(20 26 23 / 0.06), 0 1px 3px rgb(20 26 23 / 0.05);
+    --shadow-raised: 0 4px 12px -2px rgb(20 26 23 / 0.1), 0 2px 6px -2px rgb(20 26 23 / 0.06);
+    --shadow-pop: 0 12px 32px -8px rgb(20 26 23 / 0.18), 0 4px 10px -4px rgb(20 26 23 / 0.08);
+    --grain-opacity: 0.035;
+  }
+
+  [data-tone='dark'] {
+    color-scheme: dark;
+    --background: #0a0d0c;
+    --foreground: #edf1ef;
+    --surface: #121715;
+    --surface-raised: #191f1d;
+    --overlay: rgb(0 0 0 / 0.65);
+
+    --brand: #2fb168;
+    --brand-hover: #57c986;
+    --brand-active: #8ddcac;
+    --brand-foreground: #0a0d0c;
+    --brand-soft: #0f2b1d;
+    --brand-soft-hover: #16402c;
+    --brand-soft-foreground: #8ddcac;
+    --brand-glow: rgb(47 177 104 / 0.4);
+
+    --muted: #171d1b;
+    --muted-foreground: #9aa7a1;
+    --accent: #1e2623;
+    --accent-foreground: #edf1ef;
+
+    --border: #ffffff14;
+    --border-strong: #6b7671;
+    --ring: #57c986;
+
+    --destructive: #ff7a6e;
+    --destructive-hover: #ff9a90;
+    --destructive-foreground: #0a0d0c;
+    --destructive-soft: #3a1a16;
+    --destructive-soft-foreground: #ffb4ab;
+
+    --success: #2fb168;
+    --success-foreground: #0a0d0c;
+    --success-soft: #0f2b1d;
+    --success-soft-foreground: #8ddcac;
+
+    --warning: #f0a35c;
+    --warning-foreground: #0a0d0c;
+    --warning-soft: #2e1d0e;
+    --warning-soft-foreground: #f0a35c;
+
+    --info: #7aa7ff;
+    --info-foreground: #0a0d0c;
+    --info-soft: #131f3a;
+    --info-soft-foreground: #9dbaff;
+
+    --shadow-soft: 0 1px 2px rgb(0 0 0 / 0.45);
+    --shadow-raised: 0 8px 24px -6px rgb(0 0 0 / 0.55), 0 2px 8px -4px rgb(0 0 0 / 0.4);
+    --shadow-pop: 0 16px 48px -12px rgb(0 0 0 / 0.65), 0 4px 12px -6px rgb(0 0 0 / 0.45);
+    --grain-opacity: 0.05;
+  }
+
+  html,
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  *,
+  ::before,
+  ::after {
+    border-color: var(--border);
+  }
+
+  ::selection {
+    background-color: var(--brand-soft);
+    color: var(--brand-soft-foreground);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    ::before,
+    ::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}

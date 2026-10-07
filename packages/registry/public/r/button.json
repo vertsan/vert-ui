@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button",
+  "type": "registry:component",
+  "title": "Button",
+  "description": "Button with variants, sizes, loading state and asChild slot support.",
+  "dependencies": [
+    "@radix-ui/react-slot@^1.4.0",
+    "class-variance-authority@^0.7.1"
+  ],
+  "registryDependencies": [
+    "https://vert-ui.dev/r/vert-cn.json"
+  ],
+  "files": [
+    {
+      "path": "components/vert-ui/button.tsx",
+      "type": "registry:component",
+      "content": "import * as React from 'react'\nimport { Slot } from '@radix-ui/react-slot'\nimport { cva, type VariantProps } from 'class-variance-authority'\nimport { cn } from '@/lib/vert-ui/cn'\n\nconst buttonVariants = cva(\n  'inline-flex shrink-0 items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-[background-color,border-color,color,box-shadow,opacity] duration-fast ease-out-quart disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0',\n  {\n    variants: {\n      variant: {\n        default:\n          'bg-brand text-brand-foreground shadow-soft hover:bg-brand-hover active:bg-brand-active',\n        soft: 'bg-brand-soft text-brand-soft-foreground hover:bg-brand-soft-hover',\n        outline:\n          'border border-border-strong bg-transparent text-foreground hover:bg-accent hover:text-accent-foreground',\n        ghost: 'bg-transparent text-foreground hover:bg-accent hover:text-accent-foreground',\n        link: 'h-auto bg-transparent px-0 text-brand underline-offset-4 hover:underline',\n        destructive:\n          'bg-destructive text-destructive-foreground shadow-soft hover:bg-destructive-hover',\n      },\n      size: {\n        sm: 'h-8 gap-1.5 rounded-sm px-3',\n        md: 'h-9 gap-2 px-4',\n        lg: 'h-10 gap-2 px-5 text-base',\n        xl: 'h-11 gap-2.5 px-6 text-base',\n        'icon-sm': 'size-8 rounded-sm p-0',\n        'icon-md': 'size-9 p-0',\n        'icon-lg': 'size-10 p-0',\n      },\n    },\n    defaultVariants: {\n      variant: 'default',\n      size: 'md',\n    },\n  },\n)\n\nexport interface ButtonProps\n  extends React.ComponentPropsWithRef<'button'>, VariantProps<typeof buttonVariants> {\n  /** Render the child element instead of <button> (links, router components). */\n  asChild?: boolean\n  /** Show a spinner, set aria-busy and block interaction. */\n  loading?: boolean\n}\n\nfunction Button({\n  className,\n  variant,\n  size,\n  asChild = false,\n  loading = false,\n  disabled,\n  children,\n  type,\n  ...props\n}: ButtonProps) {\n  const Comp = asChild ? Slot : 'button'\n  const spinner = loading && !asChild\n\n  return (\n    <Comp\n      data-slot=\"button\"\n      data-variant={variant ?? 'default'}\n      data-size={size ?? 'md'}\n      data-loading={loading || undefined}\n      type={asChild ? undefined : (type ?? 'button')}\n      disabled={asChild ? undefined : disabled || loading}\n      aria-busy={loading || undefined}\n      className={cn(buttonVariants({ variant, size }), className)}\n      {...props}\n    >\n      {spinner ? (\n        <>\n          <span\n            aria-hidden\n            className=\"size-4 rounded-full border-2 border-current border-t-transparent motion-safe:animate-spin\"\n          />\n          {children}\n        </>\n      ) : (\n        children\n      )}\n    </Comp>\n  )\n}\n\nexport { Button, buttonVariants }\nexport type { VariantProps as ButtonVariantProps }\n"
+    }
+  ]
+}

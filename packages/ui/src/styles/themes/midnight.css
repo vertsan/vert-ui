@@ -1,0 +1,110 @@
+/*
+ * vert-ui theme: midnight — blue-black neutrals, luminous violet accent.
+ * Usage: import this file, then set data-theme="midnight" on <html>.
+ */
+
+[data-theme='midnight'] {
+  color-scheme: light;
+  --background: #f8f9fc;
+  --foreground: #12141c;
+  --surface: #ffffff;
+  --surface-raised: #ffffff;
+  --overlay: rgb(18 20 28 / 0.5);
+
+  --brand: #6d4fe0;
+  --brand-hover: #5b3fd1;
+  --brand-active: #4d34b8;
+  --brand-foreground: #ffffff;
+  --brand-soft: #ece8fc;
+  --brand-soft-hover: #e0dafb;
+  --brand-soft-foreground: #5b3fd1;
+  --brand-glow: rgb(109 79 224 / 0.35);
+
+  --muted: #eceef4;
+  --muted-foreground: #565e72;
+  --accent: #e9edf6;
+  --accent-foreground: #12141c;
+
+  --border: #e2e5ee;
+  --border-strong: #7d8598;
+  --ring: #6d4fe0;
+
+  --destructive: #c0392f;
+  --destructive-hover: #a92f26;
+  --destructive-foreground: #ffffff;
+  --destructive-soft: #fdecea;
+  --destructive-soft-foreground: #a92f26;
+
+  --success: #158048;
+  --success-foreground: #ffffff;
+  --success-soft: #dcf5e6;
+  --success-soft-foreground: #146c3d;
+
+  --warning: #a4551a;
+  --warning-foreground: #ffffff;
+  --warning-soft: #fdf1e4;
+  --warning-soft-foreground: #8a4b09;
+
+  --info: #1f5fd0;
+  --info-foreground: #ffffff;
+  --info-soft: #e8effc;
+  --info-soft-foreground: #194fae;
+
+  --shadow-soft: 0 1px 2px rgb(18 20 28 / 0.06), 0 1px 3px rgb(18 20 28 / 0.05);
+  --shadow-raised: 0 4px 12px -2px rgb(18 20 28 / 0.1), 0 2px 6px -2px rgb(18 20 28 / 0.06);
+  --shadow-pop: 0 12px 32px -8px rgb(18 20 28 / 0.18), 0 4px 10px -4px rgb(18 20 28 / 0.08);
+  --grain-opacity: 0.035;
+}
+
+[data-theme='midnight'][data-tone='dark'] {
+  color-scheme: dark;
+  --background: #090b12;
+  --foreground: #e9edf6;
+  --surface: #101420;
+  --surface-raised: #171c2b;
+  --overlay: rgb(0 0 0 / 0.7);
+
+  --brand: #a78bfa;
+  --brand-hover: #b9a3fb;
+  --brand-active: #cbbdfc;
+  --brand-foreground: #090b12;
+  --brand-soft: #1a1633;
+  --brand-soft-hover: #221d40;
+  --brand-soft-foreground: #c0aefc;
+  --brand-glow: rgb(167 139 250 / 0.4);
+
+  --muted: #141826;
+  --muted-foreground: #98a0b3;
+  --accent: #1a1f30;
+  --accent-foreground: #e9edf6;
+
+  --border: #ffffff16;
+  --border-strong: #5e6679;
+  --ring: #a78bfa;
+
+  --destructive: #ff7a6e;
+  --destructive-hover: #ff9a90;
+  --destructive-foreground: #090b12;
+  --destructive-soft: #3a1a16;
+  --destructive-soft-foreground: #ffb4ab;
+
+  --success: #2fb168;
+  --success-foreground: #090b12;
+  --success-soft: #0f2b1d;
+  --success-soft-foreground: #8ddcac;
+
+  --warning: #f0a35c;
+  --warning-foreground: #090b12;
+  --warning-soft: #2e1d0e;
+  --warning-soft-foreground: #f0a35c;
+
+  --info: #7aa7ff;
+  --info-foreground: #090b12;
+  --info-soft: #131f3a;
+  --info-soft-foreground: #9dbaff;
+
+  --shadow-soft: 0 1px 2px rgb(0 0 0 / 0.45);
+  --shadow-raised: 0 8px 24px -6px rgb(0 0 0 / 0.55), 0 2px 8px -4px rgb(0 0 0 / 0.4);
+  --shadow-pop: 0 16px 48px -12px rgb(0 0 0 / 0.65), 0 4px 12px -6px rgb(0 0 0 / 0.45);
+  --grain-opacity: 0.05;
+}

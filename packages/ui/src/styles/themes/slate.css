@@ -1,0 +1,110 @@
+/*
+ * vert-ui theme: slate — cool blue-gray neutrals, confident blue accent.
+ * Usage: import this file, then set data-theme="slate" on <html>.
+ */
+
+[data-theme='slate'] {
+  color-scheme: light;
+  --background: #f8fafb;
+  --foreground: #12161c;
+  --surface: #ffffff;
+  --surface-raised: #ffffff;
+  --overlay: rgb(11 14 20 / 0.5);
+
+  --brand: #3457c8;
+  --brand-hover: #2c4bb0;
+  --brand-active: #25409a;
+  --brand-foreground: #ffffff;
+  --brand-soft: #e7ecfd;
+  --brand-soft-hover: #d7e0fb;
+  --brand-soft-foreground: #2c4bb0;
+  --brand-glow: rgb(52 87 200 / 0.35);
+
+  --muted: #eaeef3;
+  --muted-foreground: #566170;
+  --accent: #e9edf3;
+  --accent-foreground: #12161c;
+
+  --border: #dee4ec;
+  --border-strong: #7e8899;
+  --ring: #3457c8;
+
+  --destructive: #c0392f;
+  --destructive-hover: #a92f26;
+  --destructive-foreground: #ffffff;
+  --destructive-soft: #fdecea;
+  --destructive-soft-foreground: #a92f26;
+
+  --success: #158048;
+  --success-foreground: #ffffff;
+  --success-soft: #dcf5e6;
+  --success-soft-foreground: #146c3d;
+
+  --warning: #a4551a;
+  --warning-foreground: #ffffff;
+  --warning-soft: #fdf1e4;
+  --warning-soft-foreground: #8a4b09;
+
+  --info: #1f5fd0;
+  --info-foreground: #ffffff;
+  --info-soft: #e8effc;
+  --info-soft-foreground: #194fae;
+
+  --shadow-soft: 0 1px 2px rgb(18 22 28 / 0.06), 0 1px 3px rgb(18 22 28 / 0.05);
+  --shadow-raised: 0 4px 12px -2px rgb(18 22 28 / 0.1), 0 2px 6px -2px rgb(18 22 28 / 0.06);
+  --shadow-pop: 0 12px 32px -8px rgb(18 22 28 / 0.18), 0 4px 10px -4px rgb(18 22 28 / 0.08);
+  --grain-opacity: 0.035;
+}
+
+[data-theme='slate'][data-tone='dark'] {
+  color-scheme: dark;
+  --background: #0b0e14;
+  --foreground: #e8ecf3;
+  --surface: #12161f;
+  --surface-raised: #191e2a;
+  --overlay: rgb(0 0 0 / 0.65);
+
+  --brand: #8aa4f7;
+  --brand-hover: #a5b9fa;
+  --brand-active: #c0cffc;
+  --brand-foreground: #0b0e14;
+  --brand-soft: #151d33;
+  --brand-soft-hover: #1b2540;
+  --brand-soft-foreground: #a5b9fa;
+  --brand-glow: rgb(138 164 247 / 0.4);
+
+  --muted: #171c26;
+  --muted-foreground: #98a3b5;
+  --accent: #1d2430;
+  --accent-foreground: #e8ecf3;
+
+  --border: #ffffff14;
+  --border-strong: #5d6879;
+  --ring: #8aa4f7;
+
+  --destructive: #ff7a6e;
+  --destructive-hover: #ff9a90;
+  --destructive-foreground: #0b0e14;
+  --destructive-soft: #3a1a16;
+  --destructive-soft-foreground: #ffb4ab;
+
+  --success: #2fb168;
+  --success-foreground: #0b0e14;
+  --success-soft: #0f2b1d;
+  --success-soft-foreground: #8ddcac;
+
+  --warning: #f0a35c;
+  --warning-foreground: #0b0e14;
+  --warning-soft: #2e1d0e;
+  --warning-soft-foreground: #f0a35c;
+
+  --info: #7aa7ff;
+  --info-foreground: #0b0e14;
+  --info-soft: #131f3a;
+  --info-soft-foreground: #9dbaff;
+
+  --shadow-soft: 0 1px 2px rgb(0 0 0 / 0.45);
+  --shadow-raised: 0 8px 24px -6px rgb(0 0 0 / 0.55), 0 2px 8px -4px rgb(0 0 0 / 0.4);
+  --shadow-pop: 0 16px 48px -12px rgb(0 0 0 / 0.65), 0 4px 12px -6px rgb(0 0 0 / 0.45);
+  --grain-opacity: 0.05;
+}
