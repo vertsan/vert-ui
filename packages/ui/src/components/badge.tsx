@@ -36,6 +36,25 @@ export interface BadgeProps
 
 function Badge({ className, variant, size, dot, asChild, children, ...props }: BadgeProps) {
   const Comp = asChild ? Slot : "div"
+  const dotElement = dot ? (
+    <span data-slot="badge-dot" className="size-1.5 rounded-full bg-current" />
+  ) : null
+
+  if (asChild) {
+    return (
+      <Comp
+        data-slot="badge"
+        data-variant={variant || "default"}
+        data-size={size || "md"}
+        className={cn(badgeVariants({ variant, size }), className)}
+        {...props}
+      >
+        {dotElement}
+        {children}
+      </Comp>
+    )
+  }
+
   return (
     <Comp
       data-slot="badge"
@@ -44,7 +63,7 @@ function Badge({ className, variant, size, dot, asChild, children, ...props }: B
       className={cn(badgeVariants({ variant, size }), className)}
       {...props}
     >
-      {dot && <span data-slot="badge-dot" className="size-1.5 rounded-full bg-current" />}
+      {dotElement}
       {children}
     </Comp>
   )
