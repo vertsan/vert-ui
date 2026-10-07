@@ -1,5 +1,5 @@
 import { Button, Card, Badge } from "@vert-ui/ui"
-import { createFileRoute } from "@tanstack/react-router"
+import { createFileRoute, Link } from "@tanstack/react-router"
 
 export const Route = createFileRoute("/")({
   component: Home,
@@ -15,8 +15,12 @@ export function Home() {
             Calm, fresh, green-accented components with soft motion. Grow with precision.
           </p>
           <div className="flex gap-3">
-            <Button>Get started</Button>
-            <Button variant="outline">View docs</Button>
+            <Link to="/components">
+              <Button>Get started</Button>
+            </Link>
+            <Link to="/components">
+              <Button variant="outline">View docs</Button>
+            </Link>
           </div>
         </div>
         <Card className="p-6 space-y-3">

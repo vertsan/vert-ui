@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "switch",
+  "type": "registry:component",
+  "title": "Switch",
+  "description": "Immediate on/off control with keyboard support, powered by Radix UI.",
+  "dependencies": [
+    "@radix-ui/react-switch@^1.3.8",
+    "class-variance-authority@^0.7.1"
+  ],
+  "registryDependencies": [
+    "https://vert-ui.dev/r/vert-cn.json"
+  ],
+  "files": [
+    {
+      "path": "components/vert-ui/switch.tsx",
+      "type": "registry:component",
+      "content": "import * as SwitchPrimitive from \"@radix-ui/react-switch\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\nimport * as React from \"react\"\nimport { cn } from '@/lib/vert-ui/cn'\n\nconst switchVariants = cva(\n  \"peer inline-flex shrink-0 cursor-pointer items-center rounded-full border border-transparent outline-none transition-colors duration-[140ms] ease-out-quart focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ring-offset-background disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=unchecked]:bg-input\",\n  {\n    variants: {\n      variant: {\n        default: \"\",\n        brand: \"data-[state=checked]:bg-brand\",\n        destructive: \"data-[state=checked]:bg-destructive\",\n      },\n      size: {\n        sm: \"h-5 w-9\",\n        md: \"h-6 w-11\",\n        lg: \"h-7 w-12\",\n      },\n    },\n    defaultVariants: {\n      variant: \"default\",\n      size: \"md\",\n    },\n  }\n)\n\nconst switchThumbVariants = cva(\n  \"pointer-events-none block rounded-full bg-white shadow-soft transition-transform duration-[140ms] ease-out-quart data-[state=unchecked]:shadow-none\",\n  {\n    variants: {\n      size: {\n        sm: \"size-4 translate-x-0.5 data-[state=checked]:translate-x-[18px]\",\n        md: \"size-5 translate-x-0.5 data-[state=checked]:translate-x-[22px]\",\n        lg: \"size-6 translate-x-0.5 data-[state=checked]:translate-x-[22px]\",\n      },\n    },\n    defaultVariants: {\n      size: \"md\",\n    },\n  }\n)\n\nexport interface SwitchProps\n  extends Omit<React.ComponentPropsWithRef<typeof SwitchPrimitive.Root>, \"size\">,\n    VariantProps<typeof switchVariants> {}\n\nconst Switch = React.forwardRef<React.ElementRef<typeof SwitchPrimitive.Root>, SwitchProps>(\n  ({ className, variant, size, ...props }, ref) => (\n    <SwitchPrimitive.Root\n      ref={ref}\n      data-slot=\"switch\"\n      data-variant={variant || \"default\"}\n      data-size={size || \"md\"}\n      className={cn(switchVariants({ variant, size }), className)}\n      {...props}\n    >\n      <SwitchPrimitive.Thumb\n        data-slot=\"switch-thumb\"\n        className={cn(switchThumbVariants({ size }))}\n      />\n    </SwitchPrimitive.Root>\n  )\n)\nSwitch.displayName = \"Switch\"\n\nexport { Switch, switchVariants, switchThumbVariants }\n"
+    }
+  ]
+}

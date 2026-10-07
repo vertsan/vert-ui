@@ -1,19 +1,24 @@
 import * as DialogPrimitive from "@radix-ui/react-dialog"
-import { Slot } from "@radix-ui/react-slot"
 import * as React from "react"
 import { cn } from "../lib/cn"
 
 type DialogProps = React.ComponentPropsWithRef<typeof DialogPrimitive.Root>
 
-function Dialog(props: DialogProps) {
-  return <DialogPrimitive.Root data-slot="dialog" {...props} />
+const DialogContext = React.createContext({ modal: true })
+
+function Dialog({ modal = true, ...props }: DialogProps) {
+  return (
+    <DialogContext.Provider value={{ modal }}>
+      <DialogPrimitive.Root data-slot="dialog" modal={modal} {...props} />
+    </DialogContext.Provider>
+  )
 }
 
 const DialogTrigger = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Trigger>,
   React.ComponentPropsWithRef<typeof DialogPrimitive.Trigger>
->(({ ...props }, ref) => (
-  <DialogPrimitive.Trigger ref={ref} data-slot="dialog-trigger" asChild={props.asChild ?? false} {...props} />
+>((props, ref) => (
+  <DialogPrimitive.Trigger ref={ref} data-slot="dialog-trigger" {...props} />
 ))
 DialogTrigger.displayName = "DialogTrigger"
 
@@ -40,42 +45,49 @@ const DialogContent = React.forwardRef<
   React.ComponentPropsWithRef<typeof DialogPrimitive.Content> & {
     /** Set false to hide the built-in close button. */
     hideClose?: boolean
+    /** Overrides the modal flag from <Dialog> for the aria-modal attribute. */
+    modal?: boolean
   }
->(({ className, children, hideClose, ...props }, ref) => (
-  <DialogPortal>
-    <DialogOverlay />
-    <DialogPrimitive.Content
-      ref={ref}
-      data-slot="dialog-content"
-      className={cn(
-        "fixed inset-0 z-50 m-auto flex h-fit max-h-[calc(100vh-2rem)] w-full max-w-lg flex-col gap-4 overflow-y-auto rounded-xl border border-border bg-card p-6 text-foreground shadow-pop outline-none animate-[vert-pop-in_160ms_ease-out]",
-        className
-      )}
-      {...props}
-    >
-      {children}
-      {hideClose ? null : (
-        <DialogPrimitive.Close
-          data-slot="dialog-close"
-          className="absolute right-4 top-4 rounded-md p-1 text-muted-foreground outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-50"
-          aria-label="Close"
-        >
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            aria-hidden="true"
-            className="size-4"
+>(({ className, children, hideClose, modal, ...props }, ref) => {
+  const { modal: rootModal } = React.useContext(DialogContext)
+  const isModal = modal ?? rootModal
+  return (
+    <DialogPortal>
+      <DialogOverlay />
+      <DialogPrimitive.Content
+        ref={ref}
+        data-slot="dialog-content"
+        aria-modal={isModal ? true : undefined}
+        className={cn(
+          "fixed inset-0 z-50 m-auto flex h-fit max-h-[calc(100vh-2rem)] w-full max-w-lg flex-col gap-4 overflow-y-auto rounded-xl border border-border bg-card p-6 text-foreground shadow-pop outline-none animate-[vert-pop-in_160ms_ease-out]",
+          className
+        )}
+        {...props}
+      >
+        {children}
+        {hideClose ? null : (
+          <DialogPrimitive.Close
+            data-slot="dialog-close"
+            className="absolute right-4 top-4 rounded-md p-1 text-muted-foreground outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-50"
+            aria-label="Close"
           >
-            <path d="M18 6 6 18M6 6l12 12" />
-          </svg>
-        </DialogPrimitive.Close>
-      )}
-    </DialogPrimitive.Content>
-  </DialogPortal>
-))
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              aria-hidden="true"
+              className="size-4"
+            >
+              <path d="M18 6 6 18M6 6l12 12" />
+            </svg>
+          </DialogPrimitive.Close>
+        )}
+      </DialogPrimitive.Content>
+    </DialogPortal>
+  )
+})
 DialogContent.displayName = "DialogContent"
 
 const DialogHeader = React.forwardRef<

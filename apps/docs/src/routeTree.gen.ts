@@ -10,33 +10,167 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ComponentsIndexRouteImport } from './routes/components/index'
+import { Route as ComponentsAlertRouteImport } from './routes/components/alert'
+import { Route as ComponentsDialogRouteImport } from './routes/components/dialog'
+import { Route as ComponentsDropdownMenuRouteImport } from './routes/components/dropdown-menu'
+import { Route as ComponentsProgressRouteImport } from './routes/components/progress'
+import { Route as ComponentsSelectRouteImport } from './routes/components/select'
+import { Route as ComponentsSeparatorRouteImport } from './routes/components/separator'
+import { Route as ComponentsSwitchRouteImport } from './routes/components/switch'
+import { Route as ComponentsTabsRouteImport } from './routes/components/tabs'
+import { Route as ComponentsTooltipRouteImport } from './routes/components/tooltip'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ComponentsIndexRoute = ComponentsIndexRouteImport.update({
+  id: '/components/',
+  path: '/components/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ComponentsAlertRoute = ComponentsAlertRouteImport.update({
+  id: '/components/alert',
+  path: '/components/alert',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ComponentsDialogRoute = ComponentsDialogRouteImport.update({
+  id: '/components/dialog',
+  path: '/components/dialog',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ComponentsDropdownMenuRoute = ComponentsDropdownMenuRouteImport.update({
+  id: '/components/dropdown-menu',
+  path: '/components/dropdown-menu',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ComponentsProgressRoute = ComponentsProgressRouteImport.update({
+  id: '/components/progress',
+  path: '/components/progress',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ComponentsSelectRoute = ComponentsSelectRouteImport.update({
+  id: '/components/select',
+  path: '/components/select',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ComponentsSeparatorRoute = ComponentsSeparatorRouteImport.update({
+  id: '/components/separator',
+  path: '/components/separator',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ComponentsSwitchRoute = ComponentsSwitchRouteImport.update({
+  id: '/components/switch',
+  path: '/components/switch',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ComponentsTabsRoute = ComponentsTabsRouteImport.update({
+  id: '/components/tabs',
+  path: '/components/tabs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ComponentsTooltipRoute = ComponentsTooltipRouteImport.update({
+  id: '/components/tooltip',
+  path: '/components/tooltip',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/components/alert': typeof ComponentsAlertRoute
+  '/components/dialog': typeof ComponentsDialogRoute
+  '/components/dropdown-menu': typeof ComponentsDropdownMenuRoute
+  '/components/progress': typeof ComponentsProgressRoute
+  '/components/select': typeof ComponentsSelectRoute
+  '/components/separator': typeof ComponentsSeparatorRoute
+  '/components/switch': typeof ComponentsSwitchRoute
+  '/components/tabs': typeof ComponentsTabsRoute
+  '/components/tooltip': typeof ComponentsTooltipRoute
+  '/components/': typeof ComponentsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/components/alert': typeof ComponentsAlertRoute
+  '/components/dialog': typeof ComponentsDialogRoute
+  '/components/dropdown-menu': typeof ComponentsDropdownMenuRoute
+  '/components/progress': typeof ComponentsProgressRoute
+  '/components/select': typeof ComponentsSelectRoute
+  '/components/separator': typeof ComponentsSeparatorRoute
+  '/components/switch': typeof ComponentsSwitchRoute
+  '/components/tabs': typeof ComponentsTabsRoute
+  '/components/tooltip': typeof ComponentsTooltipRoute
+  '/components': typeof ComponentsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/components/alert': typeof ComponentsAlertRoute
+  '/components/dialog': typeof ComponentsDialogRoute
+  '/components/dropdown-menu': typeof ComponentsDropdownMenuRoute
+  '/components/progress': typeof ComponentsProgressRoute
+  '/components/select': typeof ComponentsSelectRoute
+  '/components/separator': typeof ComponentsSeparatorRoute
+  '/components/switch': typeof ComponentsSwitchRoute
+  '/components/tabs': typeof ComponentsTabsRoute
+  '/components/tooltip': typeof ComponentsTooltipRoute
+  '/components/': typeof ComponentsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/components/alert'
+    | '/components/dialog'
+    | '/components/dropdown-menu'
+    | '/components/progress'
+    | '/components/select'
+    | '/components/separator'
+    | '/components/switch'
+    | '/components/tabs'
+    | '/components/tooltip'
+    | '/components/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/components/alert'
+    | '/components/dialog'
+    | '/components/dropdown-menu'
+    | '/components/progress'
+    | '/components/select'
+    | '/components/separator'
+    | '/components/switch'
+    | '/components/tabs'
+    | '/components/tooltip'
+    | '/components'
+  id:
+    | '__root__'
+    | '/'
+    | '/components/alert'
+    | '/components/dialog'
+    | '/components/dropdown-menu'
+    | '/components/progress'
+    | '/components/select'
+    | '/components/separator'
+    | '/components/switch'
+    | '/components/tabs'
+    | '/components/tooltip'
+    | '/components/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ComponentsAlertRoute: typeof ComponentsAlertRoute
+  ComponentsDialogRoute: typeof ComponentsDialogRoute
+  ComponentsDropdownMenuRoute: typeof ComponentsDropdownMenuRoute
+  ComponentsProgressRoute: typeof ComponentsProgressRoute
+  ComponentsSelectRoute: typeof ComponentsSelectRoute
+  ComponentsSeparatorRoute: typeof ComponentsSeparatorRoute
+  ComponentsSwitchRoute: typeof ComponentsSwitchRoute
+  ComponentsTabsRoute: typeof ComponentsTabsRoute
+  ComponentsTooltipRoute: typeof ComponentsTooltipRoute
+  ComponentsIndexRoute: typeof ComponentsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +182,91 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/components/': {
+      id: '/components/'
+      path: '/components'
+      fullPath: '/components/'
+      preLoaderRoute: typeof ComponentsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/components/alert': {
+      id: '/components/alert'
+      path: '/components/alert'
+      fullPath: '/components/alert'
+      preLoaderRoute: typeof ComponentsAlertRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/components/dialog': {
+      id: '/components/dialog'
+      path: '/components/dialog'
+      fullPath: '/components/dialog'
+      preLoaderRoute: typeof ComponentsDialogRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/components/dropdown-menu': {
+      id: '/components/dropdown-menu'
+      path: '/components/dropdown-menu'
+      fullPath: '/components/dropdown-menu'
+      preLoaderRoute: typeof ComponentsDropdownMenuRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/components/progress': {
+      id: '/components/progress'
+      path: '/components/progress'
+      fullPath: '/components/progress'
+      preLoaderRoute: typeof ComponentsProgressRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/components/select': {
+      id: '/components/select'
+      path: '/components/select'
+      fullPath: '/components/select'
+      preLoaderRoute: typeof ComponentsSelectRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/components/separator': {
+      id: '/components/separator'
+      path: '/components/separator'
+      fullPath: '/components/separator'
+      preLoaderRoute: typeof ComponentsSeparatorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/components/switch': {
+      id: '/components/switch'
+      path: '/components/switch'
+      fullPath: '/components/switch'
+      preLoaderRoute: typeof ComponentsSwitchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/components/tabs': {
+      id: '/components/tabs'
+      path: '/components/tabs'
+      fullPath: '/components/tabs'
+      preLoaderRoute: typeof ComponentsTabsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/components/tooltip': {
+      id: '/components/tooltip'
+      path: '/components/tooltip'
+      fullPath: '/components/tooltip'
+      preLoaderRoute: typeof ComponentsTooltipRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ComponentsAlertRoute: ComponentsAlertRoute,
+  ComponentsDialogRoute: ComponentsDialogRoute,
+  ComponentsDropdownMenuRoute: ComponentsDropdownMenuRoute,
+  ComponentsProgressRoute: ComponentsProgressRoute,
+  ComponentsSelectRoute: ComponentsSelectRoute,
+  ComponentsSeparatorRoute: ComponentsSeparatorRoute,
+  ComponentsSwitchRoute: ComponentsSwitchRoute,
+  ComponentsTabsRoute: ComponentsTabsRoute,
+  ComponentsTooltipRoute: ComponentsTooltipRoute,
+  ComponentsIndexRoute: ComponentsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

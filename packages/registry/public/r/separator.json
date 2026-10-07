@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "separator",
+  "type": "registry:component",
+  "title": "Separator",
+  "description": "Horizontal or vertical divider, decorative or exposed to assistive tech.",
+  "dependencies": [
+    "class-variance-authority@^0.7.1"
+  ],
+  "registryDependencies": [
+    "https://vert-ui.dev/r/vert-cn.json"
+  ],
+  "files": [
+    {
+      "path": "components/vert-ui/separator.tsx",
+      "type": "registry:component",
+      "content": "import { cva, type VariantProps } from \"class-variance-authority\"\nimport * as React from \"react\"\nimport { cn } from '@/lib/vert-ui/cn'\n\nconst separatorVariants = cva(\"shrink-0 bg-border\", {\n  variants: {\n    orientation: {\n      horizontal: \"h-px w-full\",\n      vertical: \"h-full w-px\",\n    },\n  },\n  defaultVariants: {\n    orientation: \"horizontal\",\n  },\n})\n\nexport interface SeparatorProps\n  extends React.HTMLAttributes<HTMLDivElement>,\n    VariantProps<typeof separatorVariants> {\n  /** Decorative separators are hidden from assistive technology. */\n  decorative?: boolean\n}\n\nconst Separator = React.forwardRef<HTMLDivElement, SeparatorProps>(\n  (\n    { className, orientation, decorative = false, role, ...props },\n    ref\n  ) => {\n    const dir = orientation ?? \"horizontal\"\n    return (\n      <div\n        ref={ref}\n        data-slot=\"separator\"\n        data-orientation={dir}\n        role={decorative ? undefined : role || \"separator\"}\n        aria-orientation={decorative ? undefined : dir}\n        aria-hidden={decorative || undefined}\n        className={cn(separatorVariants({ orientation: dir }), className)}\n        {...props}\n      />\n    )\n  }\n)\nSeparator.displayName = \"Separator\"\n\nexport { Separator, separatorVariants }\n"
+    }
+  ]
+}

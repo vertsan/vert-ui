@@ -23,20 +23,23 @@ export interface SeparatorProps
 
 const Separator = React.forwardRef<HTMLDivElement, SeparatorProps>(
   (
-    { className, orientation = "horizontal", decorative = false, role, ...props },
+    { className, orientation, decorative = false, role, ...props },
     ref
-  ) => (
-    <div
-      ref={ref}
-      data-slot="separator"
-      data-orientation={orientation}
-      role={decorative ? undefined : role || "separator"}
-      aria-orientation={decorative ? undefined : orientation}
-      aria-hidden={decorative || undefined}
-      className={cn(separatorVariants({ orientation }), className)}
-      {...props}
-    />
-  )
+  ) => {
+    const dir = orientation ?? "horizontal"
+    return (
+      <div
+        ref={ref}
+        data-slot="separator"
+        data-orientation={dir}
+        role={decorative ? undefined : role || "separator"}
+        aria-orientation={decorative ? undefined : dir}
+        aria-hidden={decorative || undefined}
+        className={cn(separatorVariants({ orientation: dir }), className)}
+        {...props}
+      />
+    )
+  }
 )
 Separator.displayName = "Separator"
 

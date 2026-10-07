@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tooltip",
+  "type": "registry:component",
+  "title": "Tooltip",
+  "description": "Hover/focus bubble linked with aria-describedby, powered by Radix UI.",
+  "dependencies": [
+    "@radix-ui/react-tooltip@^1.3.0"
+  ],
+  "registryDependencies": [
+    "https://vert-ui.dev/r/vert-cn.json"
+  ],
+  "files": [
+    {
+      "path": "components/vert-ui/tooltip.tsx",
+      "type": "registry:component",
+      "content": "import * as TooltipPrimitive from \"@radix-ui/react-tooltip\"\nimport * as React from \"react\"\nimport { cn } from '@/lib/vert-ui/cn'\n\ntype TooltipSide = \"top\" | \"right\" | \"bottom\" | \"left\"\ntype TooltipAlign = \"start\" | \"center\" | \"end\"\n\nexport interface TooltipProps\n  extends Omit<\n      React.ComponentPropsWithRef<typeof TooltipPrimitive.Root>,\n      \"children\" | \"asChild\"\n    > {\n  /** Bubble content. Keep it short — it is announced via aria-describedby. */\n  content: React.ReactNode\n  side?: TooltipSide\n  align?: TooltipAlign\n  sideOffset?: number\n  showArrow?: boolean\n  children: React.ReactNode\n  className?: string\n}\n\nconst sideOffsetClass: Record<TooltipSide, string> = {\n  top: \"origin-bottom\",\n  right: \"origin-left\",\n  bottom: \"origin-top\",\n  left: \"origin-right\",\n}\n\n/**\n * Tooltip — hover/focus bubble built on Radix.\n *\n * The trigger receives `aria-describedby` while open, so label the trigger\n * itself; never put focusable elements or essential-only information inside\n * `content`.\n */\nfunction Tooltip({\n  content,\n  side = \"top\",\n  align = \"center\",\n  sideOffset = 6,\n  showArrow = true,\n  children,\n  className,\n  ...props\n}: TooltipProps) {\n  return (\n    <TooltipPrimitive.Provider skipDelayDuration={200}>\n      <TooltipPrimitive.Root {...props}>\n        <TooltipPrimitive.Trigger asChild>{children}</TooltipPrimitive.Trigger>\n        <TooltipPrimitive.Portal>\n          <TooltipPrimitive.Content\n            side={side}\n            align={align}\n            sideOffset={sideOffset}\n            data-slot=\"tooltip-content\"\n            className={cn(\n              \"z-50 max-w-[260px] rounded-md border border-border bg-foreground px-2.5 py-1.5 text-xs font-medium leading-snug text-background shadow-raised animate-[vert-pop-in_140ms_ease-out]\",\n              sideOffsetClass[side],\n              className\n            )}\n          >\n            {content}\n            {showArrow ? (\n              <TooltipPrimitive.Arrow\n                data-slot=\"tooltip-arrow\"\n                className=\"size-2.5 rotate-45 rounded-[2px] bg-foreground\"\n              />\n            ) : null}\n          </TooltipPrimitive.Content>\n        </TooltipPrimitive.Portal>\n      </TooltipPrimitive.Root>\n    </TooltipPrimitive.Provider>\n  )\n}\n\nexport { Tooltip }\nexport type { TooltipAlign, TooltipSide }\n"
+    }
+  ]
+}

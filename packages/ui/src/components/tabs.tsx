@@ -74,13 +74,15 @@ export interface TabsProps
   extends React.ComponentPropsWithRef<typeof TabsPrimitive.Root>,
     VariantProps<typeof tabsListVariants> {}
 
-function Tabs({ className, variant = "line", size = "md", ...props }: TabsProps) {
+function Tabs({ className, variant, size, ...props }: TabsProps) {
+  const activeVariant = variant ?? "line"
+  const activeSize = size ?? "md"
   return (
-    <TabsContext.Provider value={{ variant, size }}>
+    <TabsContext.Provider value={{ variant: activeVariant, size: activeSize }}>
       <TabsPrimitive.Root
         data-slot="tabs"
-        data-variant={variant}
-        data-size={size}
+        data-variant={activeVariant}
+        data-size={activeSize}
         className={cn("flex flex-col", className)}
         {...props}
       />
