@@ -15,9 +15,12 @@ import { Route as ComponentsIndexRouteImport } from './routes/components/index'
 import { Route as ComponentsAccordionRouteImport } from './routes/components/accordion'
 import { Route as ComponentsAlertRouteImport } from './routes/components/alert'
 import { Route as ComponentsAvatarRouteImport } from './routes/components/avatar'
+import { Route as ComponentsCheckboxRouteImport } from './routes/components/checkbox'
 import { Route as ComponentsCollapsibleRouteImport } from './routes/components/collapsible'
 import { Route as ComponentsDialogRouteImport } from './routes/components/dialog'
 import { Route as ComponentsDropdownMenuRouteImport } from './routes/components/dropdown-menu'
+import { Route as ComponentsFieldRouteImport } from './routes/components/field'
+import { Route as ComponentsInputRouteImport } from './routes/components/input'
 import { Route as ComponentsLabelRouteImport } from './routes/components/label'
 import { Route as ComponentsPopoverRouteImport } from './routes/components/popover'
 import { Route as ComponentsProgressRouteImport } from './routes/components/progress'
@@ -28,6 +31,7 @@ import { Route as ComponentsSkeletonRouteImport } from './routes/components/skel
 import { Route as ComponentsSwitchRouteImport } from './routes/components/switch'
 import { Route as ComponentsTableRouteImport } from './routes/components/table'
 import { Route as ComponentsTabsRouteImport } from './routes/components/tabs'
+import { Route as ComponentsTextareaRouteImport } from './routes/components/textarea'
 import { Route as ComponentsToastRouteImport } from './routes/components/toast'
 import { Route as ComponentsTooltipRouteImport } from './routes/components/tooltip'
 
@@ -61,6 +65,11 @@ const ComponentsAvatarRoute = ComponentsAvatarRouteImport.update({
   path: '/avatar',
   getParentRoute: () => ComponentsRouteRoute,
 } as any)
+const ComponentsCheckboxRoute = ComponentsCheckboxRouteImport.update({
+  id: '/checkbox',
+  path: '/checkbox',
+  getParentRoute: () => ComponentsRouteRoute,
+} as any)
 const ComponentsCollapsibleRoute = ComponentsCollapsibleRouteImport.update({
   id: '/collapsible',
   path: '/collapsible',
@@ -74,6 +83,16 @@ const ComponentsDialogRoute = ComponentsDialogRouteImport.update({
 const ComponentsDropdownMenuRoute = ComponentsDropdownMenuRouteImport.update({
   id: '/dropdown-menu',
   path: '/dropdown-menu',
+  getParentRoute: () => ComponentsRouteRoute,
+} as any)
+const ComponentsFieldRoute = ComponentsFieldRouteImport.update({
+  id: '/field',
+  path: '/field',
+  getParentRoute: () => ComponentsRouteRoute,
+} as any)
+const ComponentsInputRoute = ComponentsInputRouteImport.update({
+  id: '/input',
+  path: '/input',
   getParentRoute: () => ComponentsRouteRoute,
 } as any)
 const ComponentsLabelRoute = ComponentsLabelRouteImport.update({
@@ -126,6 +145,11 @@ const ComponentsTabsRoute = ComponentsTabsRouteImport.update({
   path: '/tabs',
   getParentRoute: () => ComponentsRouteRoute,
 } as any)
+const ComponentsTextareaRoute = ComponentsTextareaRouteImport.update({
+  id: '/textarea',
+  path: '/textarea',
+  getParentRoute: () => ComponentsRouteRoute,
+} as any)
 const ComponentsToastRoute = ComponentsToastRouteImport.update({
   id: '/toast',
   path: '/toast',
@@ -143,9 +167,12 @@ export interface FileRoutesByFullPath {
   '/components/accordion': typeof ComponentsAccordionRoute
   '/components/alert': typeof ComponentsAlertRoute
   '/components/avatar': typeof ComponentsAvatarRoute
+  '/components/checkbox': typeof ComponentsCheckboxRoute
   '/components/collapsible': typeof ComponentsCollapsibleRoute
   '/components/dialog': typeof ComponentsDialogRoute
   '/components/dropdown-menu': typeof ComponentsDropdownMenuRoute
+  '/components/field': typeof ComponentsFieldRoute
+  '/components/input': typeof ComponentsInputRoute
   '/components/label': typeof ComponentsLabelRoute
   '/components/popover': typeof ComponentsPopoverRoute
   '/components/progress': typeof ComponentsProgressRoute
@@ -156,6 +183,7 @@ export interface FileRoutesByFullPath {
   '/components/switch': typeof ComponentsSwitchRoute
   '/components/table': typeof ComponentsTableRoute
   '/components/tabs': typeof ComponentsTabsRoute
+  '/components/textarea': typeof ComponentsTextareaRoute
   '/components/toast': typeof ComponentsToastRoute
   '/components/tooltip': typeof ComponentsTooltipRoute
   '/components/': typeof ComponentsIndexRoute
@@ -165,9 +193,12 @@ export interface FileRoutesByTo {
   '/components/accordion': typeof ComponentsAccordionRoute
   '/components/alert': typeof ComponentsAlertRoute
   '/components/avatar': typeof ComponentsAvatarRoute
+  '/components/checkbox': typeof ComponentsCheckboxRoute
   '/components/collapsible': typeof ComponentsCollapsibleRoute
   '/components/dialog': typeof ComponentsDialogRoute
   '/components/dropdown-menu': typeof ComponentsDropdownMenuRoute
+  '/components/field': typeof ComponentsFieldRoute
+  '/components/input': typeof ComponentsInputRoute
   '/components/label': typeof ComponentsLabelRoute
   '/components/popover': typeof ComponentsPopoverRoute
   '/components/progress': typeof ComponentsProgressRoute
@@ -178,6 +209,7 @@ export interface FileRoutesByTo {
   '/components/switch': typeof ComponentsSwitchRoute
   '/components/table': typeof ComponentsTableRoute
   '/components/tabs': typeof ComponentsTabsRoute
+  '/components/textarea': typeof ComponentsTextareaRoute
   '/components/toast': typeof ComponentsToastRoute
   '/components/tooltip': typeof ComponentsTooltipRoute
   '/components': typeof ComponentsIndexRoute
@@ -189,9 +221,12 @@ export interface FileRoutesById {
   '/components/accordion': typeof ComponentsAccordionRoute
   '/components/alert': typeof ComponentsAlertRoute
   '/components/avatar': typeof ComponentsAvatarRoute
+  '/components/checkbox': typeof ComponentsCheckboxRoute
   '/components/collapsible': typeof ComponentsCollapsibleRoute
   '/components/dialog': typeof ComponentsDialogRoute
   '/components/dropdown-menu': typeof ComponentsDropdownMenuRoute
+  '/components/field': typeof ComponentsFieldRoute
+  '/components/input': typeof ComponentsInputRoute
   '/components/label': typeof ComponentsLabelRoute
   '/components/popover': typeof ComponentsPopoverRoute
   '/components/progress': typeof ComponentsProgressRoute
@@ -202,6 +237,7 @@ export interface FileRoutesById {
   '/components/switch': typeof ComponentsSwitchRoute
   '/components/table': typeof ComponentsTableRoute
   '/components/tabs': typeof ComponentsTabsRoute
+  '/components/textarea': typeof ComponentsTextareaRoute
   '/components/toast': typeof ComponentsToastRoute
   '/components/tooltip': typeof ComponentsTooltipRoute
   '/components/': typeof ComponentsIndexRoute
@@ -214,9 +250,12 @@ export interface FileRouteTypes {
     | '/components/accordion'
     | '/components/alert'
     | '/components/avatar'
+    | '/components/checkbox'
     | '/components/collapsible'
     | '/components/dialog'
     | '/components/dropdown-menu'
+    | '/components/field'
+    | '/components/input'
     | '/components/label'
     | '/components/popover'
     | '/components/progress'
@@ -227,6 +266,7 @@ export interface FileRouteTypes {
     | '/components/switch'
     | '/components/table'
     | '/components/tabs'
+    | '/components/textarea'
     | '/components/toast'
     | '/components/tooltip'
     | '/components/'
@@ -236,9 +276,12 @@ export interface FileRouteTypes {
     | '/components/accordion'
     | '/components/alert'
     | '/components/avatar'
+    | '/components/checkbox'
     | '/components/collapsible'
     | '/components/dialog'
     | '/components/dropdown-menu'
+    | '/components/field'
+    | '/components/input'
     | '/components/label'
     | '/components/popover'
     | '/components/progress'
@@ -249,6 +292,7 @@ export interface FileRouteTypes {
     | '/components/switch'
     | '/components/table'
     | '/components/tabs'
+    | '/components/textarea'
     | '/components/toast'
     | '/components/tooltip'
     | '/components'
@@ -259,9 +303,12 @@ export interface FileRouteTypes {
     | '/components/accordion'
     | '/components/alert'
     | '/components/avatar'
+    | '/components/checkbox'
     | '/components/collapsible'
     | '/components/dialog'
     | '/components/dropdown-menu'
+    | '/components/field'
+    | '/components/input'
     | '/components/label'
     | '/components/popover'
     | '/components/progress'
@@ -272,6 +319,7 @@ export interface FileRouteTypes {
     | '/components/switch'
     | '/components/table'
     | '/components/tabs'
+    | '/components/textarea'
     | '/components/toast'
     | '/components/tooltip'
     | '/components/'
@@ -326,6 +374,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ComponentsAvatarRouteImport
       parentRoute: typeof ComponentsRouteRoute
     }
+    '/components/checkbox': {
+      id: '/components/checkbox'
+      path: '/checkbox'
+      fullPath: '/components/checkbox'
+      preLoaderRoute: typeof ComponentsCheckboxRouteImport
+      parentRoute: typeof ComponentsRouteRoute
+    }
     '/components/collapsible': {
       id: '/components/collapsible'
       path: '/collapsible'
@@ -345,6 +400,20 @@ declare module '@tanstack/react-router' {
       path: '/dropdown-menu'
       fullPath: '/components/dropdown-menu'
       preLoaderRoute: typeof ComponentsDropdownMenuRouteImport
+      parentRoute: typeof ComponentsRouteRoute
+    }
+    '/components/field': {
+      id: '/components/field'
+      path: '/field'
+      fullPath: '/components/field'
+      preLoaderRoute: typeof ComponentsFieldRouteImport
+      parentRoute: typeof ComponentsRouteRoute
+    }
+    '/components/input': {
+      id: '/components/input'
+      path: '/input'
+      fullPath: '/components/input'
+      preLoaderRoute: typeof ComponentsInputRouteImport
       parentRoute: typeof ComponentsRouteRoute
     }
     '/components/label': {
@@ -417,6 +486,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ComponentsTabsRouteImport
       parentRoute: typeof ComponentsRouteRoute
     }
+    '/components/textarea': {
+      id: '/components/textarea'
+      path: '/textarea'
+      fullPath: '/components/textarea'
+      preLoaderRoute: typeof ComponentsTextareaRouteImport
+      parentRoute: typeof ComponentsRouteRoute
+    }
     '/components/toast': {
       id: '/components/toast'
       path: '/toast'
@@ -438,9 +514,12 @@ interface ComponentsRouteRouteChildren {
   ComponentsAccordionRoute: typeof ComponentsAccordionRoute
   ComponentsAlertRoute: typeof ComponentsAlertRoute
   ComponentsAvatarRoute: typeof ComponentsAvatarRoute
+  ComponentsCheckboxRoute: typeof ComponentsCheckboxRoute
   ComponentsCollapsibleRoute: typeof ComponentsCollapsibleRoute
   ComponentsDialogRoute: typeof ComponentsDialogRoute
   ComponentsDropdownMenuRoute: typeof ComponentsDropdownMenuRoute
+  ComponentsFieldRoute: typeof ComponentsFieldRoute
+  ComponentsInputRoute: typeof ComponentsInputRoute
   ComponentsLabelRoute: typeof ComponentsLabelRoute
   ComponentsPopoverRoute: typeof ComponentsPopoverRoute
   ComponentsProgressRoute: typeof ComponentsProgressRoute
@@ -451,6 +530,7 @@ interface ComponentsRouteRouteChildren {
   ComponentsSwitchRoute: typeof ComponentsSwitchRoute
   ComponentsTableRoute: typeof ComponentsTableRoute
   ComponentsTabsRoute: typeof ComponentsTabsRoute
+  ComponentsTextareaRoute: typeof ComponentsTextareaRoute
   ComponentsToastRoute: typeof ComponentsToastRoute
   ComponentsTooltipRoute: typeof ComponentsTooltipRoute
   ComponentsIndexRoute: typeof ComponentsIndexRoute
@@ -460,9 +540,12 @@ const ComponentsRouteRouteChildren: ComponentsRouteRouteChildren = {
   ComponentsAccordionRoute: ComponentsAccordionRoute,
   ComponentsAlertRoute: ComponentsAlertRoute,
   ComponentsAvatarRoute: ComponentsAvatarRoute,
+  ComponentsCheckboxRoute: ComponentsCheckboxRoute,
   ComponentsCollapsibleRoute: ComponentsCollapsibleRoute,
   ComponentsDialogRoute: ComponentsDialogRoute,
   ComponentsDropdownMenuRoute: ComponentsDropdownMenuRoute,
+  ComponentsFieldRoute: ComponentsFieldRoute,
+  ComponentsInputRoute: ComponentsInputRoute,
   ComponentsLabelRoute: ComponentsLabelRoute,
   ComponentsPopoverRoute: ComponentsPopoverRoute,
   ComponentsProgressRoute: ComponentsProgressRoute,
@@ -473,6 +556,7 @@ const ComponentsRouteRouteChildren: ComponentsRouteRouteChildren = {
   ComponentsSwitchRoute: ComponentsSwitchRoute,
   ComponentsTableRoute: ComponentsTableRoute,
   ComponentsTabsRoute: ComponentsTabsRoute,
+  ComponentsTextareaRoute: ComponentsTextareaRoute,
   ComponentsToastRoute: ComponentsToastRoute,
   ComponentsTooltipRoute: ComponentsTooltipRoute,
   ComponentsIndexRoute: ComponentsIndexRoute,

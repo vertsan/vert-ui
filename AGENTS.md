@@ -26,9 +26,11 @@ the full product spec lives only in the maintainer's brief — there is no other
 - Work in the maintainer's 6 phases and **stop after each phase for approval**; ask at most 3
   clarifying questions before starting to code. Phases 1–2 (brand/tokens, scaffold + 5 core
   components) are committed; Phase 3 (Alert, Dialog, Dropdown Menu, Progress, Select, Separator,
-  Switch, Tabs, Tooltip) and Phase 4 (Accordion, Avatar, Collapsible, Label, Popover, Radio
-  Group, Skeleton, Table, Toast) are implemented — tests, registry items and docs routes for
-  each — and await maintainer review before Phase 5.
+  Switch, Tabs, Tooltip), Phase 4 (Accordion, Avatar, Collapsible, Label, Popover, Radio
+  Group, Skeleton, Table, Toast) and Phase 5 (form batch: Field + FieldGroup wrappers,
+  Input/Textarea invalid styling, docs routes for Checkbox, Field, Input, Textarea) are
+  implemented — tests, registry items and docs routes for each — and await maintainer review
+  before Phase 6.
 - Per component deliver: TS source, props table, 2–3 usage examples, accessibility notes.
 
 ## Commands (verified)
@@ -37,7 +39,7 @@ the full product spec lives only in the maintainer's brief — there is no other
 - Docs dev: `pnpm --filter @vert-ui/docs dev` (port 3000); root `pnpm dev` is the same via turbo.
 - Docs build: `pnpm --filter @vert-ui/docs build` — passes (benign "use client" warnings).
 - Tests: only `@vert-ui/ui` has tests.
-  `pnpm --filter @vert-ui/ui exec vitest run` (113/113, 23 files);
+  `pnpm --filter @vert-ui/ui exec vitest run` (120/120, 24 files);
   single file: `pnpm --filter @vert-ui/ui exec vitest run src/components/button.test.tsx`.
   jsdom polyfills (pointer capture, scrollIntoView, ResizeObserver, matchMedia) live in
   `src/test-setup.ts`; jest-dom matchers come from `@testing-library/jest-dom/vitest`.

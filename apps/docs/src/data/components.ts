@@ -21,6 +21,11 @@ export const componentDocs: ComponentDocMeta[] = [
     description: "Image with initials fallback, no layout shift.",
   },
   {
+    name: "Checkbox",
+    href: "/components/checkbox",
+    description: "Multi-select choice with indeterminate state.",
+  },
+  {
     name: "Collapsible",
     href: "/components/collapsible",
     description: "Single disclosure region with aria-expanded.",
@@ -34,6 +39,16 @@ export const componentDocs: ComponentDocMeta[] = [
     name: "Dropdown Menu",
     href: "/components/dropdown-menu",
     description: "Action menu with checkbox and radio items.",
+  },
+  {
+    name: "Field",
+    href: "/components/field",
+    description: "Wires label, description and error to any control.",
+  },
+  {
+    name: "Input",
+    href: "/components/input",
+    description: "Single-line text field with validation state.",
   },
   {
     name: "Label",
@@ -86,6 +101,11 @@ export const componentDocs: ComponentDocMeta[] = [
     description: "Tabbed panels with arrow-key navigation.",
   },
   {
+    name: "Textarea",
+    href: "/components/textarea",
+    description: "Multi-line text field with resize control.",
+  },
+  {
     name: "Toast",
     href: "/components/toast",
     description: "Ephemeral notification stack with swipe-out.",
@@ -97,4 +117,4 @@ export const componentDocs: ComponentDocMeta[] = [
   },
 ]
 
-export const comingSoon = ["Button", "Input", "Textarea", "Checkbox", "Card", "Badge"]
+export const comingSoon = ["Button", "Card", "Badge"]

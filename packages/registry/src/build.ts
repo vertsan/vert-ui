@@ -133,6 +133,16 @@ const items: ItemDef[] = [
     files: [{ source: 'components/badge.tsx', path: 'components/vert-ui/badge.tsx' }],
   },
   {
+    name: 'field',
+    type: 'registry:component',
+    title: 'Field',
+    description:
+      'Form field wrapper wiring label, description and error to the control with aria-describedby.',
+    dependencies: [],
+    registryDependencies: ['vert-cn', 'label'],
+    files: [{ source: 'components/field.tsx', path: 'components/vert-ui/field.tsx' }],
+  },
+  {
     name: 'alert',
     type: 'registry:component',
     title: 'Alert',

@@ -141,6 +141,23 @@
       ]
     },
     {
+      "name": "field",
+      "type": "registry:component",
+      "title": "Field",
+      "description": "Form field wrapper wiring label, description and error to the control with aria-describedby.",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://vert-ui.dev/r/vert-cn.json",
+        "https://vert-ui.dev/r/label.json"
+      ],
+      "files": [
+        {
+          "path": "components/vert-ui/field.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "alert",
       "type": "registry:component",
       "title": "Alert",
