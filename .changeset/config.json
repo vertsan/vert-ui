@@ -7,5 +7,5 @@
   "access": "public",
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
-  "ignore": ["vert-ui-docs"]
+  "ignore": ["@vert-ui/docs"]
 }

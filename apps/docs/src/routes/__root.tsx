@@ -30,6 +30,11 @@ export const Route = createRootRoute({
         href: appCss,
       },
     ],
+    scripts: [
+      {
+        children: `(function(){try{var t=localStorage.getItem('vert-ui-theme');var o=localStorage.getItem('vert-ui-tone');var r=document.documentElement;if(t)r.setAttribute('data-theme',t);if(o==='dark'){r.classList.add('dark');r.setAttribute('data-tone','dark')}else if(o==='light'){r.setAttribute('data-tone','light')}}catch(e){}})()`,
+      },
+    ],
   }),
   shellComponent: RootDocument,
 })

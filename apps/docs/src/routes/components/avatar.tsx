@@ -1,5 +1,5 @@
 import { DocPage, type PropRow } from "../../components/doc-page"
-import { Avatar, AvatarFallback, AvatarImage } from "@vert-ui/ui"
+import { Avatar, AvatarFallback, AvatarGroup, AvatarImage } from "@vert-ui/ui"
 import { createFileRoute } from "@tanstack/react-router"
 
 export const Route = createFileRoute("/components/avatar")({
@@ -28,6 +28,18 @@ const props: PropRow[] = [
     name: "AvatarFallback",
     type: "ReactNode",
     description: "Initials or icon shown while (or when) no image is available.",
+  },
+  {
+    name: "AvatarGroup max",
+    type: "number",
+    default: "4",
+    description: "Avatars rendered before the \"+N\" overflow counter appears.",
+  },
+  {
+    name: "AvatarGroup spacing",
+    type: "number",
+    default: "-10",
+    description: "Overlap in pixels between avatars (negative values overlap).",
   },
   {
     name: "className",
@@ -75,27 +87,33 @@ function AvatarPage() {
           ),
         },
         {
-          title: "Grouped avatars",
-          code: `<div className="flex -space-x-2">
+          title: "Grouped avatars with overflow",
+          code: `<AvatarGroup max={3}>
   {team.map((member) => (
-    <Avatar key={member.id} className="ring-2 ring-card">
+    <Avatar key={member.id}>
       <AvatarImage src={member.avatarUrl} alt="" />
       <AvatarFallback>{initials(member.name)}</AvatarFallback>
     </Avatar>
   ))}
-</div>`,
+</AvatarGroup>`,
           render: (
-            <div className="flex -space-x-2">
-              <Avatar size="sm" className="ring-2 ring-card">
+            <AvatarGroup max={3}>
+              <Avatar size="sm">
                 <AvatarFallback>AK</AvatarFallback>
               </Avatar>
-              <Avatar size="sm" className="ring-2 ring-card">
+              <Avatar size="sm">
                 <AvatarFallback>JD</AvatarFallback>
               </Avatar>
-              <Avatar size="sm" className="ring-2 ring-card">
+              <Avatar size="sm">
                 <AvatarFallback>MP</AvatarFallback>
               </Avatar>
-            </div>
+              <Avatar size="sm">
+                <AvatarFallback>RS</AvatarFallback>
+              </Avatar>
+              <Avatar size="sm">
+                <AvatarFallback>TW</AvatarFallback>
+              </Avatar>
+            </AvatarGroup>
           ),
         },
       ]}
@@ -103,6 +121,8 @@ function AvatarPage() {
         "Pass alt on AvatarImage so the image carries its own name; use alt=\"\" when adjacent text already names the person.",
         "The fallback renders text (initials), so the avatar is never an empty box for screen readers.",
         "The root is presentational — it has no implicit role, so it will not be announced as a widget.",
+        "AvatarGroup's overflow counter is role=\"img\" labelled \"N more\", so hidden members are counted for screen readers.",
+        "Avatars inside a group are decorative when the list already names each person — keep their alt empty in that case.",
         "Sizes are fixed, so swapping image for initials causes no layout shift.",
       ]}
       props={props}

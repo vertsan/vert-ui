@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react'
-import { describe, expect, it } from 'vitest'
+import userEvent from '@testing-library/user-event'
+import { describe, expect, it, vi } from 'vitest'
 import { Alert, AlertDescription, AlertTitle } from './alert'
 
 describe('Alert', () => {
@@ -57,5 +58,37 @@ describe('Alert', () => {
     const ref = { current: null as HTMLDivElement | null }
     render(<Alert ref={ref}>Ref</Alert>)
     expect(ref.current).toBeInstanceOf(HTMLDivElement)
+  })
+
+  it('does not render a dismiss button without onDismiss', () => {
+    const { container } = render(<Alert>Static</Alert>)
+    expect(container.querySelector('[data-slot="alert-dismiss"]')).toBeNull()
+  })
+
+  it('renders a labelled dismiss button and calls onDismiss', async () => {
+    const user = userEvent.setup()
+    const onDismiss = vi.fn()
+    render(<Alert onDismiss={onDismiss}>Dismissible</Alert>)
+    const button = screen.getByRole('button', { name: 'Dismiss' })
+    expect(button).toHaveAttribute('data-slot', 'alert-dismiss')
+    await user.click(button)
+    expect(onDismiss).toHaveBeenCalledTimes(1)
+  })
+
+  it('supports a custom dismiss label', () => {
+    render(
+      <Alert onDismiss={() => {}} dismissLabel="Close banner">
+        Bye
+      </Alert>,
+    )
+    expect(screen.getByRole('button', { name: 'Close banner' })).toBeInTheDocument()
+  })
+
+  it('marks itself as dismissible for styling', () => {
+    const { container } = render(<Alert onDismiss={() => {}}>X</Alert>)
+    expect(container.querySelector('[data-slot="alert"]')).toHaveAttribute(
+      'data-dismissible',
+      'true',
+    )
   })
 })

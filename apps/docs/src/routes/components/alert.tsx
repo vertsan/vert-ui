@@ -5,10 +5,32 @@ import {
   AlertTitle,
 } from "@vert-ui/ui"
 import { createFileRoute } from "@tanstack/react-router"
+import { useState } from "react"
 
 export const Route = createFileRoute("/components/alert")({
   component: AlertPage,
 })
+
+function DismissibleAlert() {
+  const [open, setOpen] = useState(true)
+  if (!open) {
+    return (
+      <button
+        type="button"
+        onClick={() => setOpen(true)}
+        className="rounded-md border border-border bg-card px-3 py-1.5 text-sm outline-none transition-colors hover:bg-accent focus-visible:ring-2 focus-visible:ring-ring"
+      >
+        Show alert again
+      </button>
+    )
+  }
+  return (
+    <Alert variant="info" onDismiss={() => setOpen(false)}>
+      <AlertTitle>Invitation pending</AlertTitle>
+      <AlertDescription>alex@acme.com has not accepted yet.</AlertDescription>
+    </Alert>
+  )
+}
 
 const props: PropRow[] = [
   {
@@ -33,6 +55,18 @@ const props: PropRow[] = [
     type: "string",
     description:
       "Set role=\"alert\" for messages that appear after an action so screen readers announce them.",
+  },
+  {
+    name: "onDismiss",
+    type: "() => void",
+    description:
+      "Renders a close button in the trailing edge. Omit it for alerts that must stay until handled.",
+  },
+  {
+    name: "dismissLabel",
+    type: "string",
+    default: '"Dismiss"',
+    description: "Accessible name of the dismiss button.",
   },
   {
     name: "className",
@@ -104,11 +138,25 @@ function AlertPage() {
             </Alert>
           ),
         },
+        {
+          title: "Dismissible notice",
+          code: `const [open, setOpen] = useState(true)
+// ...
+{open && (
+  <Alert variant="info" onDismiss={() => setOpen(false)}>
+    <AlertTitle>Invitation pending</AlertTitle>
+    <AlertDescription>alex@acme.com has not accepted yet.</AlertDescription>
+  </Alert>
+)}`,
+          render: <DismissibleAlert />,
+        },
       ]}
       a11y={[
         "Static alerts render no implicit role, so a page full of them is not read out on load.",
         "Add role=\"alert\" (live region) only when the message appears in response to an action.",
         "The icon wrapper is aria-hidden, so assistive tech reads only the title and description.",
+        "The dismiss button is a real <button> with aria-label (\"Dismiss\" by default) — keep dismissLabel short and specific.",
+        "Only wire onDismiss when dismissal is safe; a destructive-confirmation alert should have no close button.",
         "Every variant pairs its soft surface with a foreground that meets WCAG AA (checked by scripts/check-contrast.ts).",
         "Use AlertTitle as a heading (renders h5) so screen readers can navigate the message.",
       ]}

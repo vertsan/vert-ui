@@ -21,6 +21,26 @@ export const componentDocs: ComponentDocMeta[] = [
     description: "Image with initials fallback, no layout shift.",
   },
   {
+    name: "Badge",
+    href: "/components/badge",
+    description: "Compact status pill with dot mode and sizes.",
+  },
+  {
+    name: "Button",
+    href: "/components/button",
+    description: "Action control with seven variants and slot support.",
+  },
+  {
+    name: "Card",
+    href: "/components/card",
+    description: "Surface container with header, content and footer.",
+  },
+  {
+    name: "Carousel",
+    href: "/components/carousel",
+    description: "Scroll-snap slider with labelled controls and dots.",
+  },
+  {
     name: "Checkbox",
     href: "/components/checkbox",
     description: "Multi-select choice with indeterminate state.",
@@ -29,6 +49,11 @@ export const componentDocs: ComponentDocMeta[] = [
     name: "Collapsible",
     href: "/components/collapsible",
     description: "Single disclosure region with aria-expanded.",
+  },
+  {
+    name: "Command",
+    href: "/components/command",
+    description: "Filterable command palette with keyboard navigation.",
   },
   {
     name: "Dialog",
@@ -44,6 +69,11 @@ export const componentDocs: ComponentDocMeta[] = [
     name: "Field",
     href: "/components/field",
     description: "Wires label, description and error to any control.",
+  },
+  {
+    name: "Hover Card",
+    href: "/components/hover-card",
+    description: "Hover-revealed detail panel anchored to a trigger.",
   },
   {
     name: "Input",
@@ -117,4 +147,4 @@ export const componentDocs: ComponentDocMeta[] = [
   },
 ]
 
-export const comingSoon = ["Button", "Card", "Badge"]
+export const comingSoon: string[] = []

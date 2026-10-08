@@ -20,6 +20,21 @@ if (typeof globalThis.ResizeObserver === 'undefined') {
   globalThis.ResizeObserver = ResizeObserverStub
 }
 
+if (typeof globalThis.IntersectionObserver === 'undefined') {
+  class IntersectionObserverStub implements IntersectionObserver {
+    readonly root = null
+    readonly rootMargin = ''
+    readonly thresholds: readonly number[] = []
+    observe(): void {}
+    unobserve(): void {}
+    disconnect(): void {}
+    takeRecords(): IntersectionObserverEntry[] {
+      return []
+    }
+  }
+  globalThis.IntersectionObserver = IntersectionObserverStub
+}
+
 if (typeof window.matchMedia !== 'function') {
   window.matchMedia = (query: string): MediaQueryList =>
     ({

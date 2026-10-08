@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card",
+  "type": "registry:component",
+  "title": "Card",
+  "description": "Surface container with header, content and footer sections.",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://vert-ui.dev/r/vert-cn.json"
+  ],
+  "files": [
+    {
+      "path": "components/vert-ui/card.tsx",
+      "type": "registry:component",
+      "content": "import { cva, type VariantProps } from \"class-variance-authority\"\nimport * as React from \"react\"\nimport { cn } from '@/lib/vert-ui/cn'\n\nconst cardVariants = cva(\n  \"rounded-2xl border border-border bg-card text-card-foreground shadow-sm transition-[box-shadow,transform,border-color] duration-[140ms]\",\n  {\n    variants: {\n      variant: {\n        default: \"\",\n        /** Hoverable surface: lift + focus ring. Pair with an onClick or a link. */\n        interactive:\n          \"cursor-pointer hover:-translate-y-0.5 hover:border-brand/30 hover:shadow-raised focus-within:-translate-y-0.5 focus-within:border-brand/30 focus-within:shadow-raised focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring\",\n        raised: \"shadow-raised\",\n        glow: \"shadow-soft luminous-border\",\n      },\n    },\n    defaultVariants: {\n      variant: \"default\",\n    },\n  }\n)\n\nexport interface CardProps\n  extends React.HTMLAttributes<HTMLDivElement>,\n    VariantProps<typeof cardVariants> {}\n\nconst Card = React.forwardRef<HTMLDivElement, CardProps>(\n  ({ className, variant, ...props }, ref) => (\n    <div\n      ref={ref}\n      data-slot=\"card\"\n      data-variant={variant || \"default\"}\n      className={cn(cardVariants({ variant }), className)}\n      {...props}\n    />\n  )\n)\nCard.displayName = \"Card\"\n\nconst CardHeader = React.forwardRef<\n  HTMLDivElement,\n  React.HTMLAttributes<HTMLDivElement>\n>(({ className, ...props }, ref) => (\n  <div\n    ref={ref}\n    className={cn(\"flex flex-col space-y-1.5 p-6\", className)}\n    {...props}\n  />\n))\nCardHeader.displayName = \"CardHeader\"\n\nconst CardTitle = React.forwardRef<\n  HTMLParagraphElement,\n  React.HTMLAttributes<HTMLHeadingElement>\n>(({ className, ...props }, ref) => (\n  <h3\n    ref={ref}\n    className={cn(\"text-xl font-semibold leading-none tracking-tight\", className)}\n    {...props}\n  />\n))\nCardTitle.displayName = \"CardTitle\"\n\nconst CardDescription = React.forwardRef<\n  HTMLParagraphElement,\n  React.HTMLAttributes<HTMLParagraphElement>\n>(({ className, ...props }, ref) => (\n  <p\n    ref={ref}\n    className={cn(\"text-sm text-muted-foreground\", className)}\n    {...props}\n  />\n))\nCardDescription.displayName = \"CardDescription\"\n\nconst CardContent = React.forwardRef<\n  HTMLDivElement,\n  React.HTMLAttributes<HTMLDivElement>\n>(({ className, ...props }, ref) => (\n  <div ref={ref} className={cn(\"p-6 pt-0\", className)} {...props} />\n))\nCardContent.displayName = \"CardContent\"\n\nconst CardFooter = React.forwardRef<\n  HTMLDivElement,\n  React.HTMLAttributes<HTMLDivElement>\n>(({ className, ...props }, ref) => (\n  <div\n    ref={ref}\n    className={cn(\"flex items-center p-6 pt-0\", className)}\n    {...props}\n  />\n))\nCardFooter.displayName = \"CardFooter\"\n\nexport {\n  Card,\n  CardHeader,\n  CardFooter,\n  CardTitle,\n  CardDescription,\n  CardContent,\n  cardVariants,\n}"
+    }
+  ]
+}

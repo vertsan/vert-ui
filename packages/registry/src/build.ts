@@ -77,6 +77,8 @@ const items: ItemDef[] = [
       { source: 'styles/themes/slate.css', path: 'styles/themes/slate.css' },
       { source: 'styles/themes/sand.css', path: 'styles/themes/sand.css' },
       { source: 'styles/themes/midnight.css', path: 'styles/themes/midnight.css' },
+      { source: 'styles/themes/rose.css', path: 'styles/themes/rose.css' },
+      { source: 'styles/themes/ocean.css', path: 'styles/themes/ocean.css' },
     ],
   },
   {
@@ -141,6 +143,15 @@ const items: ItemDef[] = [
     dependencies: [],
     registryDependencies: ['vert-cn', 'label'],
     files: [{ source: 'components/field.tsx', path: 'components/vert-ui/field.tsx' }],
+  },
+  {
+    name: 'card',
+    type: 'registry:component',
+    title: 'Card',
+    description: 'Surface container with header, content and footer sections.',
+    dependencies: [],
+    registryDependencies: ['vert-cn'],
+    files: [{ source: 'components/card.tsx', path: 'components/vert-ui/card.tsx' }],
   },
   {
     name: 'alert',
@@ -305,6 +316,37 @@ const items: ItemDef[] = [
     dependencies: ['@radix-ui/react-toast', 'class-variance-authority'],
     registryDependencies: ['vert-cn'],
     files: [{ source: 'components/toast.tsx', path: 'components/vert-ui/toast.tsx' }],
+  },
+  {
+    name: 'command',
+    type: 'registry:component',
+    title: 'Command',
+    description:
+      'Command palette with fuzzy search, groups, empty state and dialog shell, powered by cmdk.',
+    dependencies: ['cmdk', 'class-variance-authority'],
+    registryDependencies: ['vert-cn', 'dialog'],
+    files: [
+      { source: 'components/command.tsx', path: 'components/vert-ui/command.tsx' },
+    ],
+  },
+  {
+    name: 'carousel',
+    type: 'registry:component',
+    title: 'Carousel',
+    description:
+      'Scroll-snap slider with loop, dots and labelled controls, powered by embla-carousel.',
+    dependencies: ['embla-carousel-react'],
+    registryDependencies: ['vert-cn'],
+    files: [{ source: 'components/carousel.tsx', path: 'components/vert-ui/carousel.tsx' }],
+  },
+  {
+    name: 'hover-card',
+    type: 'registry:component',
+    title: 'Hover Card',
+    description: 'Anchored hover/focus preview panel, powered by Radix UI.',
+    dependencies: ['@radix-ui/react-hover-card'],
+    registryDependencies: ['vert-cn'],
+    files: [{ source: 'components/hover-card.tsx', path: 'components/vert-ui/hover-card.tsx' }],
   },
 ]
 

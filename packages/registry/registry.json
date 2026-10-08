@@ -28,6 +28,14 @@
         {
           "path": "styles/themes/midnight.css",
           "type": "registry:style"
+        },
+        {
+          "path": "styles/themes/rose.css",
+          "type": "registry:style"
+        },
+        {
+          "path": "styles/themes/ocean.css",
+          "type": "registry:style"
         }
       ]
     },
@@ -153,6 +161,22 @@
       "files": [
         {
           "path": "components/vert-ui/field.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "card",
+      "type": "registry:component",
+      "title": "Card",
+      "description": "Surface container with header, content and footer sections.",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://vert-ui.dev/r/vert-cn.json"
+      ],
+      "files": [
+        {
+          "path": "components/vert-ui/card.tsx",
           "type": "registry:component"
         }
       ]
@@ -480,6 +504,62 @@
       "files": [
         {
           "path": "components/vert-ui/toast.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "command",
+      "type": "registry:component",
+      "title": "Command",
+      "description": "Command palette with fuzzy search, groups, empty state and dialog shell, powered by cmdk.",
+      "dependencies": [
+        "cmdk@^1.1.1",
+        "class-variance-authority@^0.7.1"
+      ],
+      "registryDependencies": [
+        "https://vert-ui.dev/r/vert-cn.json",
+        "https://vert-ui.dev/r/dialog.json"
+      ],
+      "files": [
+        {
+          "path": "components/vert-ui/command.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "carousel",
+      "type": "registry:component",
+      "title": "Carousel",
+      "description": "Scroll-snap slider with loop, dots and labelled controls, powered by embla-carousel.",
+      "dependencies": [
+        "embla-carousel-react@^8.6.0"
+      ],
+      "registryDependencies": [
+        "https://vert-ui.dev/r/vert-cn.json"
+      ],
+      "files": [
+        {
+          "path": "components/vert-ui/carousel.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "hover-card",
+      "type": "registry:component",
+      "title": "Hover Card",
+      "description": "Anchored hover/focus preview panel, powered by Radix UI.",
+      "dependencies": [
+        "@radix-ui/react-hover-card@^1.1.24"
+      ],
+      "registryDependencies": [
+        "https://vert-ui.dev/r/vert-cn.json"
+      ],
+      "files": [
+        {
+          "path": "components/vert-ui/hover-card.tsx",
           "type": "registry:component"
         }
       ]

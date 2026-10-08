@@ -69,4 +69,61 @@ const AvatarFallback = React.forwardRef<
 ))
 AvatarFallback.displayName = "AvatarFallback"
 
-export { Avatar, AvatarImage, AvatarFallback, avatarVariants }
+export interface AvatarGroupProps extends React.HTMLAttributes<HTMLDivElement> {
+  /** Maximum avatars rendered before the overflow counter appears. */
+  max?: number
+  /** Space between overlapping avatars in pixels. */
+  spacing?: number
+  children: React.ReactNode
+}
+
+/**
+ * AvatarGroup — overlapping stack of avatars with a "+N" overflow counter.
+ * The counter carries the hidden avatars' count to assistive tech; the group
+ * itself is a list item-free plain container so it composes anywhere.
+ */
+const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroupProps>(
+  ({ max = 4, spacing = -10, className, style, children, ...props }, ref) => {
+    const items = React.Children.toArray(children).filter(React.isValidElement)
+    const visible = items.slice(0, Math.max(max, 0))
+    const overflow = items.length - visible.length
+
+    return (
+      <div
+        ref={ref}
+        data-slot="avatar-group"
+        data-overflow={overflow > 0 ? overflow : undefined}
+        className={cn("flex items-center", className)}
+        style={{ ...style, gap: spacing }}
+        {...props}
+      >
+        {visible.map((child, i) => (
+          <span
+            key={i}
+            data-slot="avatar-group-item"
+            className="rounded-full ring-2 ring-background"
+            style={{ zIndex: items.length - i }}
+          >
+            {child}
+          </span>
+        ))}
+        {overflow > 0 ? (
+          <span
+            data-slot="avatar-group-overflow"
+            aria-label={`${overflow} more`}
+            role="img"
+            className={cn(
+              avatarVariants({ variant: "brand" }),
+              "z-0 items-center justify-center rounded-full text-xs font-medium ring-2 ring-background"
+            )}
+          >
+            +{overflow}
+          </span>
+        ) : null}
+      </div>
+    )
+  }
+)
+AvatarGroup.displayName = "AvatarGroup"
+
+export { Avatar, AvatarImage, AvatarFallback, AvatarGroup, avatarVariants }

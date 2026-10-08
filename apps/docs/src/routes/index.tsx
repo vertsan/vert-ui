@@ -6,10 +6,10 @@ export const Route = createFileRoute("/")({
 })
 
 const stats = [
-  { value: "25", label: "Components" },
-  { value: "120", label: "Tests passing" },
-  { value: "256", label: "Contrast pairs" },
-  { value: "26", label: "Registry items" },
+  { value: "28", label: "Components" },
+  { value: "152", label: "Tests passing" },
+  { value: "756", label: "Contrast pairs" },
+  { value: "30", label: "Registry items" },
 ]
 
 const features = [
@@ -105,7 +105,7 @@ export function Home() {
               <Link to="/components">Browse components</Link>
             </Button>
             <Button size="lg" variant="outline" asChild>
-              <Link to="/components/alert">Read a doc page</Link>
+              <Link to="/guide">Get started</Link>
             </Button>
           </div>
         </div>
@@ -261,12 +261,22 @@ export function Home() {
             Start growing your interface
           </h2>
           <p className="mx-auto mt-3 max-w-xl text-sm text-vert-100">
-            Twenty-five components, twenty-six registry items, zero lock-in. Open the
+            Twenty-five components, twenty-seven registry items, zero lock-in. Open the
             catalog and copy the first one in.
           </p>
           <Button size="lg" variant="secondary" className="mt-6" asChild>
             <Link to="/components">Open the catalog</Link>
           </Button>
+          <p className="mt-4 text-sm text-vert-100">
+            New here?{" "}
+            <Link
+              to="/guide/installation"
+              className="font-medium underline underline-offset-4 outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            >
+              Read the installation guide
+            </Link>
+            .
+          </p>
         </div>
       </section>
     </div>
