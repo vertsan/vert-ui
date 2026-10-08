@@ -1,5 +1,15 @@
-import { Badge, Button, Progress, Switch } from "@vert-ui/ui"
+import {
+  Badge,
+  Button,
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@vert-ui/ui"
 import { createFileRoute, Link } from "@tanstack/react-router"
+import { Hero } from "../components/hero"
+import { cn } from "../lib/utils"
 
 export const Route = createFileRoute("/")({
   component: Home,
@@ -7,7 +17,7 @@ export const Route = createFileRoute("/")({
 
 const stats = [
   { value: "28", label: "Components" },
-  { value: "152", label: "Tests passing" },
+  { value: "163", label: "Tests passing" },
   { value: "756", label: "Contrast pairs" },
   { value: "30", label: "Registry items" },
 ]
@@ -88,109 +98,31 @@ const swatches = [
 export function Home() {
   return (
     <div className="overflow-hidden">
-      <section className="mx-auto max-w-5xl px-4 pb-16 pt-16 sm:px-6 sm:pt-24">
-        <div className="mx-auto max-w-3xl text-center">
-          <Badge className="animate-[vert-fade-in_400ms_ease-out]">
-            shadcn-compatible · React 19 · TypeScript
-          </Badge>
-          <h1 className="animate-[vert-fade-in_500ms_ease-out] mt-6 bg-linear-to-br from-vert-600 via-brand to-vert-700 bg-clip-text text-4xl font-bold tracking-tight text-transparent dark:from-vert-300 dark:via-vert-400 dark:to-vert-500 sm:text-5xl md:text-6xl">
-            Grow with precision.
-          </h1>
-          <p className="animate-[vert-fade-in_600ms_ease-out] mx-auto mt-5 max-w-2xl text-base text-muted-foreground sm:text-lg">
-            vert-ui is an original UI library of calm, green-accented components with soft
-            motion — copy-paste into React 19, style with Tailwind, own forever.
-          </p>
-          <div className="animate-[vert-fade-in_700ms_ease-out] mt-8 flex flex-wrap items-center justify-center gap-3">
-            <Button size="lg" asChild>
-              <Link to="/components">Browse components</Link>
-            </Button>
-            <Button size="lg" variant="outline" asChild>
-              <Link to="/guide">Get started</Link>
-            </Button>
-          </div>
-        </div>
-
-        <div className="animate-[vert-fade-in_800ms_ease-out] mt-14">
-          <div className="grain luminous-border rounded-2xl border border-border/60 bg-card/90 p-2 shadow-raised backdrop-blur-sm">
-            <div className="flex items-center gap-2 px-3 py-2">
-              <span className="size-2.5 rounded-full bg-warning/70" aria-hidden="true" />
-              <span className="size-2.5 rounded-full bg-warning/50" aria-hidden="true" />
-              <span className="size-2.5 rounded-full bg-success/60" aria-hidden="true" />
-              <span
-                aria-hidden="true"
-                className="ml-3 hidden rounded-md bg-muted px-3 py-0.5 text-xs text-muted-foreground sm:inline-block"
-              >
-                app.vert.dev/settings
-              </span>
-            </div>
-            <div className="grid gap-4 rounded-xl bg-background/70 p-5 sm:grid-cols-2 sm:p-6">
-              <div className="space-y-4 rounded-xl border border-border/70 bg-card p-5 shadow-soft">
-                <div className="flex items-center gap-3">
-                  <span className="flex size-10 items-center justify-center rounded-full bg-brand/15 text-sm font-semibold text-brand">
-                    VS
-                  </span>
-                  <div className="min-w-0">
-                    <p className="truncate text-sm font-semibold">Precision workspace</p>
-                    <p className="truncate text-xs text-muted-foreground">
-                      12 members · synced
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-center justify-between gap-3">
-                  <span className="text-sm text-muted-foreground">Auto-sync</span>
-                  <Switch defaultChecked aria-label="Auto-sync" />
-                </div>
-              </div>
-              <div className="space-y-4 rounded-xl border border-border/70 bg-card p-5 shadow-soft">
-                <div className="space-y-2">
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="font-medium">Storage</span>
-                    <span className="text-muted-foreground">64%</span>
-                  </div>
-                  <Progress value={64} aria-label="Storage used" />
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  <span className="rounded-full border border-brand/30 bg-brand-soft px-2 py-0.5 text-xs font-medium text-brand-soft-foreground">
-                    on track
-                  </span>
-                  <Badge variant="secondary">weekly</Badge>
-                  <Badge variant="outline">v0.1</Badge>
-                </div>
-                <div className="flex gap-2">
-                  <Button size="sm" className="flex-1">
-                    Save
-                  </Button>
-                  <Button size="sm" variant="ghost" className="flex-1">
-                    Cancel
-                  </Button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <Hero />
 
       <section aria-label="Project statistics" className="mx-auto max-w-5xl px-4 sm:px-6">
-        <dl className="grid grid-cols-2 overflow-hidden rounded-2xl border border-border bg-card shadow-soft md:grid-cols-4">
-          {stats.map((stat) => (
-            <div
-              key={stat.label}
-              className="border-border/70 p-6 text-center [&:nth-child(2n)]:border-l [&:nth-child(n+3)]:border-t md:[&:not(:first-child)]:border-l md:[&:nth-child(n+3)]:border-t-0"
-            >
-              <dt className="text-sm text-muted-foreground">{stat.label}</dt>
-              <dd className="mt-1 text-3xl font-bold tracking-tight text-foreground">
-                {stat.value}
-              </dd>
-            </div>
-          ))}
-        </dl>
+        <Card className="overflow-hidden">
+          <dl className="grid grid-cols-2 md:grid-cols-4">
+            {stats.map((stat) => (
+              <div
+                key={stat.label}
+                className="border-border/70 p-6 text-center [&:nth-child(2n)]:border-l [&:nth-child(n+3)]:border-t md:[&:not(:first-child)]:border-l md:[&:nth-child(n+3)]:border-t-0"
+              >
+                <dt className="text-sm text-muted-foreground">{stat.label}</dt>
+                <dd className="mt-1 text-3xl font-bold tracking-tight text-foreground">
+                  {stat.value}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </Card>
       </section>
 
       <section
         aria-labelledby="principles"
-        className="mx-auto max-w-5xl space-y-6 px-4 pt-16 sm:px-6"
+        className="mx-auto flex max-w-5xl flex-col gap-6 px-4 pt-16 sm:px-6"
       >
-        <div className="space-y-2 text-center">
+        <div className="flex flex-col gap-2 text-center">
           <p className="text-xs font-semibold uppercase tracking-widest text-brand">
             Principles
           </p>
@@ -200,44 +132,41 @@ export function Home() {
         </div>
         <div className="grid gap-4 md:grid-cols-3">
           {features.map((feature) => (
-            <div
-              key={feature.title}
-              className="group rounded-2xl border border-border bg-card p-6 shadow-soft transition-[transform,box-shadow] duration-[140ms] hover:-translate-y-0.5 hover:shadow-raised"
-            >
-              <span className="inline-flex size-10 items-center justify-center rounded-xl bg-brand-soft text-brand-soft-foreground transition-transform duration-[140ms] group-hover:-translate-y-0.5">
-                {feature.icon}
-              </span>
-              <h3 className="mt-4 text-base font-semibold">{feature.title}</h3>
-              <p className="mt-2 text-sm text-muted-foreground">{feature.body}</p>
-            </div>
+            <Card key={feature.title}>
+              <CardHeader>
+                <span className="inline-flex size-10 items-center justify-center rounded-xl bg-brand-soft text-brand-soft-foreground">
+                  {feature.icon}
+                </span>
+                <CardTitle>{feature.title}</CardTitle>
+                <CardDescription>{feature.body}</CardDescription>
+              </CardHeader>
+            </Card>
           ))}
         </div>
       </section>
 
       <section aria-labelledby="signature" className="mx-auto max-w-5xl px-4 pt-16 sm:px-6">
-        <div className="grid items-center gap-8 rounded-2xl border border-border bg-card p-8 shadow-soft md:grid-cols-2 md:p-10">
-          <div className="space-y-3">
+        <Card className="grid items-center gap-8 p-8 md:grid-cols-2 md:p-10">
+          <CardHeader className="space-y-0 gap-3 p-0">
             <p className="text-xs font-semibold uppercase tracking-widest text-brand">
               Signature
             </p>
-            <h2 id="signature" className="text-2xl font-bold tracking-tight">
-              Soft grain, luminous edge, generous radius
-            </h2>
-            <p className="text-sm text-muted-foreground">
+            <CardTitle id="signature">Soft grain, luminous edge, generous radius</CardTitle>
+            <CardDescription>
               Every surface pairs a fine grain gradient with a thin emerald border and a
               soft elevation shadow — calm enough for all-day tools, distinct enough to
               remember.
-            </p>
+            </CardDescription>
             <div className="flex flex-wrap gap-2 pt-1">
               <Badge>minimal</Badge>
               <Badge variant="secondary">airy</Badge>
               <Badge variant="outline">natural</Badge>
             </div>
-          </div>
-          <div className="space-y-3">
+          </CardHeader>
+          <CardContent className="flex flex-col gap-3 p-0">
             <div className="grain flex h-24 overflow-hidden rounded-xl border border-border/60 shadow-soft">
               {swatches.map((color) => (
-                <span key={color} className={`h-full flex-1 ${color}`} />
+                <span key={color} className={cn("h-full flex-1", color)} />
               ))}
             </div>
             <div className="flex flex-wrap items-center gap-4 text-xs text-muted-foreground">
@@ -251,17 +180,17 @@ export function Home() {
                 shadow-raised
               </span>
             </div>
-          </div>
-        </div>
+          </CardContent>
+        </Card>
       </section>
 
       <section aria-label="Get started" className="mx-auto max-w-5xl px-4 py-16 sm:px-6">
         <div className="grain rounded-2xl bg-linear-to-br from-vert-600 to-brand p-8 text-center shadow-raised md:p-12">
-          <h2 className="text-2xl font-bold tracking-tight text-brand-foreground sm:text-3xl">
-            Start growing your interface
+          <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">
+            Start growing your interface with precision
           </h2>
           <p className="mx-auto mt-3 max-w-xl text-sm text-vert-100">
-            Twenty-five components, twenty-seven registry items, zero lock-in. Open the
+            Twenty-eight components, thirty registry items, zero lock-in. Open the
             catalog and copy the first one in.
           </p>
           <Button size="lg" variant="secondary" className="mt-6" asChild>
