@@ -185,22 +185,22 @@ export function Home() {
       </section>
 
       <section aria-label="Get started" className="mx-auto max-w-5xl px-4 py-16 sm:px-6">
-        <div className="grain rounded-2xl bg-linear-to-br from-vert-600 to-brand p-8 text-center shadow-raised md:p-12">
-          <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">
+        <div className="grain rounded-2xl bg-brand p-8 text-center shadow-raised md:p-12">
+          <h2 className="text-2xl font-bold tracking-tight text-brand-foreground sm:text-3xl">
             Start growing your interface with precision
           </h2>
-          <p className="mx-auto mt-3 max-w-xl text-sm text-vert-100">
+          <p className="mx-auto mt-3 max-w-xl text-sm text-brand-foreground">
             Twenty-eight components, thirty registry items, zero lock-in. Open the
             catalog and copy the first one in.
           </p>
           <Button size="lg" variant="secondary" className="mt-6" asChild>
             <Link to="/components">Open the catalog</Link>
           </Button>
-          <p className="mt-4 text-sm text-vert-100">
+          <p className="mt-4 text-sm text-brand-foreground">
             New here?{" "}
             <Link
               to="/guide/installation"
-              className="font-medium underline underline-offset-4 outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              className="font-medium underline underline-offset-4 outline-none focus-visible:ring-2 focus-visible:ring-brand-foreground"
             >
               Read the installation guide
             </Link>
