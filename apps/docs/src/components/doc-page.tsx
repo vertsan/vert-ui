@@ -1,9 +1,11 @@
 import * as React from "react"
+import { Link } from "@tanstack/react-router"
 
 export interface PropRow {
   name: string
   type: string
   default?: string
+  required?: boolean
   description: string
 }
 
@@ -22,9 +24,43 @@ export interface DocPageProps {
   a11y: string[]
 }
 
+function Section({
+  label,
+  title,
+  id,
+  children,
+  tinted,
+}: {
+  label: string
+  title: string
+  id: string
+  children: React.ReactNode
+  tinted?: boolean
+}) {
+  return (
+    <section aria-labelledby={id} className="space-y-4">
+      <div className="space-y-1">
+        <p className="text-xs font-semibold uppercase tracking-widest text-brand">{label}</p>
+        <h2 id={id} className="text-xl font-bold tracking-tight">
+          {title}
+        </h2>
+      </div>
+      <div
+        className={
+          tinted
+            ? "rounded-2xl border border-info/30 bg-info-soft p-6 text-info-soft-foreground shadow-soft"
+            : "rounded-2xl border border-border bg-card p-6 shadow-soft"
+        }
+      >
+        {children}
+      </div>
+    </section>
+  )
+}
+
 function Code({ children }: { children: string }) {
   return (
-    <pre className="overflow-x-auto rounded-lg border border-border bg-muted p-4 text-xs leading-relaxed">
+    <pre className="overflow-x-auto rounded-xl bg-vert-950 p-4 text-xs leading-relaxed text-vert-100 shadow-inner">
       <code>{children}</code>
     </pre>
   )
@@ -32,84 +68,114 @@ function Code({ children }: { children: string }) {
 
 export function DocPage({ title, intro, demo, props, examples, a11y }: DocPageProps) {
   return (
-    <article className="mx-auto max-w-3xl space-y-10 p-8">
+    <article className="max-w-3xl space-y-10">
       <header className="space-y-3">
-        <h1 className="text-3xl font-bold tracking-tight">{title}</h1>
-        <p className="text-muted-foreground">{intro}</p>
+        <Link
+          to="/components"
+          className="inline-flex items-center gap-1.5 text-sm text-muted-foreground outline-none transition-colors hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring"
+        >
+          <svg
+            aria-hidden="true"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="size-4"
+          >
+            <path d="m12 19-7-7 7-7" />
+            <path d="M19 12H5" />
+          </svg>
+          All components
+        </Link>
+        <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">{title}</h1>
+        <p className="text-base text-muted-foreground sm:text-lg">{intro}</p>
       </header>
 
-      <section aria-labelledby={`${title}-demo`} className="space-y-4">
-        <h2 id={`${title}-demo`} className="text-xl font-semibold">
-          Preview
-        </h2>
-        <div className="rounded-xl border border-border bg-card p-6">{demo}</div>
-      </section>
+      <Section label="Preview" title="Live preview" id={`${title}-demo`}>
+        <div className="grain rounded-xl border border-border/60 bg-muted/40 p-6 sm:p-10">
+          <div className="flex min-h-24 items-center justify-center">{demo}</div>
+        </div>
+      </Section>
 
-      <section aria-labelledby={`${title}-examples`} className="space-y-6">
-        <h2 id={`${title}-examples`} className="text-xl font-semibold">
-          Usage examples
-        </h2>
-        {examples.map((example) => (
-          <div key={example.title} className="space-y-3">
-            <h3 className="text-sm font-semibold">{example.title}</h3>
-            <div className="rounded-xl border border-border bg-card p-6">{example.render}</div>
-            <Code>{example.code}</Code>
-          </div>
-        ))}
-      </section>
+      <Section label="Usage" title="Examples" id={`${title}-examples`}>
+        <div className="space-y-8">
+          {examples.map((example) => (
+            <div key={example.title} className="space-y-3">
+              <h3 className="text-sm font-semibold">{example.title}</h3>
+              <div className="grain rounded-xl border border-border/60 bg-background/70 p-6">
+                {example.render}
+              </div>
+              <Code>{example.code}</Code>
+            </div>
+          ))}
+        </div>
+      </Section>
 
-      <section aria-labelledby={`${title}-props`} className="space-y-4">
-        <h2 id={`${title}-props`} className="text-xl font-semibold">
-          Props
-        </h2>
-        <div className="overflow-x-auto">
+      <Section label="Reference" title="Props" id={`${title}-props`}>
+        <div className="overflow-x-auto rounded-xl border border-border">
           <table className="w-full border-collapse text-left text-sm">
             <thead>
-              <tr className="border-b border-border text-muted-foreground">
-                <th scope="col" className="py-2 pr-4 font-semibold">
+              <tr className="border-b border-border bg-muted/70 text-xs uppercase tracking-wider text-muted-foreground">
+                <th scope="col" className="px-4 py-3 font-semibold">
                   Prop
                 </th>
-                <th scope="col" className="py-2 pr-4 font-semibold">
+                <th scope="col" className="px-4 py-3 font-semibold">
                   Type
                 </th>
-                <th scope="col" className="py-2 pr-4 font-semibold">
+                <th scope="col" className="px-4 py-3 font-semibold">
                   Default
                 </th>
-                <th scope="col" className="py-2 font-semibold">
+                <th scope="col" className="px-4 py-3 font-semibold">
                   Description
                 </th>
               </tr>
             </thead>
             <tbody>
-              {props.map((prop) => (
-                <tr key={prop.name} className="border-b border-border/60 align-top">
-                  <th scope="row" className="py-2 pr-4 font-mono text-xs font-medium">
+              {props.map((prop, index) => (
+                <tr
+                  key={prop.name}
+                  className={[
+                    "border-border/60 align-top",
+                    index % 2 === 1 ? "bg-muted/30" : "",
+                  ].join(" ")}
+                >
+                  <th
+                    scope="row"
+                    className="px-4 py-3 font-mono text-xs font-medium whitespace-nowrap"
+                  >
                     {prop.name}
+                    {prop.required ? (
+                      <span className="ml-1 font-sans text-destructive">(required)</span>
+                    ) : null}
                   </th>
-                  <td className="py-2 pr-4 font-mono text-xs text-muted-foreground">
+                  <td className="px-4 py-3 font-mono text-xs text-muted-foreground">
                     {prop.type}
                   </td>
-                  <td className="py-2 pr-4 font-mono text-xs text-muted-foreground">
+                  <td className="px-4 py-3 font-mono text-xs text-muted-foreground">
                     {prop.default ?? "—"}
                   </td>
-                  <td className="py-2 text-muted-foreground">{prop.description}</td>
+                  <td className="px-4 py-3 text-muted-foreground">{prop.description}</td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
-      </section>
+      </Section>
 
-      <section aria-labelledby={`${title}-a11y`} className="space-y-4">
-        <h2 id={`${title}-a11y`} className="text-xl font-semibold">
-          Accessibility
-        </h2>
-        <ul className="list-disc space-y-2 pl-5 text-sm text-muted-foreground">
+      <Section
+        label="Accessibility"
+        title="Accessibility notes"
+        id={`${title}-a11y`}
+        tinted
+      >
+        <ul className="list-disc space-y-2.5 pl-5 text-sm">
           {a11y.map((note) => (
             <li key={note}>{note}</li>
           ))}
         </ul>
-      </section>
+      </Section>
     </article>
   )
 }

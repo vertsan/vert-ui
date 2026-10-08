@@ -83,6 +83,7 @@ function SeparatorPage() {
         "Decorative separators are removed from the accessibility tree (aria-hidden) — use them whenever the layout already communicates the grouping.",
         "A vertical separator inside a flex row needs a height (e.g. className=\"h-6\"); it is a layout concern the component deliberately leaves to you.",
       ]}
+      props={props}
     />
   )
 }

@@ -96,7 +96,7 @@ function TabsPage() {
 <Tabs value={tab} onValueChange={setTab}>…</Tabs>`,
           render: (
             <Tabs defaultValue="a">
-              <TabsList size="sm">
+              <TabsList>
                 <TabsTrigger value="a">First</TabsTrigger>
                 <TabsTrigger value="b">Second</TabsTrigger>
               </TabsList>
@@ -113,6 +113,7 @@ function TabsPage() {
         "Keep each trigger label short and unique; it becomes the accessible name of the panel.",
         "Focus ring uses the ring token at 2px with an offset, and never relies on color alone.",
       ]}
+      props={props}
     />
   )
 }

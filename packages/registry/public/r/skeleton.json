@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "skeleton",
+  "type": "registry:component",
+  "title": "Skeleton",
+  "description": "Decorative loading placeholder, hidden from assistive technology.",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://vert-ui.dev/r/vert-cn.json"
+  ],
+  "files": [
+    {
+      "path": "components/vert-ui/skeleton.tsx",
+      "type": "registry:component",
+      "content": "import * as React from \"react\"\nimport { cn } from '@/lib/vert-ui/cn'\n\nexport type SkeletonProps = React.HTMLAttributes<HTMLDivElement>\n\n/**\n * Skeleton — decorative loading placeholder. Mark your loading region with\n * aria-busy yourself; the skeleton itself is hidden from assistive tech.\n */\nfunction Skeleton({ className, ...props }: SkeletonProps) {\n  return (\n    <div\n      data-slot=\"skeleton\"\n      aria-hidden=\"true\"\n      className={cn(\"animate-pulse rounded-md bg-muted motion-reduce:animate-none\", className)}\n      {...props}\n    />\n  )\n}\nSkeleton.displayName = \"Skeleton\"\n\nexport { Skeleton }\n"
+    }
+  ]
+}

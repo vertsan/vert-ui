@@ -104,4 +104,21 @@ describe('Select', () => {
     )
     expect(screen.getByRole('combobox', { name: 'Fruit' })).toBeRequired()
   })
+
+  it('exposes size and invalid on the trigger', () => {
+    render(
+      <Select>
+        <SelectTrigger aria-label="Fruit" size="lg" invalid>
+          <SelectValue />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="apple">Apple</SelectItem>
+        </SelectContent>
+      </Select>,
+    )
+    const trigger = screen.getByRole('combobox', { name: 'Fruit' })
+    expect(trigger).toHaveAttribute('data-size', 'lg')
+    expect(trigger).toHaveAttribute('data-invalid', 'true')
+    expect(trigger).toHaveAttribute('aria-invalid', 'true')
+  })
 })

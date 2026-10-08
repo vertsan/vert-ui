@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "collapsible",
+  "type": "registry:component",
+  "title": "Collapsible",
+  "description": "Disclosure region that expands and collapses on trigger, powered by Radix UI.",
+  "dependencies": [
+    "@radix-ui/react-collapsible@^1.1.21"
+  ],
+  "registryDependencies": [
+    "https://vert-ui.dev/r/vert-cn.json"
+  ],
+  "files": [
+    {
+      "path": "components/vert-ui/collapsible.tsx",
+      "type": "registry:component",
+      "content": "import * as CollapsiblePrimitive from \"@radix-ui/react-collapsible\"\nimport * as React from \"react\"\nimport { cn } from '@/lib/vert-ui/cn'\n\nfunction Collapsible(props: React.ComponentPropsWithRef<typeof CollapsiblePrimitive.Root>) {\n  return <CollapsiblePrimitive.Root data-slot=\"collapsible\" {...props} />\n}\n\nconst CollapsibleTrigger = React.forwardRef<\n  React.ElementRef<typeof CollapsiblePrimitive.CollapsibleTrigger>,\n  React.ComponentPropsWithRef<typeof CollapsiblePrimitive.CollapsibleTrigger>\n>((props, ref) => (\n  <CollapsiblePrimitive.CollapsibleTrigger\n    ref={ref}\n    data-slot=\"collapsible-trigger\"\n    {...props}\n  />\n))\nCollapsibleTrigger.displayName = \"CollapsibleTrigger\"\n\nconst CollapsibleContent = React.forwardRef<\n  React.ElementRef<typeof CollapsiblePrimitive.CollapsibleContent>,\n  React.ComponentPropsWithRef<typeof CollapsiblePrimitive.CollapsibleContent>\n>(({ className, ...props }, ref) => (\n  <CollapsiblePrimitive.CollapsibleContent\n    ref={ref}\n    data-slot=\"collapsible-content\"\n    className={cn(\n      \"overflow-hidden data-[state=closed]:animate-[vert-fade-out_140ms_ease-out] data-[state=open]:animate-[vert-fade-in_140ms_ease-out]\",\n      className\n    )}\n    {...props}\n  />\n))\nCollapsibleContent.displayName = \"CollapsibleContent\"\n\nexport { Collapsible, CollapsibleTrigger, CollapsibleContent }\n"
+    }
+  ]
+}

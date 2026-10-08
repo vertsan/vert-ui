@@ -25,7 +25,10 @@ the full product spec lives only in the maintainer's brief — there is no other
   transform/opacity-only animation, usable at 320px, SSR-safe, no layout shift.
 - Work in the maintainer's 6 phases and **stop after each phase for approval**; ask at most 3
   clarifying questions before starting to code. Phases 1–2 (brand/tokens, scaffold + 5 core
-  components) are already committed — confirm before starting Phase 3.
+  components) are committed; Phase 3 (Alert, Dialog, Dropdown Menu, Progress, Select, Separator,
+  Switch, Tabs, Tooltip) and Phase 4 (Accordion, Avatar, Collapsible, Label, Popover, Radio
+  Group, Skeleton, Table, Toast) are implemented — tests, registry items and docs routes for
+  each — and await maintainer review before Phase 5.
 - Per component deliver: TS source, props table, 2–3 usage examples, accessibility notes.
 
 ## Commands (verified)
@@ -34,11 +37,13 @@ the full product spec lives only in the maintainer's brief — there is no other
 - Docs dev: `pnpm --filter @vert-ui/docs dev` (port 3000); root `pnpm dev` is the same via turbo.
 - Docs build: `pnpm --filter @vert-ui/docs build` — passes (benign "use client" warnings).
 - Tests: only `@vert-ui/ui` has tests.
-  `pnpm --filter @vert-ui/ui exec vitest run` (27/27);
+  `pnpm --filter @vert-ui/ui exec vitest run` (113/113, 23 files);
   single file: `pnpm --filter @vert-ui/ui exec vitest run src/components/button.test.tsx`.
+  jsdom polyfills (pointer capture, scrollIntoView, ResizeObserver, matchMedia) live in
+  `src/test-setup.ts`; jest-dom matchers come from `@testing-library/jest-dom/vitest`.
 - Typecheck: no package defines a `typecheck` script. Use
-  `pnpm exec tsc -p apps/docs/tsconfig.json --noEmit` (passes) and the same form for
-  `packages/*/tsconfig.json` (see Known failures).
+  `pnpm exec tsc -p apps/docs/tsconfig.json --noEmit` and
+  `pnpm exec tsc -p packages/ui/tsconfig.json --noEmit` — both pass.
 - Registry build: `pnpm exec tsx packages/registry/src/build.ts` regenerates
   `packages/registry/registry.json` + `public/r/*.json`. Run after every component/theme edit
   and commit the generated JSON.
@@ -71,8 +76,8 @@ Never treat them as evidence that anything passed.
 - Item dependency versions resolve from `@vert-ui/ui` **`dependencies`** only — a devDependency
   (e.g. `@radix-ui/react-checkbox`) makes the build fail.
 - Only `from '../lib/cn'` is rewritten to `@/lib/vert-ui/cn` in embedded content. Components must
-  import `cn` from `../lib/cn` (only `checkbox.tsx` does today). `../lib/utils` is neither
-  rewritten nor emitted, so components using it break when installed into a consumer project.
+  import `cn` from `../lib/cn` (all of them do; `src/lib/utils.ts` was deleted because
+  `../lib/utils` is neither rewritten nor emitted). The rewrite regex accepts either quote style.
 - The consumer CSS entry must `@import "tailwindcss"` *before* the `vert` style item.
 
 ## Theme system — two parallel vocabularies (do not mix)
@@ -89,18 +94,23 @@ Never treat them as evidence that anything passed.
   `--duration-*` / `--ease-*` (the index.css path uses `--motion-duration-*`).
 - Components were written against a mix of both: Button/Input/Textarea/Badge/Card use
   `bg-primary` / `bg-accent` / `ring-ring`; Checkbox uses `bg-surface` / `bg-brand` /
-  `duration-fast` / `shadow-soft`. Tokens with no definition anywhere (`--color-accent`,
-  `--color-secondary`, `--color-input`) generate no CSS, so those utilities are silently dead.
-  Check which CSS entry you are styling for before copying a class from another component.
+  `shadow-soft`. Flat tokens now cover the whole set (`--color-accent`, `--color-secondary`,
+  `--color-input`, `--color-border-strong`, `--color-ring`, status `--color-*` +
+  `--color-*-soft`), and `vert.css` aliases them to the semantic vars, so the same utility class
+  resolves in both entries. Still check which CSS entry you are styling for before copying a
+  class from another component.
+- Tailwind v4 has **no `--duration-*` namespace**, so `duration-fast` generates nothing — use a
+  literal (`duration-[140ms]`), as `checkbox.tsx` does. The `--duration-*` vars exist only for
+  hand-written CSS.
 - Theme files use hex + oklch pairs; after any token change run `scripts/check-contrast.ts`.
 
 ## Tailwind scans only `apps/docs`
 
-Class detection does not reach `packages/ui/src`, so the docs build ships CSS without any
-component classes (verified: `.bg-primary` and `.inline-flex` are missing from built CSS while
-classes used in `apps/docs/src` are present). When component classes must appear in the docs
-build, add `@source "../../packages/ui/src";` to the CSS entry (path relative to that CSS file)
-and re-check the built CSS.
+Class detection does not reach `packages/ui/src`, so component classes only ship in the docs
+build because `apps/docs/src/styles.css` declares `@source "../../../packages/ui/src";`
+(three levels up from that file — `../../` is wrong) after the `@import "tailwindcss"` line.
+Verified by grepping the built CSS (`.output/public/assets/*.css`) for `.bg-primary`,
+`.min-w-\[12rem\]`, `state=checked`. Remove or mis-path that line and component styles vanish.
 
 ## Component conventions
 
@@ -108,9 +118,8 @@ and re-check the built CSS.
   `data-size` (+ `data-invalid`, `aria-*`) for styling states, `asChild` via Radix Slot,
   `displayName`, ref forwarding, export both the component and its variant factory
   (`buttonVariants`).
-- Two barrels exist and both must be updated when adding a component:
-  `packages/ui/src/index.ts` and `packages/ui/src/components/index.ts`.
-  **Checkbox is exported by neither** — fix when touching exports.
+- One barrel: `packages/ui/src/index.ts` just re-exports `./components`, so add new components to
+  `packages/ui/src/components/index.ts` only (every component, including Checkbox, is exported).
 - CSS entrypoints: `.grain` / `.luminous-border` utilities and the global reduced-motion
   override live in `styles/index.css`; the same reduced-motion block is duplicated in
   `vert.css` (they drift independently).
@@ -119,20 +128,20 @@ and re-check the built CSS.
 
 - TanStack Start + file router. `src/routeTree.gen.ts` is generated (`pnpm generate-routes` /
   the vite plugin), eslint-ignored — never hand-edit.
+- Component docs live at `src/routes/components/<name>.tsx` (one route each) and all render the
+  shared `src/components/doc-page.tsx` shell (preview, examples, props table, a11y notes).
+  `routes/components/index.tsx` is the catalog; add new pages there. After adding a route run
+  `pnpm --filter @vert-ui/docs generate-routes`.
 - Lint config at root covers `**/*.{ts,tsx}` incl. react-hooks + jsx-a11y rules, but see below.
 
 ## Known failures (re-verify; don't assume you caused them)
 
-- `tsc --noEmit` on `packages/ui`: ~44 errors — jest-dom matchers (`toHaveAttribute`,
-  `toBeDisabled`) are not in scope. The tests themselves pass.
 - `packages/cli`: `src/index.ts` has no exports while `bin.ts` / `index.test.ts` import
   `createProgram` from it → `pnpm --filter @vert-ui/cli build` and typecheck fail.
-- `tsx packages/registry/src/build.ts` fails on the checkbox item (radix dep is a devDependency).
 - ESLint is configured (`eslint.config.js`) but **not installed** — `pnpm exec eslint` errors.
   Do not claim lint passed unless you installed eslint + typescript-eslint +
   eslint-plugin-react-hooks + eslint-plugin-jsx-a11y + eslint-config-prettier first.
 - `pnpm format` rewrites nearly every source file: `.prettierrc` is singleQuote/no-semi while
   most existing components use double quotes/semicolons. Format only files you touched, or agree
-  on a repo-wide format first. `packages/ui/src/vitest.d.ts` is UTF-16 encoded and makes prettier
-  error out of `--check`.
+  on a repo-wide format first.
 - `packages/ui/.vitest/json/output.json` is a committed test artifact, not source.

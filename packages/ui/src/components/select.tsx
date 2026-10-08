@@ -10,14 +10,20 @@ function Select(props: SelectProps) {
 
 const SelectTrigger = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Trigger>,
-  React.ComponentPropsWithRef<typeof SelectPrimitive.Trigger> & { size?: "sm" | "md" | "lg" }
->(({ className, size = "md", children, ...props }, ref) => (
+  React.ComponentPropsWithRef<typeof SelectPrimitive.Trigger> & {
+    size?: "sm" | "md" | "lg"
+    /** Marks the field as invalid: sets aria-invalid and the destructive ring. */
+    invalid?: boolean
+  }
+>(({ className, size = "md", invalid, "aria-invalid": ariaInvalid, children, ...props }, ref) => (
   <SelectPrimitive.Trigger
     ref={ref}
     data-slot="select-trigger"
     data-size={size}
+    data-invalid={invalid || undefined}
+    aria-invalid={invalid || ariaInvalid || undefined}
     className={cn(
-      "flex w-full items-center justify-between gap-2 rounded-md border border-input bg-background px-3 text-sm font-medium text-foreground shadow-sm outline-none transition-colors focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ring-offset-background disabled:cursor-not-allowed disabled:opacity-50 data-[placeholder]:text-muted-foreground [&>span]:min-w-0 [&>span]:truncate",
+      "flex w-full items-center justify-between gap-2 rounded-md border border-input bg-background px-3 text-sm font-medium text-foreground shadow-sm outline-none transition-colors focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ring-offset-background disabled:cursor-not-allowed disabled:opacity-50 data-[placeholder]:text-muted-foreground data-[invalid]:border-destructive data-[invalid]:focus-visible:ring-destructive [&>span]:min-w-0 [&>span]:truncate",
       size === "sm" && "h-8 text-xs",
       size === "md" && "h-9",
       size === "lg" && "h-10",

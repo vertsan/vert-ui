@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "label",
+  "type": "registry:component",
+  "title": "Label",
+  "description": "Accessible form label wired to its control with htmlFor, powered by Radix UI.",
+  "dependencies": [
+    "@radix-ui/react-label@^2.1.16"
+  ],
+  "registryDependencies": [
+    "https://vert-ui.dev/r/vert-cn.json"
+  ],
+  "files": [
+    {
+      "path": "components/vert-ui/label.tsx",
+      "type": "registry:component",
+      "content": "import * as LabelPrimitive from \"@radix-ui/react-label\"\nimport * as React from \"react\"\nimport { cn } from '@/lib/vert-ui/cn'\n\nconst Label = React.forwardRef<\n  React.ElementRef<typeof LabelPrimitive.Root>,\n  React.ComponentPropsWithRef<typeof LabelPrimitive.Root>\n>(({ className, ...props }, ref) => (\n  <LabelPrimitive.Root\n    ref={ref}\n    data-slot=\"label\"\n    className={cn(\n      \"inline-flex select-none items-center gap-1.5 text-sm font-medium leading-none text-foreground peer-disabled:cursor-not-allowed peer-disabled:opacity-50\",\n      className\n    )}\n    {...props}\n  />\n))\nLabel.displayName = \"Label\"\n\nexport { Label }\n"
+    }
+  ]
+}

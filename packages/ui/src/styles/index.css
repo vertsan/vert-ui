@@ -24,6 +24,14 @@
     opacity: 1;
   }
 }
+@keyframes vert-fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
 @keyframes vert-pop-in {
   from {
     opacity: 0;
@@ -32,6 +40,16 @@
   to {
     opacity: 1;
     transform: none;
+  }
+}
+@keyframes vert-swipe-out {
+  from {
+    transform: translateX(var(--radix-toast-swipe-end-x));
+    opacity: 1;
+  }
+  to {
+    transform: translateX(calc(var(--radix-toast-swipe-end-x) + 100%));
+    opacity: 0;
   }
 }
 @media (prefers-reduced-motion: reduce) {

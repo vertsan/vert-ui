@@ -110,4 +110,21 @@ describe('DropdownMenu', () => {
     expect(onSelect).toHaveBeenCalledTimes(1)
     await waitFor(() => expect(screen.queryByRole('menu')).not.toBeInTheDocument())
   })
+
+  it('exposes the item variant as a data attribute', async () => {
+    const user = userEvent.setup()
+    render(
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button>Options</Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent>
+          <DropdownMenuItem variant="destructive">Delete</DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>,
+    )
+    await user.click(screen.getByRole('button', { name: 'Options' }))
+    const item = await screen.findByRole('menuitem', { name: 'Delete' })
+    expect(item).toHaveAttribute('data-variant', 'destructive')
+  })
 })

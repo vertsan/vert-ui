@@ -10,15 +10,25 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ComponentsRouteRouteImport } from './routes/components/route'
 import { Route as ComponentsIndexRouteImport } from './routes/components/index'
+import { Route as ComponentsAccordionRouteImport } from './routes/components/accordion'
 import { Route as ComponentsAlertRouteImport } from './routes/components/alert'
+import { Route as ComponentsAvatarRouteImport } from './routes/components/avatar'
+import { Route as ComponentsCollapsibleRouteImport } from './routes/components/collapsible'
 import { Route as ComponentsDialogRouteImport } from './routes/components/dialog'
 import { Route as ComponentsDropdownMenuRouteImport } from './routes/components/dropdown-menu'
+import { Route as ComponentsLabelRouteImport } from './routes/components/label'
+import { Route as ComponentsPopoverRouteImport } from './routes/components/popover'
 import { Route as ComponentsProgressRouteImport } from './routes/components/progress'
+import { Route as ComponentsRadioGroupRouteImport } from './routes/components/radio-group'
 import { Route as ComponentsSelectRouteImport } from './routes/components/select'
 import { Route as ComponentsSeparatorRouteImport } from './routes/components/separator'
+import { Route as ComponentsSkeletonRouteImport } from './routes/components/skeleton'
 import { Route as ComponentsSwitchRouteImport } from './routes/components/switch'
+import { Route as ComponentsTableRouteImport } from './routes/components/table'
 import { Route as ComponentsTabsRouteImport } from './routes/components/tabs'
+import { Route as ComponentsToastRouteImport } from './routes/components/toast'
 import { Route as ComponentsTooltipRouteImport } from './routes/components/tooltip'
 
 const IndexRoute = IndexRouteImport.update({
@@ -26,94 +36,173 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ComponentsIndexRoute = ComponentsIndexRouteImport.update({
-  id: '/components/',
-  path: '/components/',
+const ComponentsRouteRoute = ComponentsRouteRouteImport.update({
+  id: '/components',
+  path: '/components',
   getParentRoute: () => rootRouteImport,
+} as any)
+const ComponentsIndexRoute = ComponentsIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ComponentsRouteRoute,
+} as any)
+const ComponentsAccordionRoute = ComponentsAccordionRouteImport.update({
+  id: '/accordion',
+  path: '/accordion',
+  getParentRoute: () => ComponentsRouteRoute,
 } as any)
 const ComponentsAlertRoute = ComponentsAlertRouteImport.update({
-  id: '/components/alert',
-  path: '/components/alert',
-  getParentRoute: () => rootRouteImport,
+  id: '/alert',
+  path: '/alert',
+  getParentRoute: () => ComponentsRouteRoute,
+} as any)
+const ComponentsAvatarRoute = ComponentsAvatarRouteImport.update({
+  id: '/avatar',
+  path: '/avatar',
+  getParentRoute: () => ComponentsRouteRoute,
+} as any)
+const ComponentsCollapsibleRoute = ComponentsCollapsibleRouteImport.update({
+  id: '/collapsible',
+  path: '/collapsible',
+  getParentRoute: () => ComponentsRouteRoute,
 } as any)
 const ComponentsDialogRoute = ComponentsDialogRouteImport.update({
-  id: '/components/dialog',
-  path: '/components/dialog',
-  getParentRoute: () => rootRouteImport,
+  id: '/dialog',
+  path: '/dialog',
+  getParentRoute: () => ComponentsRouteRoute,
 } as any)
 const ComponentsDropdownMenuRoute = ComponentsDropdownMenuRouteImport.update({
-  id: '/components/dropdown-menu',
-  path: '/components/dropdown-menu',
-  getParentRoute: () => rootRouteImport,
+  id: '/dropdown-menu',
+  path: '/dropdown-menu',
+  getParentRoute: () => ComponentsRouteRoute,
+} as any)
+const ComponentsLabelRoute = ComponentsLabelRouteImport.update({
+  id: '/label',
+  path: '/label',
+  getParentRoute: () => ComponentsRouteRoute,
+} as any)
+const ComponentsPopoverRoute = ComponentsPopoverRouteImport.update({
+  id: '/popover',
+  path: '/popover',
+  getParentRoute: () => ComponentsRouteRoute,
 } as any)
 const ComponentsProgressRoute = ComponentsProgressRouteImport.update({
-  id: '/components/progress',
-  path: '/components/progress',
-  getParentRoute: () => rootRouteImport,
+  id: '/progress',
+  path: '/progress',
+  getParentRoute: () => ComponentsRouteRoute,
+} as any)
+const ComponentsRadioGroupRoute = ComponentsRadioGroupRouteImport.update({
+  id: '/radio-group',
+  path: '/radio-group',
+  getParentRoute: () => ComponentsRouteRoute,
 } as any)
 const ComponentsSelectRoute = ComponentsSelectRouteImport.update({
-  id: '/components/select',
-  path: '/components/select',
-  getParentRoute: () => rootRouteImport,
+  id: '/select',
+  path: '/select',
+  getParentRoute: () => ComponentsRouteRoute,
 } as any)
 const ComponentsSeparatorRoute = ComponentsSeparatorRouteImport.update({
-  id: '/components/separator',
-  path: '/components/separator',
-  getParentRoute: () => rootRouteImport,
+  id: '/separator',
+  path: '/separator',
+  getParentRoute: () => ComponentsRouteRoute,
+} as any)
+const ComponentsSkeletonRoute = ComponentsSkeletonRouteImport.update({
+  id: '/skeleton',
+  path: '/skeleton',
+  getParentRoute: () => ComponentsRouteRoute,
 } as any)
 const ComponentsSwitchRoute = ComponentsSwitchRouteImport.update({
-  id: '/components/switch',
-  path: '/components/switch',
-  getParentRoute: () => rootRouteImport,
+  id: '/switch',
+  path: '/switch',
+  getParentRoute: () => ComponentsRouteRoute,
+} as any)
+const ComponentsTableRoute = ComponentsTableRouteImport.update({
+  id: '/table',
+  path: '/table',
+  getParentRoute: () => ComponentsRouteRoute,
 } as any)
 const ComponentsTabsRoute = ComponentsTabsRouteImport.update({
-  id: '/components/tabs',
-  path: '/components/tabs',
-  getParentRoute: () => rootRouteImport,
+  id: '/tabs',
+  path: '/tabs',
+  getParentRoute: () => ComponentsRouteRoute,
+} as any)
+const ComponentsToastRoute = ComponentsToastRouteImport.update({
+  id: '/toast',
+  path: '/toast',
+  getParentRoute: () => ComponentsRouteRoute,
 } as any)
 const ComponentsTooltipRoute = ComponentsTooltipRouteImport.update({
-  id: '/components/tooltip',
-  path: '/components/tooltip',
-  getParentRoute: () => rootRouteImport,
+  id: '/tooltip',
+  path: '/tooltip',
+  getParentRoute: () => ComponentsRouteRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/components': typeof ComponentsRouteRouteWithChildren
+  '/components/accordion': typeof ComponentsAccordionRoute
   '/components/alert': typeof ComponentsAlertRoute
+  '/components/avatar': typeof ComponentsAvatarRoute
+  '/components/collapsible': typeof ComponentsCollapsibleRoute
   '/components/dialog': typeof ComponentsDialogRoute
   '/components/dropdown-menu': typeof ComponentsDropdownMenuRoute
+  '/components/label': typeof ComponentsLabelRoute
+  '/components/popover': typeof ComponentsPopoverRoute
   '/components/progress': typeof ComponentsProgressRoute
+  '/components/radio-group': typeof ComponentsRadioGroupRoute
   '/components/select': typeof ComponentsSelectRoute
   '/components/separator': typeof ComponentsSeparatorRoute
+  '/components/skeleton': typeof ComponentsSkeletonRoute
   '/components/switch': typeof ComponentsSwitchRoute
+  '/components/table': typeof ComponentsTableRoute
   '/components/tabs': typeof ComponentsTabsRoute
+  '/components/toast': typeof ComponentsToastRoute
   '/components/tooltip': typeof ComponentsTooltipRoute
   '/components/': typeof ComponentsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/components/accordion': typeof ComponentsAccordionRoute
   '/components/alert': typeof ComponentsAlertRoute
+  '/components/avatar': typeof ComponentsAvatarRoute
+  '/components/collapsible': typeof ComponentsCollapsibleRoute
   '/components/dialog': typeof ComponentsDialogRoute
   '/components/dropdown-menu': typeof ComponentsDropdownMenuRoute
+  '/components/label': typeof ComponentsLabelRoute
+  '/components/popover': typeof ComponentsPopoverRoute
   '/components/progress': typeof ComponentsProgressRoute
+  '/components/radio-group': typeof ComponentsRadioGroupRoute
   '/components/select': typeof ComponentsSelectRoute
   '/components/separator': typeof ComponentsSeparatorRoute
+  '/components/skeleton': typeof ComponentsSkeletonRoute
   '/components/switch': typeof ComponentsSwitchRoute
+  '/components/table': typeof ComponentsTableRoute
   '/components/tabs': typeof ComponentsTabsRoute
+  '/components/toast': typeof ComponentsToastRoute
   '/components/tooltip': typeof ComponentsTooltipRoute
   '/components': typeof ComponentsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/components': typeof ComponentsRouteRouteWithChildren
+  '/components/accordion': typeof ComponentsAccordionRoute
   '/components/alert': typeof ComponentsAlertRoute
+  '/components/avatar': typeof ComponentsAvatarRoute
+  '/components/collapsible': typeof ComponentsCollapsibleRoute
   '/components/dialog': typeof ComponentsDialogRoute
   '/components/dropdown-menu': typeof ComponentsDropdownMenuRoute
+  '/components/label': typeof ComponentsLabelRoute
+  '/components/popover': typeof ComponentsPopoverRoute
   '/components/progress': typeof ComponentsProgressRoute
+  '/components/radio-group': typeof ComponentsRadioGroupRoute
   '/components/select': typeof ComponentsSelectRoute
   '/components/separator': typeof ComponentsSeparatorRoute
+  '/components/skeleton': typeof ComponentsSkeletonRoute
   '/components/switch': typeof ComponentsSwitchRoute
+  '/components/table': typeof ComponentsTableRoute
   '/components/tabs': typeof ComponentsTabsRoute
+  '/components/toast': typeof ComponentsToastRoute
   '/components/tooltip': typeof ComponentsTooltipRoute
   '/components/': typeof ComponentsIndexRoute
 }
@@ -121,56 +210,76 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/components'
+    | '/components/accordion'
     | '/components/alert'
+    | '/components/avatar'
+    | '/components/collapsible'
     | '/components/dialog'
     | '/components/dropdown-menu'
+    | '/components/label'
+    | '/components/popover'
     | '/components/progress'
+    | '/components/radio-group'
     | '/components/select'
     | '/components/separator'
+    | '/components/skeleton'
     | '/components/switch'
+    | '/components/table'
     | '/components/tabs'
+    | '/components/toast'
     | '/components/tooltip'
     | '/components/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/components/accordion'
     | '/components/alert'
+    | '/components/avatar'
+    | '/components/collapsible'
     | '/components/dialog'
     | '/components/dropdown-menu'
+    | '/components/label'
+    | '/components/popover'
     | '/components/progress'
+    | '/components/radio-group'
     | '/components/select'
     | '/components/separator'
+    | '/components/skeleton'
     | '/components/switch'
+    | '/components/table'
     | '/components/tabs'
+    | '/components/toast'
     | '/components/tooltip'
     | '/components'
   id:
     | '__root__'
     | '/'
+    | '/components'
+    | '/components/accordion'
     | '/components/alert'
+    | '/components/avatar'
+    | '/components/collapsible'
     | '/components/dialog'
     | '/components/dropdown-menu'
+    | '/components/label'
+    | '/components/popover'
     | '/components/progress'
+    | '/components/radio-group'
     | '/components/select'
     | '/components/separator'
+    | '/components/skeleton'
     | '/components/switch'
+    | '/components/table'
     | '/components/tabs'
+    | '/components/toast'
     | '/components/tooltip'
     | '/components/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  ComponentsAlertRoute: typeof ComponentsAlertRoute
-  ComponentsDialogRoute: typeof ComponentsDialogRoute
-  ComponentsDropdownMenuRoute: typeof ComponentsDropdownMenuRoute
-  ComponentsProgressRoute: typeof ComponentsProgressRoute
-  ComponentsSelectRoute: typeof ComponentsSelectRoute
-  ComponentsSeparatorRoute: typeof ComponentsSeparatorRoute
-  ComponentsSwitchRoute: typeof ComponentsSwitchRoute
-  ComponentsTabsRoute: typeof ComponentsTabsRoute
-  ComponentsTooltipRoute: typeof ComponentsTooltipRoute
-  ComponentsIndexRoute: typeof ComponentsIndexRoute
+  ComponentsRouteRoute: typeof ComponentsRouteRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -182,91 +291,200 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/components': {
+      id: '/components'
+      path: '/components'
+      fullPath: '/components'
+      preLoaderRoute: typeof ComponentsRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/components/': {
       id: '/components/'
-      path: '/components'
+      path: '/'
       fullPath: '/components/'
       preLoaderRoute: typeof ComponentsIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof ComponentsRouteRoute
+    }
+    '/components/accordion': {
+      id: '/components/accordion'
+      path: '/accordion'
+      fullPath: '/components/accordion'
+      preLoaderRoute: typeof ComponentsAccordionRouteImport
+      parentRoute: typeof ComponentsRouteRoute
     }
     '/components/alert': {
       id: '/components/alert'
-      path: '/components/alert'
+      path: '/alert'
       fullPath: '/components/alert'
       preLoaderRoute: typeof ComponentsAlertRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof ComponentsRouteRoute
+    }
+    '/components/avatar': {
+      id: '/components/avatar'
+      path: '/avatar'
+      fullPath: '/components/avatar'
+      preLoaderRoute: typeof ComponentsAvatarRouteImport
+      parentRoute: typeof ComponentsRouteRoute
+    }
+    '/components/collapsible': {
+      id: '/components/collapsible'
+      path: '/collapsible'
+      fullPath: '/components/collapsible'
+      preLoaderRoute: typeof ComponentsCollapsibleRouteImport
+      parentRoute: typeof ComponentsRouteRoute
     }
     '/components/dialog': {
       id: '/components/dialog'
-      path: '/components/dialog'
+      path: '/dialog'
       fullPath: '/components/dialog'
       preLoaderRoute: typeof ComponentsDialogRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof ComponentsRouteRoute
     }
     '/components/dropdown-menu': {
       id: '/components/dropdown-menu'
-      path: '/components/dropdown-menu'
+      path: '/dropdown-menu'
       fullPath: '/components/dropdown-menu'
       preLoaderRoute: typeof ComponentsDropdownMenuRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof ComponentsRouteRoute
+    }
+    '/components/label': {
+      id: '/components/label'
+      path: '/label'
+      fullPath: '/components/label'
+      preLoaderRoute: typeof ComponentsLabelRouteImport
+      parentRoute: typeof ComponentsRouteRoute
+    }
+    '/components/popover': {
+      id: '/components/popover'
+      path: '/popover'
+      fullPath: '/components/popover'
+      preLoaderRoute: typeof ComponentsPopoverRouteImport
+      parentRoute: typeof ComponentsRouteRoute
     }
     '/components/progress': {
       id: '/components/progress'
-      path: '/components/progress'
+      path: '/progress'
       fullPath: '/components/progress'
       preLoaderRoute: typeof ComponentsProgressRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof ComponentsRouteRoute
+    }
+    '/components/radio-group': {
+      id: '/components/radio-group'
+      path: '/radio-group'
+      fullPath: '/components/radio-group'
+      preLoaderRoute: typeof ComponentsRadioGroupRouteImport
+      parentRoute: typeof ComponentsRouteRoute
     }
     '/components/select': {
       id: '/components/select'
-      path: '/components/select'
+      path: '/select'
       fullPath: '/components/select'
       preLoaderRoute: typeof ComponentsSelectRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof ComponentsRouteRoute
     }
     '/components/separator': {
       id: '/components/separator'
-      path: '/components/separator'
+      path: '/separator'
       fullPath: '/components/separator'
       preLoaderRoute: typeof ComponentsSeparatorRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof ComponentsRouteRoute
+    }
+    '/components/skeleton': {
+      id: '/components/skeleton'
+      path: '/skeleton'
+      fullPath: '/components/skeleton'
+      preLoaderRoute: typeof ComponentsSkeletonRouteImport
+      parentRoute: typeof ComponentsRouteRoute
     }
     '/components/switch': {
       id: '/components/switch'
-      path: '/components/switch'
+      path: '/switch'
       fullPath: '/components/switch'
       preLoaderRoute: typeof ComponentsSwitchRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof ComponentsRouteRoute
+    }
+    '/components/table': {
+      id: '/components/table'
+      path: '/table'
+      fullPath: '/components/table'
+      preLoaderRoute: typeof ComponentsTableRouteImport
+      parentRoute: typeof ComponentsRouteRoute
     }
     '/components/tabs': {
       id: '/components/tabs'
-      path: '/components/tabs'
+      path: '/tabs'
       fullPath: '/components/tabs'
       preLoaderRoute: typeof ComponentsTabsRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof ComponentsRouteRoute
+    }
+    '/components/toast': {
+      id: '/components/toast'
+      path: '/toast'
+      fullPath: '/components/toast'
+      preLoaderRoute: typeof ComponentsToastRouteImport
+      parentRoute: typeof ComponentsRouteRoute
     }
     '/components/tooltip': {
       id: '/components/tooltip'
-      path: '/components/tooltip'
+      path: '/tooltip'
       fullPath: '/components/tooltip'
       preLoaderRoute: typeof ComponentsTooltipRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof ComponentsRouteRoute
     }
   }
 }
 
-const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
+interface ComponentsRouteRouteChildren {
+  ComponentsAccordionRoute: typeof ComponentsAccordionRoute
+  ComponentsAlertRoute: typeof ComponentsAlertRoute
+  ComponentsAvatarRoute: typeof ComponentsAvatarRoute
+  ComponentsCollapsibleRoute: typeof ComponentsCollapsibleRoute
+  ComponentsDialogRoute: typeof ComponentsDialogRoute
+  ComponentsDropdownMenuRoute: typeof ComponentsDropdownMenuRoute
+  ComponentsLabelRoute: typeof ComponentsLabelRoute
+  ComponentsPopoverRoute: typeof ComponentsPopoverRoute
+  ComponentsProgressRoute: typeof ComponentsProgressRoute
+  ComponentsRadioGroupRoute: typeof ComponentsRadioGroupRoute
+  ComponentsSelectRoute: typeof ComponentsSelectRoute
+  ComponentsSeparatorRoute: typeof ComponentsSeparatorRoute
+  ComponentsSkeletonRoute: typeof ComponentsSkeletonRoute
+  ComponentsSwitchRoute: typeof ComponentsSwitchRoute
+  ComponentsTableRoute: typeof ComponentsTableRoute
+  ComponentsTabsRoute: typeof ComponentsTabsRoute
+  ComponentsToastRoute: typeof ComponentsToastRoute
+  ComponentsTooltipRoute: typeof ComponentsTooltipRoute
+  ComponentsIndexRoute: typeof ComponentsIndexRoute
+}
+
+const ComponentsRouteRouteChildren: ComponentsRouteRouteChildren = {
+  ComponentsAccordionRoute: ComponentsAccordionRoute,
   ComponentsAlertRoute: ComponentsAlertRoute,
+  ComponentsAvatarRoute: ComponentsAvatarRoute,
+  ComponentsCollapsibleRoute: ComponentsCollapsibleRoute,
   ComponentsDialogRoute: ComponentsDialogRoute,
   ComponentsDropdownMenuRoute: ComponentsDropdownMenuRoute,
+  ComponentsLabelRoute: ComponentsLabelRoute,
+  ComponentsPopoverRoute: ComponentsPopoverRoute,
   ComponentsProgressRoute: ComponentsProgressRoute,
+  ComponentsRadioGroupRoute: ComponentsRadioGroupRoute,
   ComponentsSelectRoute: ComponentsSelectRoute,
   ComponentsSeparatorRoute: ComponentsSeparatorRoute,
+  ComponentsSkeletonRoute: ComponentsSkeletonRoute,
   ComponentsSwitchRoute: ComponentsSwitchRoute,
+  ComponentsTableRoute: ComponentsTableRoute,
   ComponentsTabsRoute: ComponentsTabsRoute,
+  ComponentsToastRoute: ComponentsToastRoute,
   ComponentsTooltipRoute: ComponentsTooltipRoute,
   ComponentsIndexRoute: ComponentsIndexRoute,
+}
+
+const ComponentsRouteRouteWithChildren = ComponentsRouteRoute._addFileChildren(
+  ComponentsRouteRouteChildren,
+)
+
+const rootRouteChildren: RootRouteChildren = {
+  IndexRoute: IndexRoute,
+  ComponentsRouteRoute: ComponentsRouteRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

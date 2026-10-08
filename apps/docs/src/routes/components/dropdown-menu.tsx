@@ -158,6 +158,7 @@ function DropdownMenuPage() {
         "Use DropdownMenuSeparator between unrelated groups — it is exposed as role=\"separator\".",
         "Label each group with DropdownMenuLabel when the items would not make sense out of context.",
       ]}
+      props={props}
     />
   )
 }

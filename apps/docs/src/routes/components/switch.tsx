@@ -103,6 +103,7 @@ function SwitchPage() {
         "Switch is for immediate effects. For changes that need saving, prefer a Checkbox plus a save action.",
         "Disabled state uses opacity 50% and is announced as disabled, not just dimmed.",
       ]}
+      props={props}
     />
   )
 }

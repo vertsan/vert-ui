@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "table",
+  "type": "registry:component",
+  "title": "Table",
+  "description": "Data table with semantic headers, rows and a scroll container.",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://vert-ui.dev/r/vert-cn.json"
+  ],
+  "files": [
+    {
+      "path": "components/vert-ui/table.tsx",
+      "type": "registry:component",
+      "content": "import * as React from \"react\"\nimport { cn } from '@/lib/vert-ui/cn'\n\nconst Table = React.forwardRef<HTMLTableElement, React.HTMLAttributes<HTMLTableElement>>(\n  ({ className, ...props }, ref) => (\n    <div data-slot=\"table-container\" className=\"relative w-full overflow-x-auto\">\n      <table\n        ref={ref}\n        data-slot=\"table\"\n        className={cn(\"w-full caption-bottom border-collapse text-sm\", className)}\n        {...props}\n      />\n    </div>\n  )\n)\nTable.displayName = \"Table\"\n\nconst TableHeader = React.forwardRef<\n  HTMLTableSectionElement,\n  React.HTMLAttributes<HTMLTableSectionElement>\n>(({ className, ...props }, ref) => (\n  <thead\n    ref={ref}\n    data-slot=\"table-header\"\n    className={cn(\"[&_tr]:border-b [&_tr]:border-border\", className)}\n    {...props}\n  />\n))\nTableHeader.displayName = \"TableHeader\"\n\nconst TableBody = React.forwardRef<\n  HTMLTableSectionElement,\n  React.HTMLAttributes<HTMLTableSectionElement>\n>(({ className, ...props }, ref) => (\n  <tbody\n    ref={ref}\n    data-slot=\"table-body\"\n    className={cn(\"[&_tr:last-child]:border-0\", className)}\n    {...props}\n  />\n))\nTableBody.displayName = \"TableBody\"\n\nconst TableFooter = React.forwardRef<\n  HTMLTableSectionElement,\n  React.HTMLAttributes<HTMLTableSectionElement>\n>(({ className, ...props }, ref) => (\n  <tfoot\n    ref={ref}\n    data-slot=\"table-footer\"\n    className={cn(\"border-t border-border bg-muted/50 font-medium\", className)}\n    {...props}\n  />\n))\nTableFooter.displayName = \"TableFooter\"\n\nconst TableRow = React.forwardRef<HTMLTableRowElement, React.HTMLAttributes<HTMLTableRowElement>>(\n  ({ className, ...props }, ref) => (\n    <tr\n      ref={ref}\n      data-slot=\"table-row\"\n      className={cn(\n        \"border-b border-border transition-colors hover:bg-accent/50 data-[state=selected]:bg-accent\",\n        className\n      )}\n      {...props}\n    />\n  )\n)\nTableRow.displayName = \"TableRow\"\n\nconst TableHead = React.forwardRef<\n  HTMLTableCellElement,\n  React.ThHTMLAttributes<HTMLTableCellElement>\n>(({ className, ...props }, ref) => (\n  <th\n    ref={ref}\n    data-slot=\"table-head\"\n    scope=\"col\"\n    className={cn(\n      \"h-10 whitespace-nowrap px-3 text-left align-middle text-xs font-semibold text-muted-foreground\",\n      className\n    )}\n    {...props}\n  />\n))\nTableHead.displayName = \"TableHead\"\n\nconst TableCell = React.forwardRef<\n  HTMLTableCellElement,\n  React.TdHTMLAttributes<HTMLTableCellElement>\n>(({ className, ...props }, ref) => (\n  <td\n    ref={ref}\n    data-slot=\"table-cell\"\n    className={cn(\"px-3 py-2.5 align-middle\", className)}\n    {...props}\n  />\n))\nTableCell.displayName = \"TableCell\"\n\nconst TableCaption = React.forwardRef<\n  HTMLTableCaptionElement,\n  React.HTMLAttributes<HTMLTableCaptionElement>\n>(({ className, ...props }, ref) => (\n  <caption\n    ref={ref}\n    data-slot=\"table-caption\"\n    className={cn(\"mt-3 text-sm text-muted-foreground\", className)}\n    {...props}\n  />\n))\nTableCaption.displayName = \"TableCaption\"\n\nexport { Table, TableHeader, TableBody, TableFooter, TableRow, TableHead, TableCell, TableCaption }\n"
+    }
+  ]
+}

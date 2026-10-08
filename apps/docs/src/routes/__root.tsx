@@ -3,6 +3,7 @@ import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 import { TanStackDevtools } from '@tanstack/react-devtools'
 
 import appCss from '../styles.css?url'
+import { SiteHeader } from '../components/site-header'
 
 export const Route = createRootRoute({
   head: () => ({
@@ -15,7 +16,12 @@ export const Route = createRootRoute({
         content: 'width=device-width, initial-scale=1',
       },
       {
-        title: 'TanStack Start Starter',
+        title: 'vert-ui — components that grow with precision',
+      },
+      {
+        name: 'description',
+        content:
+          'Original React + TypeScript components with WCAG AA contrast, keyboard support and soft motion. Copy-paste ready via the shadcn registry.',
       },
     ],
     links: [
@@ -34,8 +40,13 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       <head>
         <HeadContent />
       </head>
-      <body>
-        {children}
+      <body className="min-h-screen bg-background text-foreground antialiased">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(60rem_30rem_at_50%_-10rem,oklch(0.93_0.05_140/0.7),transparent_70%)]"
+        />
+        <SiteHeader />
+        <main>{children}</main>
         <TanStackDevtools
           config={{
             position: 'bottom-right',

@@ -41,12 +41,22 @@ DropdownMenuContent.displayName = "DropdownMenuContent"
 
 const DropdownMenuItem = React.forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.Item>,
-  React.ComponentPropsWithRef<typeof DropdownMenuPrimitive.Item> & { inset?: boolean }
->(({ className, inset, ...props }, ref) => (
+  React.ComponentPropsWithRef<typeof DropdownMenuPrimitive.Item> & {
+    inset?: boolean
+    variant?: "default" | "destructive"
+  }
+>(({ className, inset, variant = "default", ...props }, ref) => (
   <DropdownMenuPrimitive.Item
     ref={ref}
     data-slot="dropdown-menu-item"
-    className={cn(itemClasses, inset && "pl-8", className)}
+    data-variant={variant}
+    className={cn(
+      itemClasses,
+      inset && "pl-8",
+      variant === "destructive" &&
+        "text-destructive focus:bg-destructive/10 focus:text-destructive",
+      className
+    )}
     {...props}
   />
 ))

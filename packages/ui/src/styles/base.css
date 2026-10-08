@@ -1,4 +1,4 @@
-@theme inline {
+@theme {
   /* Vert brand palette */
   --color-vert-50: oklch(0.981 0.01 128);
   --color-vert-100: oklch(0.955 0.03 130);

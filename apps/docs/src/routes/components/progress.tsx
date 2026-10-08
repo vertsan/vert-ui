@@ -90,6 +90,7 @@ function ProgressPage() {
         "Indeterminate bars omit aria-valuenow, which is how assistive tech recognises unknown duration.",
         "The indicator only animates transform, and the global reduced-motion override shortens it to 0.01ms.",
       ]}
+      props={props}
     />
   )
 }

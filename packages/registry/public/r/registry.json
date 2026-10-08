@@ -304,6 +304,168 @@
           "type": "registry:component"
         }
       ]
+    },
+    {
+      "name": "avatar",
+      "type": "registry:component",
+      "title": "Avatar",
+      "description": "User or entity image with initials fallback, powered by Radix UI.",
+      "dependencies": [
+        "@radix-ui/react-avatar@^1.2.7",
+        "class-variance-authority@^0.7.1"
+      ],
+      "registryDependencies": [
+        "https://vert-ui.dev/r/vert-cn.json"
+      ],
+      "files": [
+        {
+          "path": "components/vert-ui/avatar.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "skeleton",
+      "type": "registry:component",
+      "title": "Skeleton",
+      "description": "Decorative loading placeholder, hidden from assistive technology.",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://vert-ui.dev/r/vert-cn.json"
+      ],
+      "files": [
+        {
+          "path": "components/vert-ui/skeleton.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "table",
+      "type": "registry:component",
+      "title": "Table",
+      "description": "Data table with semantic headers, rows and a scroll container.",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://vert-ui.dev/r/vert-cn.json"
+      ],
+      "files": [
+        {
+          "path": "components/vert-ui/table.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "label",
+      "type": "registry:component",
+      "title": "Label",
+      "description": "Accessible form label wired to its control with htmlFor, powered by Radix UI.",
+      "dependencies": [
+        "@radix-ui/react-label@^2.1.16"
+      ],
+      "registryDependencies": [
+        "https://vert-ui.dev/r/vert-cn.json"
+      ],
+      "files": [
+        {
+          "path": "components/vert-ui/label.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "radio-group",
+      "type": "registry:component",
+      "title": "Radio Group",
+      "description": "Single-choice group with arrow-key navigation, powered by Radix UI.",
+      "dependencies": [
+        "@radix-ui/react-radio-group@^1.4.8",
+        "class-variance-authority@^0.7.1"
+      ],
+      "registryDependencies": [
+        "https://vert-ui.dev/r/vert-cn.json"
+      ],
+      "files": [
+        {
+          "path": "components/vert-ui/radio-group.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "collapsible",
+      "type": "registry:component",
+      "title": "Collapsible",
+      "description": "Disclosure region that expands and collapses on trigger, powered by Radix UI.",
+      "dependencies": [
+        "@radix-ui/react-collapsible@^1.1.21"
+      ],
+      "registryDependencies": [
+        "https://vert-ui.dev/r/vert-cn.json"
+      ],
+      "files": [
+        {
+          "path": "components/vert-ui/collapsible.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "accordion",
+      "type": "registry:component",
+      "title": "Accordion",
+      "description": "Stacked disclosure panels with chevron triggers, powered by Radix UI.",
+      "dependencies": [
+        "@radix-ui/react-accordion@^1.2.21",
+        "class-variance-authority@^0.7.1"
+      ],
+      "registryDependencies": [
+        "https://vert-ui.dev/r/vert-cn.json"
+      ],
+      "files": [
+        {
+          "path": "components/vert-ui/accordion.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "popover",
+      "type": "registry:component",
+      "title": "Popover",
+      "description": "Anchored click-open panel with focus management, powered by Radix UI.",
+      "dependencies": [
+        "@radix-ui/react-popover@^1.2.0"
+      ],
+      "registryDependencies": [
+        "https://vert-ui.dev/r/vert-cn.json"
+      ],
+      "files": [
+        {
+          "path": "components/vert-ui/popover.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "toast",
+      "type": "registry:component",
+      "title": "Toast",
+      "description": "Ephemeral notification with viewport, swipe-out and actions, powered by Radix UI.",
+      "dependencies": [
+        "@radix-ui/react-toast@^1.2.24",
+        "class-variance-authority@^0.7.1"
+      ],
+      "registryDependencies": [
+        "https://vert-ui.dev/r/vert-cn.json"
+      ],
+      "files": [
+        {
+          "path": "components/vert-ui/toast.tsx",
+          "type": "registry:component"
+        }
+      ]
     }
   ]
 }

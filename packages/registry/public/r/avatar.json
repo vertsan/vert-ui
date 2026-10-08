@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "avatar",
+  "type": "registry:component",
+  "title": "Avatar",
+  "description": "User or entity image with initials fallback, powered by Radix UI.",
+  "dependencies": [
+    "@radix-ui/react-avatar@^1.2.7",
+    "class-variance-authority@^0.7.1"
+  ],
+  "registryDependencies": [
+    "https://vert-ui.dev/r/vert-cn.json"
+  ],
+  "files": [
+    {
+      "path": "components/vert-ui/avatar.tsx",
+      "type": "registry:component",
+      "content": "import * as AvatarPrimitive from \"@radix-ui/react-avatar\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\nimport * as React from \"react\"\nimport { cn } from '@/lib/vert-ui/cn'\n\nconst avatarVariants = cva(\"relative inline-flex shrink-0 overflow-hidden rounded-full\", {\n  variants: {\n    variant: {\n      default: \"bg-muted text-foreground\",\n      brand: \"bg-brand/15 text-brand\",\n      surface: \"bg-surface text-muted-foreground\",\n    },\n    size: {\n      sm: \"size-8 text-xs\",\n      md: \"size-10 text-sm\",\n      lg: \"size-12 text-base\",\n    },\n  },\n  defaultVariants: {\n    variant: \"default\",\n    size: \"md\",\n  },\n})\n\nexport interface AvatarProps\n  extends Omit<React.ComponentPropsWithRef<typeof AvatarPrimitive.Root>, \"size\">,\n    VariantProps<typeof avatarVariants> {}\n\nconst Avatar = React.forwardRef<React.ElementRef<typeof AvatarPrimitive.Root>, AvatarProps>(\n  ({ className, variant, size, ...props }, ref) => (\n    <AvatarPrimitive.Root\n      ref={ref}\n      data-slot=\"avatar\"\n      data-variant={variant || \"default\"}\n      data-size={size || \"md\"}\n      className={cn(avatarVariants({ variant, size }), className)}\n      {...props}\n    />\n  )\n)\nAvatar.displayName = \"Avatar\"\n\nconst AvatarImage = React.forwardRef<\n  React.ElementRef<typeof AvatarPrimitive.Image>,\n  React.ComponentPropsWithRef<typeof AvatarPrimitive.Image>\n>(({ className, ...props }, ref) => (\n  <AvatarPrimitive.Image\n    ref={ref}\n    data-slot=\"avatar-image\"\n    className={cn(\"size-full object-cover\", className)}\n    {...props}\n  />\n))\nAvatarImage.displayName = \"AvatarImage\"\n\nconst AvatarFallback = React.forwardRef<\n  React.ElementRef<typeof AvatarPrimitive.Fallback>,\n  React.ComponentPropsWithRef<typeof AvatarPrimitive.Fallback>\n>(({ className, ...props }, ref) => (\n  <AvatarPrimitive.Fallback\n    ref={ref}\n    data-slot=\"avatar-fallback\"\n    className={cn(\n      \"flex size-full items-center justify-center rounded-full font-medium\",\n      className\n    )}\n    {...props}\n  />\n))\nAvatarFallback.displayName = \"AvatarFallback\"\n\nexport { Avatar, AvatarImage, AvatarFallback, avatarVariants }\n"
+    }
+  ]
+}

@@ -160,6 +160,7 @@ function DialogPage() {
         "Modal dialogs lock body scroll; non-modal ones (modal={false}) leave the page scrollable.",
         "Keep the tab order shallow — the first focusable control should be the primary action.",
       ]}
+      props={props}
     />
   )
 }

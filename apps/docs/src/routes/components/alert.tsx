@@ -112,6 +112,7 @@ function AlertPage() {
         "Every variant pairs its soft surface with a foreground that meets WCAG AA (checked by scripts/check-contrast.ts).",
         "Use AlertTitle as a heading (renders h5) so screen readers can navigate the message.",
       ]}
+      props={props}
     />
   )
 }

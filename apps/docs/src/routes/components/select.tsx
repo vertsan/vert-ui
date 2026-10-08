@@ -156,6 +156,7 @@ function SelectPage() {
         "SelectLabel must sit inside a SelectGroup; it becomes the group's accessible name.",
         "Use invalid together with an inline error message referenced by aria-describedby.",
       ]}
+      props={props}
     />
   )
 }
