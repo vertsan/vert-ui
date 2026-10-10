@@ -11,7 +11,7 @@ const Command = React.forwardRef<
     ref={ref}
     data-slot="command"
     className={cn(
-      "flex h-full w-full flex-col overflow-hidden rounded-xl border border-border bg-card text-card-foreground shadow-sm",
+      "flex h-full w-full flex-col overflow-hidden rounded-xl border border-border bg-card text-card-foreground shadow-soft",
       className
     )}
     {...props}

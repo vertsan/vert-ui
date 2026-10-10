@@ -47,7 +47,7 @@ const PopoverContent = React.forwardRef<
       sideOffset={sideOffset}
       collisionPadding={8}
       className={cn(
-        "z-50 w-72 rounded-lg border border-border bg-card p-4 text-foreground shadow-raised outline-none animate-[vert-pop-in_140ms_ease-out]",
+        "z-50 w-72 rounded-xl border border-border bg-card p-4 text-foreground shadow-pop outline-none data-[state=open]:animate-[vert-pop-in_140ms_ease-out]",
         sideOffsetClass[side],
         className
       )}

@@ -12,7 +12,7 @@
     {
       "path": "components/vert-ui/skeleton.tsx",
       "type": "registry:component",
-      "content": "import * as React from \"react\"\nimport { cn } from '@/lib/vert-ui/cn'\n\nexport type SkeletonProps = React.HTMLAttributes<HTMLDivElement>\n\n/**\n * Skeleton — decorative loading placeholder. Mark your loading region with\n * aria-busy yourself; the skeleton itself is hidden from assistive tech.\n */\nfunction Skeleton({ className, ...props }: SkeletonProps) {\n  return (\n    <div\n      data-slot=\"skeleton\"\n      aria-hidden=\"true\"\n      className={cn(\"animate-pulse rounded-md bg-muted motion-reduce:animate-none\", className)}\n      {...props}\n    />\n  )\n}\nSkeleton.displayName = \"Skeleton\"\n\nexport { Skeleton }\n"
+      "content": "import * as React from \"react\"\nimport { cn } from '@/lib/vert-ui/cn'\n\nexport type SkeletonProps = React.HTMLAttributes<HTMLDivElement>\n\n/**\n * Skeleton — decorative loading placeholder. Mark your loading region with\n * aria-busy yourself; the skeleton itself is hidden from assistive tech.\n */\nfunction Skeleton({ className, ...props }: SkeletonProps) {\n  return (\n    <div\n      data-slot=\"skeleton\"\n      aria-hidden=\"true\"\n      className={cn(\n        \"relative overflow-hidden rounded-md bg-muted after:pointer-events-none after:absolute after:inset-0 after:-translate-x-full after:animate-[shimmer_1.6s_ease-in-out_infinite] after:bg-[linear-gradient(90deg,transparent,var(--color-muted-foreground),transparent)] after:opacity-15 after:motion-reduce:animate-none\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\nSkeleton.displayName = \"Skeleton\"\n\nexport { Skeleton }\n"
     }
   ]
 }

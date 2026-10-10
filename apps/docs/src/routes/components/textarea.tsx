@@ -21,9 +21,9 @@ const props: PropRow[] = [
   },
   {
     name: "resize",
-    type: '"none" | "vertical"',
-    description:
-      "Pass via className — resize-none for fixed heights, default is vertical.",
+    type: '"none" | "vertical" | "both"',
+    default: '"vertical"',
+    description: "CSS resize behaviour — vertical keeps content reachable when zoomed.",
   },
   {
     name: "disabled",
@@ -77,12 +77,12 @@ function TextareaPage() {
         {
           title: "Fixed height with counter",
           code: `<div className="space-y-2">
-  <Textarea className="resize-none" maxLength={280} aria-label="Tweet" />
+  <Textarea resize="none" maxLength={280} aria-label="Tweet" />
   <p className="text-right text-xs text-muted-foreground">280 characters max</p>
 </div>`,
           render: (
             <div className="w-full max-w-sm space-y-2">
-              <Textarea className="resize-none" maxLength={280} aria-label="Tweet" placeholder="Keep it short…" />
+              <Textarea resize="none" maxLength={280} aria-label="Tweet" placeholder="Keep it short…" />
               <p className="text-right text-xs text-muted-foreground">280 characters max</p>
             </div>
           ),

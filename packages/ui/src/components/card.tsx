@@ -3,7 +3,7 @@ import * as React from "react"
 import { cn } from "../lib/cn"
 
 const cardVariants = cva(
-  "rounded-2xl border border-border bg-card text-card-foreground shadow-sm transition-[box-shadow,transform,border-color] duration-[140ms]",
+  "rounded-2xl border border-border bg-card text-card-foreground shadow-soft transition-[box-shadow,transform,border-color] duration-[200ms] ease-out-quart",
   {
     variants: {
       variant: {

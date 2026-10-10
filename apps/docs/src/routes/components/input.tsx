@@ -8,6 +8,12 @@ export const Route = createFileRoute("/components/input")({
 
 const props: PropRow[] = [
   {
+    name: "size",
+    type: '"sm" | "md" | "lg"',
+    default: '"md"',
+    description: "Control height and text scale. Use lg on touch-first or prominent fields.",
+  },
+  {
     name: "invalid",
     type: "boolean",
     description:
@@ -93,13 +99,17 @@ function InputPage() {
           ),
         },
         {
-          title: "Disabled and read-only sizing",
-          code: `<Input disabled value="Locked field" readOnly aria-label="Field" />
-<Input className="h-11 px-4 text-base" aria-label="Large input" />`,
+          title: "Sizes and disabled",
+          code: `<Input size="sm" placeholder="Small" aria-label="Small" />
+<Input size="md" placeholder="Medium" aria-label="Medium" />
+<Input size="lg" placeholder="Large" aria-label="Large" />
+<Input disabled defaultValue="Locked field" aria-label="Disabled" />`,
           render: (
             <div className="w-full max-w-sm space-y-3">
-              <Input disabled defaultValue="Locked field" aria-label="Field" />
-              <Input className="h-11 px-4 text-base" aria-label="Large input" placeholder="Larger variant" />
+              <Input size="sm" placeholder="Small" aria-label="Small" />
+              <Input size="md" placeholder="Medium" aria-label="Medium" />
+              <Input size="lg" placeholder="Large" aria-label="Large" />
+              <Input disabled defaultValue="Locked field" aria-label="Disabled" />
             </div>
           ),
         },

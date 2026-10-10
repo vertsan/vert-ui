@@ -10,16 +10,16 @@ function ToastProvider({ duration = 5000, ...props }: ToastProviderProps) {
 }
 
 const toastVariants = cva(
-  "group pointer-events-auto relative flex w-full items-start gap-3 overflow-hidden rounded-lg border p-4 pr-10 text-sm shadow-raised outline-none transition-colors",
+  "group pointer-events-auto relative flex w-full items-start gap-3 overflow-hidden rounded-xl border p-4 pr-10 text-sm shadow-pop outline-none",
   {
     variants: {
       variant: {
         default: "border-border bg-card text-foreground",
-        brand: "border-brand/40 bg-brand/10 text-brand",
-        success: "border-success/40 bg-success/10 text-success",
-        warning: "border-warning/40 bg-warning/10 text-warning",
+        brand: "border-brand/30 bg-brand-soft text-brand-soft-foreground",
+        success: "border-success/30 bg-success-soft text-success-soft-foreground",
+        warning: "border-warning/30 bg-warning-soft text-warning-soft-foreground",
         destructive:
-          "border-destructive/40 bg-destructive/10 text-destructive [&>button]:text-destructive",
+          "border-destructive/30 bg-destructive-soft text-destructive-soft-foreground",
       },
     },
     defaultVariants: {
@@ -42,7 +42,7 @@ const Toast = React.forwardRef<
     data-variant={variant || "default"}
     className={cn(
       toastVariants({ variant }),
-      "data-[state=open]:animate-[vert-fade-in_140ms_ease-out] data-[state=closed]:animate-[vert-fade-out_140ms_ease-out] data-[swipe=end]:animate-[vert-swipe-out_140ms_ease-out]",
+      "data-[state=open]:animate-[vert-toast-in_200ms_ease-out] data-[state=closed]:animate-[vert-toast-out_150ms_ease-in] data-[swipe=end]:animate-[vert-swipe-out_150ms_ease-out] data-[swipe=move]:translate-x-[var(--radix-toast-swipe-move-x)] data-[swipe=move]:transition-none data-[swipe=cancel]:translate-x-0",
       className
     )}
     {...props}
@@ -101,7 +101,7 @@ const ToastClose = React.forwardRef<
     data-slot="toast-close"
     aria-label="Dismiss"
     className={cn(
-      "absolute right-2 top-2 rounded-md p-1 text-muted-foreground outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-ring",
+      "absolute right-2 top-2 rounded-md p-1 text-current opacity-70 outline-none transition-[background-color,opacity] duration-[140ms] ease-out-quart hover:bg-current/10 hover:opacity-100 focus-visible:ring-2 focus-visible:ring-ring",
       className
     )}
     {...props}

@@ -9,9 +9,9 @@ export const Route = createFileRoute("/components/badge")({
 const props: PropRow[] = [
   {
     name: "variant",
-    type: '"default" | "secondary" | "outline" | "ghost" | "warning"',
+    type: '"default" | "secondary" | "outline" | "ghost" | "warning" | "success" | "destructive"',
     default: '"default"',
-    description: "Visual role. warning uses the amber palette for attention states.",
+    description: "Visual role. warning/success/destructive map to the semantic status palettes.",
   },
   {
     name: "size",
@@ -27,7 +27,7 @@ const props: PropRow[] = [
   {
     name: "asChild",
     type: "boolean",
-    description: "Render the child element instead of a <div> — for linking a badge.",
+    description: "Render the child element instead of a <span> — for linking a badge.",
   },
   {
     name: "…native element attrs",
@@ -47,27 +47,27 @@ function BadgePage() {
           <Badge variant="secondary">secondary</Badge>
           <Badge variant="outline">outline</Badge>
           <Badge variant="ghost">ghost</Badge>
+          <Badge variant="success">success</Badge>
           <Badge variant="warning">warning</Badge>
-          <Badge dot variant="secondary">
-            online
-          </Badge>
+          <Badge variant="destructive">destructive</Badge>
         </div>
       }
       examples={[
         {
           title: "Status with dot",
-          code: `<Badge dot variant="secondary">Operational</Badge>
-<Badge dot variant="warning">Degraded</Badge>`,
+          code: `<Badge dot variant="success">Operational</Badge>
+<Badge dot variant="warning">Degraded</Badge>
+<Badge dot variant="destructive">Outage</Badge>`,
           render: (
             <div className="flex flex-wrap items-center justify-center gap-3">
-              <Badge dot variant="secondary">
+              <Badge dot variant="success">
                 Operational
               </Badge>
               <Badge dot variant="warning">
                 Degraded
               </Badge>
-              <Badge dot variant="outline">
-                Offline
+              <Badge dot variant="destructive">
+                Outage
               </Badge>
             </div>
           ),

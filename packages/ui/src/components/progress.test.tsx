@@ -43,4 +43,18 @@ describe('Progress', () => {
     expect(bar).toHaveAttribute('data-variant', 'destructive')
     expect(bar).toHaveAttribute('data-size', 'lg')
   })
+
+  it('renders the rounded percent readout beside the bar', () => {
+    const { container } = render(<Progress value={64} showPercent />)
+    expect(screen.getByRole('progressbar')).toHaveAttribute('aria-valuenow', '64')
+    const readout = container.querySelector('[data-slot="progress-percent"]')
+    expect(readout).not.toBeNull()
+    expect(readout!.textContent).toBe('64%')
+    expect(readout).toHaveAttribute('aria-hidden', 'true')
+  })
+
+  it('omits the percent readout when indeterminate', () => {
+    const { container } = render(<Progress showPercent />)
+    expect(container.querySelector('[data-slot="progress-percent"]')).toBeNull()
+  })
 })

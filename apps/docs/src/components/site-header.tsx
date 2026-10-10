@@ -14,20 +14,25 @@ export function SiteHeader() {
     <header className="sticky top-0 z-40 border-b border-border/70 bg-background/80 backdrop-blur-md">
       <div className="mx-auto flex min-h-14 max-w-6xl flex-wrap items-center justify-between gap-x-4 gap-y-1 px-4 sm:flex-nowrap sm:px-6">
         <Link to="/" className="group flex items-center gap-2.5 outline-none">
-          <span className="flex size-7 items-center justify-center rounded-md bg-brand shadow-soft transition-transform duration-[140ms] group-hover:-translate-y-0.5 group-focus-visible:ring-2 group-focus-visible:ring-ring">
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              aria-hidden="true"
-              className="size-4 text-brand-foreground"
-            >
-              <path d="M12 21v-8" />
-              <path d="M12 13c0-3 2.5-6 7-7 0 5-3 8-7 8Z" />
-              <path d="M12 13C12 10 9.5 7 5 6c0 5 3 8 7 8Z" />
+          <span
+            aria-hidden="true"
+            className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-brand text-brand-foreground shadow-soft transition-transform duration-[140ms] group-hover:-translate-y-0.5 group-focus-visible:ring-2 group-focus-visible:ring-ring"
+          >
+            <svg viewBox="0 0 32 32" fill="none" className="size-6">
+              <path
+                d="m7.5 9 8.25 14L24.5 8"
+                stroke="currentColor"
+                strokeWidth="2.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M19.5 8h5v5"
+                stroke="currentColor"
+                strokeWidth="2.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
             </svg>
           </span>
           <span className="text-sm font-semibold tracking-tight">vert-ui</span>

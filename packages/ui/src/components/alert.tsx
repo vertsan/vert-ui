@@ -67,7 +67,7 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
           data-slot="alert-dismiss"
           aria-label={dismissLabel}
           onClick={onDismiss}
-          className="-mr-1 -mt-1 self-start rounded-md p-1 text-current opacity-70 outline-none transition-opacity hover:opacity-100 focus-visible:ring-2 focus-visible:ring-ring"
+          className="-mr-1 -mt-1 self-start rounded-md p-1 text-current opacity-70 outline-none transition-opacity hover:bg-current/10 hover:opacity-100 focus-visible:ring-2 focus-visible:ring-ring"
         >
           <svg
             viewBox="0 0 24 24"

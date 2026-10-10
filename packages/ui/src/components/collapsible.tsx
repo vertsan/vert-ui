@@ -26,7 +26,7 @@ const CollapsibleContent = React.forwardRef<
     ref={ref}
     data-slot="collapsible-content"
     className={cn(
-      "overflow-hidden data-[state=closed]:animate-[vert-fade-out_140ms_ease-out] data-[state=open]:animate-[vert-fade-in_140ms_ease-out]",
+      "overflow-hidden data-[state=closed]:animate-[vert-collapsible-up_180ms_ease-in] data-[state=open]:animate-[vert-collapsible-down_220ms_ease-out]",
       className
     )}
     {...props}

@@ -26,6 +26,15 @@ export const Route = createRootRoute({
     ],
     links: [
       {
+        rel: 'icon',
+        type: 'image/png',
+        href: '/vert-ui-logo.png',
+      },
+      {
+        rel: 'apple-touch-icon',
+        href: '/vert-ui-logo.png',
+      },
+      {
         rel: 'stylesheet',
         href: appCss,
       },

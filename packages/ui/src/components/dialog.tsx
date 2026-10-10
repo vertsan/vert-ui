@@ -32,7 +32,7 @@ const DialogOverlay = React.forwardRef<
     ref={ref}
     data-slot="dialog-overlay"
     className={cn(
-      "fixed inset-0 z-40 bg-black/55 animate-[vert-fade-in_140ms_ease-out]",
+      "fixed inset-0 z-40 bg-black/55 backdrop-blur-[2px] data-[state=open]:animate-[vert-fade-in_160ms_ease-out]",
       className
     )}
     {...props}
@@ -59,7 +59,7 @@ const DialogContent = React.forwardRef<
         data-slot="dialog-content"
         aria-modal={isModal ? true : undefined}
         className={cn(
-          "fixed inset-0 z-50 m-auto flex h-fit max-h-[calc(100vh-2rem)] w-full max-w-lg flex-col gap-4 overflow-y-auto rounded-xl border border-border bg-card p-6 text-foreground shadow-pop outline-none animate-[vert-pop-in_160ms_ease-out]",
+          "fixed inset-0 z-50 m-auto flex h-fit max-h-[calc(100dvh-2rem)] w-[calc(100%-2rem)] max-w-lg flex-col gap-4 overflow-y-auto rounded-2xl border border-border bg-card p-6 text-foreground shadow-pop outline-none data-[state=open]:animate-[vert-pop-in_180ms_ease-out] sm:w-full",
           className
         )}
         {...props}
@@ -68,7 +68,7 @@ const DialogContent = React.forwardRef<
         {hideClose ? null : (
           <DialogPrimitive.Close
             data-slot="dialog-close"
-            className="absolute right-4 top-4 rounded-md p-1 text-muted-foreground outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-50"
+            className="absolute right-4 top-4 flex size-8 items-center justify-center rounded-md text-muted-foreground outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:opacity-50"
             aria-label="Close"
           >
             <svg

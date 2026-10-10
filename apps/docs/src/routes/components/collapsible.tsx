@@ -100,7 +100,7 @@ function CollapsiblePage() {
       a11y={[
         "The trigger renders aria-expanded and controls the region via aria-controls.",
         "Collapsed content is unmounted, so focus order never contains invisible items.",
-        "The region animates opacity only (vert-fade-in/out) and is neutralised by the reduced-motion override.",
+        "The region reveals with a height + opacity animation driven by Radix's --radix-collapsible-content-height; prefers-reduced-motion collapses it to instant.",
         "A button-like trigger is required — do not use a bare div; CollapsibleTrigger accepts asChild for that reason.",
       ]}
       props={props}

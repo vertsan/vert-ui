@@ -34,7 +34,7 @@ const HoverCardContent = React.forwardRef<
       sideOffset={sideOffset}
       data-slot="hover-card-content"
       className={cn(
-        "z-50 w-72 rounded-xl border border-border bg-card p-4 text-card-foreground shadow-raised outline-none animate-[vert-pop-in_140ms_ease-out]",
+        "z-50 w-72 rounded-xl border border-border bg-card p-4 text-card-foreground shadow-pop outline-none data-[state=open]:animate-[vert-pop-in_140ms_ease-out]",
         className
       )}
       {...props}

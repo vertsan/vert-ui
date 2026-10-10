@@ -27,7 +27,15 @@ const props: PropRow[] = [
   {
     name: "loading",
     type: "boolean",
-    description: "Disables the button, sets aria-busy and swaps the label to \"Saving\".",
+    default: "false",
+    description:
+      "Disables the button, sets aria-busy and shows a spinner while keeping the label width stable.",
+  },
+  {
+    name: "loadingText",
+    type: "ReactNode",
+    description:
+      "Optional label shown while loading; defaults to the button's children.",
   },
   {
     name: "disabled",
@@ -110,12 +118,17 @@ function ButtonPage() {
           title: "Loading and asChild link",
           code: `<Button loading>Save changes</Button>
 
+<Button loading loadingText="Deploying…">Deploy</Button>
+
 <Button asChild>
   <Link to="/components">Browse components</Link>
 </Button>`,
           render: (
             <div className="flex flex-wrap items-center justify-center gap-3">
               <Button loading>Save changes</Button>
+              <Button loading loadingText="Deploying…">
+                Deploy
+              </Button>
               <Button asChild variant="outline">
                 <Link to="/components">Browse components</Link>
               </Button>

@@ -1,5 +1,6 @@
 import * as React from "react"
 import { Link } from "@tanstack/react-router"
+import { CodeBlock } from "./code-block"
 
 export function GuidePage({
   title,
@@ -75,11 +76,7 @@ export function Section({
 }
 
 export function Code({ children }: { children: string }) {
-  return (
-    <pre className="overflow-x-auto rounded-xl bg-vert-950 p-4 text-xs leading-relaxed text-vert-100 shadow-inner">
-      <code>{children}</code>
-    </pre>
-  )
+  return <CodeBlock code={children} />
 }
 
 export function Callout({

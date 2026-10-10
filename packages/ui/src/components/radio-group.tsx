@@ -16,7 +16,7 @@ const radioGroupVariants = cva("grid gap-2", {
 })
 
 const radioGroupItemVariants = cva(
-  "peer flex shrink-0 items-center justify-center rounded-full border border-border-strong bg-background text-brand outline-none transition-colors duration-[140ms] hover:border-brand focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50 aria-checked:border-brand aria-checked:bg-brand aria-checked:text-brand-foreground data-[state=checked]:border-brand data-[state=checked]:bg-brand data-[state=checked]:text-brand-foreground",
+  "peer flex shrink-0 items-center justify-center rounded-full border border-border-strong bg-background text-brand-foreground outline-none transition-[color,background-color,border-color,box-shadow] duration-[140ms] ease-out-quart hover:border-brand focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-destructive data-[state=checked]:border-brand data-[state=checked]:bg-brand data-[state=checked]:text-brand-foreground",
   {
     variants: {
       size: {

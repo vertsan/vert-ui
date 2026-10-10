@@ -37,4 +37,16 @@ describe('Collapsible', () => {
     expect(container.querySelector('[data-slot="collapsible"]')).not.toBeNull()
     expect(container.querySelector('[data-slot="collapsible-trigger"]')).not.toBeNull()
   })
+
+  it('applies the height-animation classes to the content', () => {
+    const { container } = render(
+      <Collapsible defaultOpen>
+        <CollapsibleTrigger>Show details</CollapsibleTrigger>
+        <CollapsibleContent>Shipping address</CollapsibleContent>
+      </Collapsible>,
+    )
+    const content = container.querySelector('[data-slot="collapsible-content"]')
+    expect(content?.className).toContain('vert-collapsible-down')
+    expect(content?.className).toContain('vert-collapsible-up')
+  })
 })

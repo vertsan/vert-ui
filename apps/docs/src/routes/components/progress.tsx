@@ -26,6 +26,13 @@ const props: PropRow[] = [
       "Human readable value announced instead of the raw number, e.g. \"45 of 100 uploads\".",
   },
   {
+    name: "showPercent",
+    type: "boolean",
+    default: "false",
+    description:
+      "Renders a visible tabular readout (e.g. 64%) beside the bar. Hidden from assistive tech — aria-valuenow already announces the value.",
+  },
+  {
     name: "variant",
     type: '"default" | "brand" | "destructive"',
     default: '"default"',
@@ -45,9 +52,9 @@ function ProgressPage() {
       title="Progress"
       intro="Determinate and indeterminate progress bars. The indicator moves with transforms only, so it stays smooth under reduced motion and on low-power devices."
       demo={
-        <div className="space-y-5">
-          <Progress value={45} valueText="45 of 100 uploads" aria-label="Upload" />
-          <Progress value={80} variant="brand" size="lg" aria-label="Storage used" />
+        <div className="w-full max-w-md space-y-5">
+          <Progress value={45} showPercent valueText="45 of 100 uploads" aria-label="Upload" />
+          <Progress value={80} variant="brand" size="lg" showPercent aria-label="Storage used" />
           <Progress value={30} variant="destructive" size="sm" aria-label="Errors" />
           <div className="space-y-2">
             <p className="text-sm text-muted-foreground">Preparing workspace…</p>
@@ -57,14 +64,17 @@ function ProgressPage() {
       }
       examples={[
         {
-          title: "With a readable value",
+          title: "With a readable value and percent",
           code: `<Progress
-  value={45}
+  value={64}
   max={100}
   valueText="45 of 100 uploads"
+  showPercent
   aria-label="Upload"
 />`,
-          render: <Progress value={45} valueText="45 of 100 uploads" aria-label="Upload" />,
+          render: (
+            <Progress value={64} valueText="64 of 100 uploads" showPercent aria-label="Upload" />
+          ),
         },
         {
           title: "Indeterminate while working",
@@ -87,6 +97,7 @@ function ProgressPage() {
         "Renders role=\"progressbar\" with aria-valuemin, aria-valuemax and aria-valuenow.",
         "Always pass aria-label (or aria-labelledby) — a bare progress bar has no accessible name.",
         "valueText is what gets announced: prefer \"45 of 100 uploads\" over a bare number.",
+        "showPercent is aria-hidden: the progressbar role still announces the value, so the visible readout never reads twice.",
         "Indeterminate bars omit aria-valuenow, which is how assistive tech recognises unknown duration.",
         "The indicator only animates transform, and the global reduced-motion override shortens it to 0.01ms.",
       ]}

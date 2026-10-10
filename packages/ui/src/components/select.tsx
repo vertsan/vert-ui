@@ -23,7 +23,7 @@ const SelectTrigger = React.forwardRef<
     data-invalid={invalid || undefined}
     aria-invalid={invalid || ariaInvalid || undefined}
     className={cn(
-      "flex w-full items-center justify-between gap-2 rounded-md border border-input bg-background px-3 text-sm font-medium text-foreground shadow-sm outline-none transition-colors focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ring-offset-background disabled:cursor-not-allowed disabled:opacity-50 data-[placeholder]:text-muted-foreground data-[invalid]:border-destructive data-[invalid]:focus-visible:ring-destructive [&>span]:min-w-0 [&>span]:truncate",
+      "flex w-full items-center justify-between gap-2 rounded-md border border-input bg-background px-3 text-sm font-medium text-foreground shadow-sm outline-none transition-[color,background-color,border-color,box-shadow] duration-[140ms] ease-out-quart hover:border-border-strong focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 data-[placeholder]:text-muted-foreground data-[invalid]:border-destructive data-[invalid]:focus-visible:border-destructive data-[invalid]:focus-visible:ring-destructive [&>span]:min-w-0 [&>span]:truncate",
       size === "sm" && "h-8 text-xs",
       size === "md" && "h-9",
       size === "lg" && "h-10",
@@ -62,7 +62,7 @@ const SelectContent = React.forwardRef<
       data-slot="select-content"
       position={position}
       className={cn(
-        "relative z-50 max-h-[min(var(--radix-select-content-available-height,320px),320px)] w-full min-w-[var(--radix-select-trigger-width)] overflow-y-auto rounded-lg border border-border bg-card p-1 text-foreground shadow-raised outline-none animate-[vert-pop-in_140ms_ease-out]",
+        "relative z-50 max-h-[min(var(--radix-select-content-available-height,320px),320px)] w-full min-w-[var(--radix-select-trigger-width)] overflow-y-auto rounded-xl border border-border bg-card p-1 text-foreground shadow-pop outline-none data-[state=open]:animate-[vert-pop-in_140ms_ease-out]",
         position === "popper" &&
           "data-[side=bottom]:translate-y-1 data-[side=top]:-translate-y-1",
         className
@@ -93,19 +93,19 @@ const SelectItem = React.forwardRef<
     ref={ref}
     data-slot="select-item"
     className={cn(
-      "relative flex w-full cursor-default select-none items-center rounded-md py-1.5 pl-2 pr-8 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50 data-[state=checked]:font-medium [&_svg]:size-4 [&_svg]:shrink-0",
+      "relative flex w-full cursor-default select-none items-center rounded-md py-1.5 pl-8 pr-2 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50 data-[state=checked]:font-medium [&_svg]:size-4 [&_svg]:shrink-0",
       className
     )}
     {...props}
   >
-    <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
-    <span className="absolute right-2 flex size-4 items-center justify-center">
+    <span className="absolute left-2 flex size-4 items-center justify-center">
       <SelectPrimitive.ItemIndicator>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="size-4">
           <path d="M20 6 9 17l-5-5" />
         </svg>
       </SelectPrimitive.ItemIndicator>
     </span>
+    <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
   </SelectPrimitive.Item>
 ))
 SelectItem.displayName = "SelectItem"
