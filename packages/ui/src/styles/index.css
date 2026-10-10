@@ -2,10 +2,7 @@
 @import "./dark.css";
 @import "./themes.css";
 @import "./theme-presets.css";
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "./motion.css";
 
 /* Soft grain + luminous thin border signature */
 .grain {
@@ -16,124 +13,8 @@
   box-shadow: 0 0 0 1px rgb(16 185 129 / 0.12);
 }
 
-/* Entry animations for overlays, menus and popovers (transform/opacity only) */
-@keyframes vert-fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-@keyframes vert-fade-out {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-}
-/* Accordion / collapsible height reveal driven by Radix's content-height var */
-@keyframes vert-accordion-down {
-  from {
-    height: 0;
-    opacity: 0;
-  }
-  to {
-    height: var(--radix-accordion-content-height);
-    opacity: 1;
-  }
-}
-@keyframes vert-accordion-up {
-  from {
-    height: var(--radix-accordion-content-height);
-    opacity: 1;
-  }
-  to {
-    height: 0;
-    opacity: 0;
-  }
-}
-/* Standalone Collapsible height reveal driven by Radix's content-height var */
-@keyframes vert-collapsible-down {
-  from {
-    height: 0;
-    opacity: 0;
-  }
-  to {
-    height: var(--radix-collapsible-content-height);
-    opacity: 1;
-  }
-}
-@keyframes vert-collapsible-up {
-  from {
-    height: var(--radix-collapsible-content-height);
-    opacity: 1;
-  }
-  to {
-    height: 0;
-    opacity: 0;
-  }
-}
-@keyframes vert-pop-in {
-  from {
-    opacity: 0;
-    transform: translateY(-4px) scale(0.97);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-@keyframes vert-swipe-out {
-  from {
-    transform: translateX(var(--radix-toast-swipe-end-x));
-    opacity: 1;
-  }
-  to {
-    transform: translateX(calc(var(--radix-toast-swipe-end-x) + 100%));
-    opacity: 0;
-  }
-}
-@keyframes shimmer {
-  from {
-    transform: translateX(-100%);
-  }
-  to {
-    transform: translateX(100%);
-  }
-}
-@keyframes vert-toast-in {
-  from {
-    opacity: 0;
-    transform: translateX(110%);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-@keyframes vert-toast-out {
-  from {
-    opacity: 1;
-    transform: translateX(0);
-  }
-  to {
-    opacity: 0;
-    transform: translateX(110%);
-  }
-}
-@keyframes vert-progress-indeterminate {
-  0% {
-    transform: translateX(-100%);
-  }
-  50% {
-    transform: translateX(50%);
-  }
-  100% {
-    transform: translateX(250%);
-  }
-}
+/* Entry animations for overlays, menus and popovers live in ./motion.css */
+
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 0.01ms !important;

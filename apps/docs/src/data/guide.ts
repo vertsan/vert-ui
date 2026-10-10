@@ -20,4 +20,9 @@ export const guideDocs: GuideDocMeta[] = [
     href: "/guide/getting-started",
     description: "Render, theme and customize your first components in five minutes.",
   },
+  {
+    name: "Command line",
+    href: "/guide/cli",
+    description: "vert-ui's own CLI: init, add, view, docs, search, build and diff.",
+  },
 ]

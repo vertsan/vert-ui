@@ -71,6 +71,7 @@ const items: ItemDef[] = [
     title: 'Theme',
     description:
       'vert-ui theme engine: design tokens, ready-made themes and base styles. Requires @import "tailwindcss" first.',
+    registryDependencies: ['vert-motion'],
     files: [
       { source: 'styles/vert.css', path: 'styles/vert.css' },
       { source: 'styles/themes.css', path: 'styles/themes.css' },
@@ -80,6 +81,14 @@ const items: ItemDef[] = [
       { source: 'styles/themes/rose.css', path: 'styles/themes/rose.css' },
       { source: 'styles/themes/ocean.css', path: 'styles/themes/ocean.css' },
     ],
+  },
+  {
+    name: 'vert-motion',
+    type: 'registry:style',
+    title: 'Motion',
+    description:
+      'Shared keyframes for vert-ui animations (overlays, menus, accordion, collapsible, toast). Installed automatically by animated components.',
+    files: [{ source: 'styles/motion.css', path: 'styles/motion.css' }],
   },
   {
     name: 'vert-cn',
@@ -355,6 +364,27 @@ function fail(message: string): never {
   process.exit(1)
 }
 
+/**
+ * Components whose markup references the shared keyframes in `styles/motion.css`.
+ * They declare `registryDependencies: ['vert-cn']` and get `vert-motion` appended
+ * below so `npx shadcn add @vert/<name>` installs the animation CSS too — the
+ * component animates without the consumer installing the whole theme.
+ */
+const motionComponents = new Set<string>([
+  'accordion',
+  'collapsible',
+  'dialog',
+  'dropdown-menu',
+  'hover-card',
+  'popover',
+  'select',
+  'tabs',
+  'tooltip',
+  'toast',
+  'progress',
+  'skeleton',
+])
+
 function transform(content: string, source: string): string {
   let result = content
   for (const [pattern, replacement] of importRewrites) {
@@ -386,7 +416,12 @@ function main(): void {
       return `${dep}@${version}`
     })
 
-    const registryDependencies = item.registryDependencies?.map((name) => {
+    const registryDependencyNames = [...(item.registryDependencies ?? [])]
+    if (motionComponents.has(item.name) && !registryDependencyNames.includes('vert-motion')) {
+      registryDependencyNames.push('vert-motion')
+    }
+
+    const registryDependencies = registryDependencyNames.map((name) => {
       if (!names.has(name)) fail(`item "${item.name}" references unknown registry item "${name}"`)
       return `${baseUrl}/${name}.json`
     })

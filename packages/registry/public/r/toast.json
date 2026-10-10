@@ -9,7 +9,8 @@
     "class-variance-authority@^0.7.1"
   ],
   "registryDependencies": [
-    "https://vert-ui.dev/r/vert-cn.json"
+    "https://vert-ui.dev/r/vert-cn.json",
+    "https://vert-ui.dev/r/vert-motion.json"
   ],
   "files": [
     {

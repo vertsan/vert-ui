@@ -6,7 +6,8 @@
   "description": "Decorative loading placeholder, hidden from assistive technology.",
   "dependencies": [],
   "registryDependencies": [
-    "https://vert-ui.dev/r/vert-cn.json"
+    "https://vert-ui.dev/r/vert-cn.json",
+    "https://vert-ui.dev/r/vert-motion.json"
   ],
   "files": [
     {

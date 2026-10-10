@@ -227,7 +227,7 @@ export function HeroNotched({
       <section
         data-slot="hero-notched"
         className={cn(
-          "hero-notched mx-auto w-full max-w-6xl px-4 pt-6",
+          "hero-notched mx-auto w-full max-w-6xl px-4 pt-2 sm:px-6 sm:pt-3",
           className,
         )}
         {...props}
@@ -246,7 +246,7 @@ export function HeroNotched({
         </motion.div>
 
         {(subtext || secondaryCta) && (
-          <div className="mx-auto mt-8 flex max-w-xl flex-col items-center gap-4 text-center">
+          <div className="mx-auto mt-6 flex max-w-xl flex-col items-center gap-4 text-center sm:mt-7">
             {subtext ? (
               <p className="text-pretty text-sm leading-relaxed text-muted-foreground sm:text-base">
                 {subtext}

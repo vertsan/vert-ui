@@ -50,7 +50,7 @@ function ProgressPage() {
   return (
     <DocPage
       title="Progress"
-      intro="Determinate and indeterminate progress bars. The indicator moves with transforms only, so it stays smooth under reduced motion and on low-power devices."
+      intro="Determinate and indeterminate progress bars. The indicator moves with transforms only, and the optional percent readout counts in sync with it, so both stay smooth under reduced motion and on low-power devices."
       demo={
         <div className="w-full max-w-md space-y-5">
           <Progress value={45} showPercent valueText="45 of 100 uploads" aria-label="Upload" />
@@ -100,6 +100,7 @@ function ProgressPage() {
         "showPercent is aria-hidden: the progressbar role still announces the value, so the visible readout never reads twice.",
         "Indeterminate bars omit aria-valuenow, which is how assistive tech recognises unknown duration.",
         "The indicator only animates transform, and the global reduced-motion override shortens it to 0.01ms.",
+        "When value changes, the percent readout tweens toward the new number over 300ms to match the bar; under prefers-reduced-motion it updates instantly.",
       ]}
       props={props}
     />

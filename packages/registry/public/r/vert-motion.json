@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "vert-motion",
+  "type": "registry:style",
+  "title": "Motion",
+  "description": "Shared keyframes for vert-ui animations (overlays, menus, accordion, collapsible, toast). Installed automatically by animated components.",
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "styles/motion.css",
+      "type": "registry:style",
+      "content": "/*\n * vert-ui — shared motion\n * ---------------------------------------------------------------------------\n * Keyframes used by the animated components (overlays, menus, popovers,\n * accordion, collapsible, toast, progress, skeleton).\n *\n * Imported by both CSS entries (`index.css` and `vert.css`) and shipped as the\n * `vert-motion` registry item, so installing a component alone still animates.\n * Every keyframe animates transform/opacity only; the accordion/collapsible\n * reveals additionally animate height via Radix's content-height variables.\n */\n\n@keyframes vert-fade-in {\n  from {\n    opacity: 0;\n  }\n  to {\n    opacity: 1;\n  }\n}\n@keyframes vert-fade-out {\n  from {\n    opacity: 1;\n  }\n  to {\n    opacity: 0;\n  }\n}\n@keyframes vert-accordion-down {\n  from {\n    height: 0;\n    opacity: 0;\n  }\n  to {\n    height: var(--radix-accordion-content-height);\n    opacity: 1;\n  }\n}\n@keyframes vert-accordion-up {\n  from {\n    height: var(--radix-accordion-content-height);\n    opacity: 1;\n  }\n  to {\n    height: 0;\n    opacity: 0;\n  }\n}\n@keyframes vert-collapsible-down {\n  from {\n    height: 0;\n    opacity: 0;\n  }\n  to {\n    height: var(--radix-collapsible-content-height);\n    opacity: 1;\n  }\n}\n@keyframes vert-collapsible-up {\n  from {\n    height: var(--radix-collapsible-content-height);\n    opacity: 1;\n  }\n  to {\n    height: 0;\n    opacity: 0;\n  }\n}\n@keyframes vert-pop-in {\n  from {\n    opacity: 0;\n    transform: translateY(-4px) scale(0.97);\n  }\n  to {\n    opacity: 1;\n    transform: none;\n  }\n}\n@keyframes vert-swipe-out {\n  from {\n    transform: translateX(var(--radix-toast-swipe-end-x));\n    opacity: 1;\n  }\n  to {\n    transform: translateX(calc(var(--radix-toast-swipe-end-x) + 100%));\n    opacity: 0;\n  }\n}\n@keyframes vert-toast-in {\n  from {\n    opacity: 0;\n    transform: translateX(110%);\n  }\n  to {\n    opacity: 1;\n    transform: translateX(0);\n  }\n}\n@keyframes vert-toast-out {\n  from {\n    opacity: 1;\n    transform: translateX(0);\n  }\n  to {\n    opacity: 0;\n    transform: translateX(110%);\n  }\n}\n@keyframes vert-progress-indeterminate {\n  0% {\n    transform: translateX(-100%);\n  }\n  50% {\n    transform: translateX(50%);\n  }\n  100% {\n    transform: translateX(250%);\n  }\n}\n@keyframes shimmer {\n  from {\n    transform: translateX(-100%);\n  }\n  to {\n    transform: translateX(100%);\n  }\n}\n"
+    }
+  ]
+}

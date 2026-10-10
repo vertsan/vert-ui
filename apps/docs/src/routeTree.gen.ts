@@ -42,6 +42,7 @@ import { Route as ComponentsTextareaRouteImport } from './routes/components/text
 import { Route as ComponentsToastRouteImport } from './routes/components/toast'
 import { Route as ComponentsTooltipRouteImport } from './routes/components/tooltip'
 import { Route as GuideIndexRouteImport } from './routes/guide/index'
+import { Route as GuideCliRouteImport } from './routes/guide/cli'
 import { Route as GuideGettingStartedRouteImport } from './routes/guide/getting-started'
 import { Route as GuideInstallationRouteImport } from './routes/guide/installation'
 
@@ -210,6 +211,11 @@ const GuideIndexRoute = GuideIndexRouteImport.update({
   path: '/',
   getParentRoute: () => GuideRouteRoute,
 } as any)
+const GuideCliRoute = GuideCliRouteImport.update({
+  id: '/cli',
+  path: '/cli',
+  getParentRoute: () => GuideRouteRoute,
+} as any)
 const GuideGettingStartedRoute = GuideGettingStartedRouteImport.update({
   id: '/getting-started',
   path: '/getting-started',
@@ -253,6 +259,7 @@ export interface FileRoutesByFullPath {
   '/components/textarea': typeof ComponentsTextareaRoute
   '/components/toast': typeof ComponentsToastRoute
   '/components/tooltip': typeof ComponentsTooltipRoute
+  '/guide/cli': typeof GuideCliRoute
   '/guide/getting-started': typeof GuideGettingStartedRoute
   '/guide/installation': typeof GuideInstallationRoute
   '/components/': typeof ComponentsIndexRoute
@@ -288,6 +295,7 @@ export interface FileRoutesByTo {
   '/components/textarea': typeof ComponentsTextareaRoute
   '/components/toast': typeof ComponentsToastRoute
   '/components/tooltip': typeof ComponentsTooltipRoute
+  '/guide/cli': typeof GuideCliRoute
   '/guide/getting-started': typeof GuideGettingStartedRoute
   '/guide/installation': typeof GuideInstallationRoute
   '/components': typeof ComponentsIndexRoute
@@ -326,6 +334,7 @@ export interface FileRoutesById {
   '/components/textarea': typeof ComponentsTextareaRoute
   '/components/toast': typeof ComponentsToastRoute
   '/components/tooltip': typeof ComponentsTooltipRoute
+  '/guide/cli': typeof GuideCliRoute
   '/guide/getting-started': typeof GuideGettingStartedRoute
   '/guide/installation': typeof GuideInstallationRoute
   '/components/': typeof ComponentsIndexRoute
@@ -365,6 +374,7 @@ export interface FileRouteTypes {
     | '/components/textarea'
     | '/components/toast'
     | '/components/tooltip'
+    | '/guide/cli'
     | '/guide/getting-started'
     | '/guide/installation'
     | '/components/'
@@ -400,6 +410,7 @@ export interface FileRouteTypes {
     | '/components/textarea'
     | '/components/toast'
     | '/components/tooltip'
+    | '/guide/cli'
     | '/guide/getting-started'
     | '/guide/installation'
     | '/components'
@@ -437,6 +448,7 @@ export interface FileRouteTypes {
     | '/components/textarea'
     | '/components/toast'
     | '/components/tooltip'
+    | '/guide/cli'
     | '/guide/getting-started'
     | '/guide/installation'
     | '/components/'
@@ -682,6 +694,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GuideIndexRouteImport
       parentRoute: typeof GuideRouteRoute
     }
+    '/guide/cli': {
+      id: '/guide/cli'
+      path: '/cli'
+      fullPath: '/guide/cli'
+      preLoaderRoute: typeof GuideCliRouteImport
+      parentRoute: typeof GuideRouteRoute
+    }
     '/guide/getting-started': {
       id: '/guide/getting-started'
       path: '/getting-started'
@@ -768,12 +787,14 @@ const ComponentsRouteRouteWithChildren = ComponentsRouteRoute._addFileChildren(
 )
 
 interface GuideRouteRouteChildren {
+  GuideCliRoute: typeof GuideCliRoute
   GuideGettingStartedRoute: typeof GuideGettingStartedRoute
   GuideInstallationRoute: typeof GuideInstallationRoute
   GuideIndexRoute: typeof GuideIndexRoute
 }
 
 const GuideRouteRouteChildren: GuideRouteRouteChildren = {
+  GuideCliRoute: GuideCliRoute,
   GuideGettingStartedRoute: GuideGettingStartedRoute,
   GuideInstallationRoute: GuideInstallationRoute,
   GuideIndexRoute: GuideIndexRoute,

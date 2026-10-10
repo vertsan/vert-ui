@@ -13,17 +13,17 @@
 
 .hero-panel {
   position: relative;
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
-  border-radius: var(--radius-3xl, 1.5rem);
+  border-radius: 0;
   background-color: var(--color-muted);
-  aspect-ratio: 4 / 5;
-  min-height: 0;
+  height: calc(100vh - 3.5rem);
+  height: calc(100svh - 3.5rem);
 }
 
 @media (min-width: 48rem) {
   .hero-panel {
-    aspect-ratio: 16 / 9;
-    min-height: 520px;
     --notch-w: min(52%, 32rem);
   }
 }
@@ -72,7 +72,8 @@
 .hero-panel__media {
   position: relative;
   z-index: 10;
-  height: 100%;
+  flex: 1;
+  min-height: 0;
   padding-top: calc(var(--notch-h) + 1rem);
   box-sizing: border-box;
 }
@@ -157,6 +158,12 @@
     --notch-h: auto;
   }
 
+  .hero-panel {
+    height: auto;
+    min-height: calc(100vh - 3.5rem);
+    min-height: calc(100svh - 3.5rem);
+  }
+
   .hero-panel__notches-mobile {
     position: relative;
     z-index: 20;
@@ -177,6 +184,8 @@
   }
 
   .hero-panel__media {
+    flex: 0 0 auto;
+    min-height: 0;
     padding-top: 1rem;
   }
 
