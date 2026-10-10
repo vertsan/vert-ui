@@ -16,6 +16,11 @@ export const componentDocs: ComponentDocMeta[] = [
     description: "Inline status blocks with semantic variants.",
   },
   {
+    name: "Aspect Ratio",
+    href: "/components/aspect-ratio",
+    description: "Locks media to a width-to-height ratio with no layout shift.",
+  },
+  {
     name: "Avatar",
     href: "/components/avatar",
     description: "Image with initials fallback, no layout shift.",
@@ -41,9 +46,19 @@ export const componentDocs: ComponentDocMeta[] = [
     description: "Scroll-snap slider with labelled controls and dots.",
   },
   {
+    name: "Center",
+    href: "/components/center",
+    description: "Centres content on one or both axes with an optional measure.",
+  },
+  {
     name: "Checkbox",
     href: "/components/checkbox",
     description: "Multi-select choice with indeterminate state.",
+  },
+  {
+    name: "Cluster",
+    href: "/components/cluster",
+    description: "Wrapping inline group for tags, toolbars and button rows.",
   },
   {
     name: "Collapsible",
@@ -54,6 +69,11 @@ export const componentDocs: ComponentDocMeta[] = [
     name: "Command",
     href: "/components/command",
     description: "Filterable command palette with keyboard navigation.",
+  },
+  {
+    name: "Container",
+    href: "/components/container",
+    description: "Centred, max-width content wrapper with responsive gutters.",
   },
   {
     name: "Dialog",
@@ -69,6 +89,11 @@ export const componentDocs: ComponentDocMeta[] = [
     name: "Field",
     href: "/components/field",
     description: "Wires label, description and error to any control.",
+  },
+  {
+    name: "Grid",
+    href: "/components/grid",
+    description: "Responsive CSS grid with column and span breakpoints.",
   },
   {
     name: "Hover Card",
@@ -101,6 +126,11 @@ export const componentDocs: ComponentDocMeta[] = [
     description: "Single-choice group with arrow-key navigation.",
   },
   {
+    name: "Section",
+    href: "/components/section",
+    description: "Vertical-rhythm page section with responsive spacing.",
+  },
+  {
     name: "Select",
     href: "/components/select",
     description: "Single-value listbox trigger with typeahead.",
@@ -114,6 +144,21 @@ export const componentDocs: ComponentDocMeta[] = [
     name: "Skeleton",
     href: "/components/skeleton",
     description: "Decorative loading placeholder.",
+  },
+  {
+    name: "Spacer",
+    href: "/components/spacer",
+    description: "Flexible or fixed gap for flex and grid layouts.",
+  },
+  {
+    name: "Split",
+    href: "/components/split",
+    description: "Two-region layout that stacks on mobile and splits on desktop.",
+  },
+  {
+    name: "Stack",
+    href: "/components/stack",
+    description: "Vertical or horizontal flex layout with responsive gaps.",
   },
   {
     name: "Switch",

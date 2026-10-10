@@ -5,6 +5,13 @@ import { cn } from "../lib/cn"
 type HoverCardSide = "top" | "right" | "bottom" | "left"
 type HoverCardAlign = "start" | "center" | "end"
 
+const sideOffsetClass: Record<HoverCardSide, string> = {
+  top: "origin-bottom",
+  right: "origin-left",
+  bottom: "origin-top",
+  left: "origin-right",
+}
+
 const HoverCard = HoverCardPrimitive.Root
 
 const HoverCardTrigger = React.forwardRef<
@@ -32,9 +39,11 @@ const HoverCardContent = React.forwardRef<
       side={side}
       align={align}
       sideOffset={sideOffset}
+      collisionPadding={8}
       data-slot="hover-card-content"
       className={cn(
-        "z-50 w-72 rounded-xl border border-border bg-card p-4 text-card-foreground shadow-pop outline-none data-[state=open]:animate-[vert-pop-in_140ms_ease-out]",
+        "z-50 w-72 max-w-[calc(100vw-2rem)] rounded-xl border border-border bg-card p-4 text-card-foreground shadow-pop outline-none data-[state=open]:animate-[vert-pop-in_140ms_ease-out] data-[state=closed]:animate-[vert-pop-out_120ms_ease-in]",
+        sideOffsetClass[side],
         className
       )}
       {...props}

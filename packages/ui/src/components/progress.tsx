@@ -41,6 +41,53 @@ const progressIndicatorVariants = cva(
   }
 )
 
+/**
+ * Tween a number toward its target while the bar transitions, so the readout
+ * counts up/down in sync instead of jumping. Starts at the target on mount
+ * (SSR-safe, no layout shift) and respects `prefers-reduced-motion`.
+ */
+function useAnimatedPercent(target: number, animate: boolean, duration = 300) {
+  const [display, setDisplay] = React.useState(target)
+  const fromRef = React.useRef(target)
+
+  React.useEffect(() => {
+    if (!animate || fromRef.current === target) {
+      fromRef.current = target
+      return
+    }
+
+    const reduce =
+      typeof window !== "undefined" &&
+      typeof window.matchMedia === "function" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+
+    if (reduce || typeof requestAnimationFrame !== "function") {
+      fromRef.current = target
+      setDisplay(target)
+      return
+    }
+
+    const from = fromRef.current
+    let frame = 0
+    let start: number | undefined
+
+    const tick = (now: number) => {
+      if (start === undefined) start = now
+      const progress = duration <= 0 ? 1 : Math.min((now - start) / duration, 1)
+      const eased = 1 - Math.pow(1 - progress, 4)
+      const next = from + (target - from) * eased
+      fromRef.current = next
+      setDisplay(next)
+      if (progress < 1) frame = requestAnimationFrame(tick)
+    }
+
+    frame = requestAnimationFrame(tick)
+    return () => cancelAnimationFrame(frame)
+  }, [target, animate, duration])
+
+  return display
+}
+
 export interface ProgressProps
   extends Omit<React.HTMLAttributes<HTMLDivElement>, "children">,
     VariantProps<typeof progressVariants> {
@@ -59,6 +106,7 @@ const Progress = React.forwardRef<
 >(({ className, variant, size, value, max = 100, valueText, showPercent, ...props }, ref) => {
   const clamped = typeof value === "number" ? Math.min(Math.max(value, 0), max) : undefined
   const percent = typeof clamped === "number" && max > 0 ? (clamped / max) * 100 : undefined
+  const animatedPercent = useAnimatedPercent(percent ?? 0, Boolean(showPercent))
 
   const root = (
     <ProgressPrimitive.Root
@@ -92,7 +140,7 @@ const Progress = React.forwardRef<
         aria-hidden="true"
         className="shrink-0 basis-8 text-right text-sm font-medium tabular-nums text-foreground"
       >
-        {Math.round(percent)}%
+        {Math.round(animatedPercent)}%
       </span>
     </div>
   )

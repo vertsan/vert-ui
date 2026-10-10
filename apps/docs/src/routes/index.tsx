@@ -8,7 +8,8 @@ import {
   CardTitle,
 } from "@vert-ui/ui"
 import { createFileRoute, Link } from "@tanstack/react-router"
-import { Hero } from "../components/hero"
+import { DashboardPreview } from "../components/dashboard-preview"
+import { HeroFloatingCard, HeroNotched } from "../components/hero-notched"
 import { cn } from "../lib/utils"
 
 export const Route = createFileRoute("/")({
@@ -16,10 +17,10 @@ export const Route = createFileRoute("/")({
 })
 
 const stats = [
-  { value: "28", label: "Components" },
-  { value: "163", label: "Tests passing" },
+  { value: "37", label: "Components" },
+  { value: "225", label: "Tests passing" },
   { value: "756", label: "Contrast pairs" },
-  { value: "30", label: "Registry items" },
+  { value: "41", label: "Registry items" },
 ]
 
 const features = [
@@ -98,7 +99,44 @@ const swatches = [
 export function Home() {
   return (
     <div className="overflow-hidden">
-      <Hero />
+      <HeroNotched
+        media={
+          <DashboardPreview className="min-h-0 flex-1 overflow-hidden rounded-2xl border border-border/60 bg-card/40 shadow-sm" />
+        }
+        subtext={
+          <>
+            Original, copy-paste React components with soft motion.
+            <br />
+            Style with Tailwind, own them forever.
+          </>
+        }
+        cta={{
+          slot: (
+            <Link
+              to="/components"
+              className="group inline-flex h-10 items-center justify-center gap-1.5 rounded-full bg-foreground px-5 text-sm font-medium text-background outline-none transition-colors hover:bg-foreground/90 focus-visible:ring-2 focus-visible:ring-ring"
+            >
+              Browse components
+              <span
+                aria-hidden="true"
+                className="transition-transform duration-200 group-hover:translate-x-0.5 motion-reduce:transition-none"
+              >
+                →
+              </span>
+            </Link>
+          ),
+        }}
+        secondaryCta={{ slot: <Link to="/guide">Get started</Link> }}
+        floatingCard={
+          <HeroFloatingCard
+            moreLink={
+              <Link to="/guide">
+                More info <span aria-hidden="true">+</span>
+              </Link>
+            }
+          />
+        }
+      />
 
       <section aria-label="Project statistics" className="mx-auto max-w-5xl px-4 sm:px-6">
         <Card className="overflow-hidden">
@@ -190,7 +228,7 @@ export function Home() {
             Start growing your interface with precision
           </h2>
           <p className="mx-auto mt-3 max-w-xl text-sm text-brand-foreground">
-            Twenty-eight components, thirty registry items, zero lock-in. Open the
+            Thirty-seven components, forty-one registry items, zero lock-in. Open the
             catalog and copy the first one in.
           </p>
           <Button size="lg" variant="secondary" className="mt-6" asChild>

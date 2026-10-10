@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react'
+import { render, screen, waitFor } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
 import { Progress } from './progress'
 
@@ -51,6 +51,15 @@ describe('Progress', () => {
     expect(readout).not.toBeNull()
     expect(readout!.textContent).toBe('64%')
     expect(readout).toHaveAttribute('aria-hidden', 'true')
+  })
+
+  it('updates the percent readout toward a new value', async () => {
+    const { container, rerender } = render(<Progress value={10} showPercent />)
+    const readout = () => container.querySelector('[data-slot="progress-percent"]')
+    expect(readout()!.textContent).toBe('10%')
+
+    rerender(<Progress value={80} showPercent />)
+    await waitFor(() => expect(readout()!.textContent).toBe('80%'))
   })
 
   it('omits the percent readout when indeterminate', () => {

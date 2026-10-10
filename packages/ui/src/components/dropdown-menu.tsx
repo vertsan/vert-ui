@@ -3,7 +3,7 @@ import * as React from "react"
 import { cn } from "../lib/cn"
 
 const itemClasses =
-  "relative flex cursor-default select-none items-center gap-2 rounded-md px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:size-4 [&_svg]:shrink-0"
+  "relative flex cursor-default select-none items-center gap-2 rounded-md px-2 py-1.5 text-sm outline-none transition-colors duration-[90ms] ease-out-quart focus:bg-accent focus:text-accent-foreground data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:size-4 [&_svg]:shrink-0"
 
 type DropdownMenuProps = React.ComponentPropsWithRef<typeof DropdownMenuPrimitive.Root>
 
@@ -29,7 +29,7 @@ const DropdownMenuContent = React.forwardRef<
       data-slot="dropdown-menu-content"
       sideOffset={sideOffset}
       className={cn(
-        "z-50 min-w-[12rem] overflow-hidden rounded-xl border border-border bg-card p-1 text-foreground shadow-pop outline-none data-[state=open]:animate-[vert-pop-in_140ms_ease-out]",
+        "z-50 min-w-[12rem] overflow-hidden rounded-xl border border-border bg-card p-1 text-foreground shadow-pop outline-none data-[state=open]:animate-[vert-pop-in_140ms_ease-out] data-[state=closed]:animate-[vert-pop-out_120ms_ease-in]",
         "data-[side=top]:origin-bottom data-[side=bottom]:origin-top data-[side=left]:origin-right data-[side=right]:origin-left",
         className
       )}

@@ -84,7 +84,10 @@ export interface AvatarGroupProps extends React.HTMLAttributes<HTMLDivElement> {
  */
 const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroupProps>(
   ({ max = 4, spacing = -10, className, style, children, ...props }, ref) => {
-    const items = React.Children.toArray(children).filter(React.isValidElement)
+    const items = React.useMemo(
+      () => React.Children.toArray(children).filter(React.isValidElement),
+      [children]
+    )
     const visible = items.slice(0, Math.max(max, 0))
     const overflow = items.length - visible.length
 
@@ -99,7 +102,7 @@ const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroupProps>(
       >
         {visible.map((child, i) => (
           <span
-            key={i}
+            key={child.key ?? `avatar-${i}`}
             data-slot="avatar-group-item"
             className="rounded-full ring-2 ring-background"
             style={{ zIndex: items.length - i }}

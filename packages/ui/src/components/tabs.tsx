@@ -77,8 +77,12 @@ export interface TabsProps
 function Tabs({ className, variant, size, ...props }: TabsProps) {
   const activeVariant = variant ?? "line"
   const activeSize = size ?? "md"
+  const context = React.useMemo(
+    () => ({ variant: activeVariant, size: activeSize }),
+    [activeVariant, activeSize]
+  )
   return (
-    <TabsContext.Provider value={{ variant: activeVariant, size: activeSize }}>
+    <TabsContext.Provider value={context}>
       <TabsPrimitive.Root
         data-slot="tabs"
         data-variant={activeVariant}

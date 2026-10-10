@@ -2,14 +2,34 @@
   "name": "@vert-ui/cli",
   "version": "0.0.0",
   "private": false,
-  "description": "CLI for vert-ui (init, add, diff)",
+  "type": "module",
+  "description": "CLI for vert-ui (init, add, view, docs, search, build, diff)",
   "bin": {
-    "vert-ui": "./dist/index.js"
+    "vert-ui": "./dist/bin.js"
   },
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": ["dist"],
   "scripts": {
-    "build": "tsc -p tsconfig.json"
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "commander": "^15.0.0",
+    "diff": "^9.0.0",
+    "picocolors": "^1.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.4",
+    "typescript": "^5.7.2",
+    "vitest": "^5.0.3"
   },
   "license": "MIT"
 }

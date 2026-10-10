@@ -1,0 +1,264 @@
+/*
+ * Hero 12–style notched panel (docs only).
+ * Notch fill matches the frame (--color-card). Concave joins use ::before/::after.
+ */
+
+.hero-notched {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 3.5rem);
+  min-height: calc(100svh - 3.5rem);
+  padding: 2.5rem;
+  --r: 24px;
+  --notch-h: clamp(8.125rem, 14vw, 9.375rem);
+  --notch-w: min(55%, 36rem);
+  --notch-tr-w: 22%;
+  --notch-tr-h: 4rem;
+}
+
+.hero-panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 auto;
+  overflow: hidden;
+  border-radius: 1rem;
+  background-color: var(--color-muted);
+}
+
+@media (min-width: 48rem) {
+  .hero-panel {
+    --notch-w: min(52%, 32rem);
+  }
+}
+
+@media (min-width: 48rem) and (max-width: 63.99rem) {
+  .hero-notched {
+    --notch-h: clamp(7rem, 12vw, 8.5rem);
+    --notch-w: min(48%, 28rem);
+  }
+}
+
+.hero-panel__bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-color: var(--color-muted);
+  background-image:
+    linear-gradient(
+      to right,
+      color-mix(in srgb, var(--color-border) 45%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--color-border) 45%, transparent) 1px,
+      transparent 1px
+    ),
+    radial-gradient(
+      85% 65% at 18% 22%,
+      color-mix(in srgb, var(--color-primary) 14%, transparent),
+      transparent 68%
+    ),
+    radial-gradient(
+      70% 55% at 88% 12%,
+      color-mix(in srgb, var(--color-primary) 10%, transparent),
+      transparent 72%
+    ),
+    radial-gradient(
+      60% 50% at 50% 100%,
+      color-mix(in srgb, var(--color-foreground) 6%, transparent),
+      transparent 70%
+    );
+  background-size: 2.75rem 2.75rem, 2.75rem 2.75rem, auto, auto, auto;
+}
+
+.hero-panel__media {
+  position: relative;
+  z-index: 10;
+  flex: 1;
+  min-height: 0;
+  padding-top: calc(var(--notch-h) + 1rem);
+  box-sizing: border-box;
+}
+
+.hero-notch {
+  position: absolute;
+  z-index: 20;
+  background-color: var(--color-card);
+  pointer-events: auto;
+}
+
+.hero-notch::before,
+.hero-notch::after {
+  content: "";
+  position: absolute;
+  width: var(--r);
+  height: var(--r);
+  background: radial-gradient(
+    circle at 100% 100%,
+    transparent calc(var(--r) - 0.5px),
+    var(--color-card) calc(var(--r) + 0.5px)
+  );
+}
+
+.hero-notch--tl {
+  top: 0;
+  left: 0;
+  width: var(--notch-w);
+  min-height: var(--notch-h);
+  padding: 20px 28px 8px 8px;
+  border-bottom-right-radius: var(--r);
+}
+
+.hero-notch--tl::before {
+  top: 0;
+  left: 100%;
+}
+
+.hero-notch--tl::after {
+  top: 100%;
+  left: 0;
+}
+
+.hero-notch--tr {
+  top: 0;
+  right: 0;
+  width: var(--notch-tr-w);
+  height: var(--notch-tr-h);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 0 12px 0 16px;
+  border-bottom-left-radius: var(--r);
+}
+
+.hero-notch--tr::before,
+.hero-notch--tr::after {
+  transform: scaleX(-1);
+}
+
+.hero-notch--tr::before {
+  top: 0;
+  right: 100%;
+  left: auto;
+}
+
+.hero-notch--tr::after {
+  top: 100%;
+  right: 0;
+  left: auto;
+}
+
+@media (min-width: 48rem) {
+  .hero-notch--tr {
+    display: flex;
+  }
+}
+
+@media (max-width: 47.99rem) {
+  .hero-notched {
+    --notch-w: 100%;
+    --notch-h: auto;
+  }
+
+  .hero-panel__notches-mobile {
+    position: relative;
+    z-index: 20;
+    background-color: var(--color-card);
+    border-bottom-right-radius: var(--r);
+  }
+
+  .hero-notch--tl {
+    position: relative;
+    width: 100%;
+    min-height: 0;
+    padding: 16px 16px 12px;
+  }
+
+  .hero-notch--tl::before,
+  .hero-notch--tl::after {
+    display: none;
+  }
+
+  .hero-panel__media {
+    flex: 0 0 auto;
+    min-height: 0;
+    padding-top: 1rem;
+  }
+
+  .hero-notch--tr {
+    display: none !important;
+  }
+
+  .hero-notch--tr-mobile {
+    display: flex;
+    justify-content: flex-start;
+    padding: 0 16px 16px;
+  }
+}
+
+@media (min-width: 48rem) {
+  .hero-notch--tr-mobile {
+    display: none;
+  }
+}
+
+.hero-floating-slot {
+  position: relative;
+  z-index: 30;
+  width: 100%;
+  max-width: min(300px, 40%);
+  margin: 1rem auto 0;
+  padding: 0 1rem 1rem;
+}
+
+@media (min-width: 48rem) {
+  .hero-floating-slot {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    right: auto;
+    margin: 0;
+    padding: 0;
+    transform: translateX(-50%);
+    max-width: min(300px, 40%);
+  }
+}
+
+@media (min-width: 64rem) {
+  .hero-floating-slot {
+    left: auto;
+    right: 1rem;
+    transform: none;
+  }
+}
+
+@media (max-width: 47.99rem) {
+  .hero-floating-slot {
+    position: static;
+    max-width: 100%;
+    transform: none;
+  }
+}
+
+@keyframes hero-card-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.hero-floating-card__idle {
+  animation: hero-card-float 6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-floating-card__idle {
+    animation: none;
+  }
+}

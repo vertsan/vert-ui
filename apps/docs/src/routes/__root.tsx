@@ -1,6 +1,7 @@
 import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router'
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 import { TanStackDevtools } from '@tanstack/react-devtools'
+import { ThemeProvider, getThemeScript } from '@vert-ui/ui'
 
 import appCss from '../styles.css?url'
 import { SiteHeader } from '../components/site-header'
@@ -23,16 +24,37 @@ export const Route = createRootRoute({
         content:
           'Original React + TypeScript components with WCAG AA contrast, keyboard support and soft motion. Copy-paste ready via the shadcn registry.',
       },
+      {
+        name: 'theme-color',
+        content: '#158048',
+      },
     ],
     links: [
       {
         rel: 'icon',
+        href: '/favicon.ico',
+        sizes: 'any',
+      },
+      {
+        rel: 'icon',
         type: 'image/png',
-        href: '/vert-ui-logo.png',
+        sizes: '32x32',
+        href: '/favicon-32x32.png',
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '16x16',
+        href: '/favicon-16x16.png',
       },
       {
         rel: 'apple-touch-icon',
-        href: '/vert-ui-logo.png',
+        sizes: '180x180',
+        href: '/apple-touch-icon.png',
+      },
+      {
+        rel: 'manifest',
+        href: '/site.webmanifest',
       },
       {
         rel: 'stylesheet',
@@ -41,7 +63,7 @@ export const Route = createRootRoute({
     ],
     scripts: [
       {
-        children: `(function(){try{var t=localStorage.getItem('vert-ui-theme');var o=localStorage.getItem('vert-ui-tone');var r=document.documentElement;if(t)r.setAttribute('data-theme',t);if(o==='dark'){r.classList.add('dark');r.setAttribute('data-tone','dark')}else if(o==='light'){r.setAttribute('data-tone','light')}}catch(e){}})()`,
+        children: getThemeScript(),
       },
     ],
   }),
@@ -59,8 +81,10 @@ function RootDocument({ children }: { children: React.ReactNode }) {
           aria-hidden="true"
           className="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(60rem_30rem_at_50%_-10rem,oklch(0.93_0.05_140/0.7),transparent_70%)]"
         />
-        <SiteHeader />
-        <main>{children}</main>
+        <ThemeProvider defaultTone="system">
+          <SiteHeader />
+          <main>{children}</main>
+        </ThemeProvider>
         <TanStackDevtools
           config={{
             position: 'bottom-right',

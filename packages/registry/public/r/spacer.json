@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "spacer",
+  "type": "registry:component",
+  "title": "Spacer",
+  "description": "Flexible or fixed gap for flex and grid layouts.",
+  "dependencies": [
+    "@radix-ui/react-slot@^1.1.0",
+    "class-variance-authority@^0.7.1"
+  ],
+  "registryDependencies": [
+    "https://vert-ui.dev/r/vert-cn.json"
+  ],
+  "files": [
+    {
+      "path": "components/vert-ui/spacer.tsx",
+      "type": "registry:component",
+      "content": "import { Slot } from \"@radix-ui/react-slot\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\nimport * as React from \"react\"\nimport { cn } from '@/lib/vert-ui/cn'\n\nconst widthScale = {\n  0: \"w-0\",\n  1: \"w-1\",\n  2: \"w-2\",\n  3: \"w-3\",\n  4: \"w-4\",\n  5: \"w-5\",\n  6: \"w-6\",\n  8: \"w-8\",\n  10: \"w-10\",\n  12: \"w-12\",\n  16: \"w-16\",\n}\n\nconst heightScale = {\n  0: \"h-0\",\n  1: \"h-1\",\n  2: \"h-2\",\n  3: \"h-3\",\n  4: \"h-4\",\n  5: \"h-5\",\n  6: \"h-6\",\n  8: \"h-8\",\n  10: \"h-10\",\n  12: \"h-12\",\n  16: \"h-16\",\n}\n\nconst bothScale = {\n  0: \"size-0\",\n  1: \"size-1\",\n  2: \"size-2\",\n  3: \"size-3\",\n  4: \"size-4\",\n  5: \"size-5\",\n  6: \"size-6\",\n  8: \"size-8\",\n  10: \"size-10\",\n  12: \"size-12\",\n  16: \"size-16\",\n}\n\nconst spacerVariants = cva(\"\", {\n  variants: {\n    grow: {\n      true: \"flex-1\",\n      false: \"shrink-0\",\n    },\n  },\n  defaultVariants: {\n    grow: true,\n  },\n})\n\nexport interface SpacerProps\n  extends React.HTMLAttributes<HTMLDivElement>,\n    VariantProps<typeof spacerVariants> {\n  /** Render the child element instead of a <div>. */\n  asChild?: boolean\n  /**\n   * Fixed size on the token scale (takes precedence over `grow`).\n   * Combined with `axis` it constrains just one dimension.\n   */\n  size?: keyof typeof widthScale\n  /** Which dimension `size` controls. Defaults to both. */\n  axis?: \"horizontal\" | \"vertical\" | \"both\"\n}\n\nconst Spacer = React.forwardRef<HTMLDivElement, SpacerProps>(\n  ({ className, size, axis = \"both\", grow = true, asChild = false, ...props }, ref) => {\n    const Comp = asChild ? Slot : \"div\"\n    const sized = size != null\n    const fixed = sized\n      ? axis === \"horizontal\"\n        ? widthScale[size]\n        : axis === \"vertical\"\n          ? heightScale[size]\n          : bothScale[size]\n      : undefined\n    return (\n      <Comp\n        ref={ref}\n        aria-hidden=\"true\"\n        data-slot=\"spacer\"\n        data-grow={!sized && grow ? \"true\" : undefined}\n        data-size={sized ? size : undefined}\n        data-axis={axis}\n        className={cn(spacerVariants({ grow: sized ? false : grow }), fixed, className)}\n        {...props}\n      />\n    )\n  },\n)\nSpacer.displayName = \"Spacer\"\n\nexport { Spacer, spacerVariants }\n"
+    }
+  ]
+}

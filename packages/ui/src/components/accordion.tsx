@@ -16,7 +16,7 @@ const accordionItemVariants = cva("border-b border-border", {
 })
 
 const accordionTriggerVariants = cva(
-  "group/trigger flex flex-1 items-center gap-4 text-left font-medium outline-none transition-colors hover:text-foreground/80 focus-visible:ring-2 focus-visible:ring-ring",
+  "group/trigger flex flex-1 items-center gap-4 text-left font-medium outline-none transition-colors duration-[140ms] ease-out-quart hover:text-foreground/80 focus-visible:ring-2 focus-visible:ring-ring",
   {
     variants: {
       size: {

@@ -51,8 +51,8 @@ function Section({
       <div
         className={
           tinted
-            ? "rounded-2xl border border-info/30 bg-info-soft p-6 text-info-soft-foreground shadow-soft"
-            : "rounded-2xl border border-border bg-card p-6 shadow-soft"
+            ? "rounded-2xl border border-info/30 bg-info-soft p-4 text-info-soft-foreground shadow-soft sm:p-6"
+            : "rounded-2xl border border-border bg-card p-4 shadow-soft sm:p-6"
         }
       >
         {children}
@@ -105,7 +105,7 @@ export function DocPage({ title, intro, demo, props, examples, a11y }: DocPagePr
       </Section>
 
       <Section label="Preview" title="Live preview" id={`${slug}-demo`}>
-        <div className="grain relative overflow-hidden rounded-xl border border-border/60 bg-muted/40 p-6 sm:p-10">
+        <div className="grain relative overflow-hidden rounded-xl border border-border/60 bg-muted/40 p-4 sm:p-10">
           <div className="flex min-h-24 items-center justify-center">{demo}</div>
         </div>
       </Section>
@@ -115,7 +115,7 @@ export function DocPage({ title, intro, demo, props, examples, a11y }: DocPagePr
           {examples.map((example) => (
             <div key={example.title} className="space-y-3">
               <h3 className="text-sm font-semibold">{example.title}</h3>
-              <div className="grain relative overflow-hidden rounded-xl border border-border/60 bg-background/70 p-6">
+              <div className="grain relative overflow-hidden rounded-xl border border-border/60 bg-background/70 p-4 sm:p-6">
                 {example.render}
               </div>
               <CodeBlock code={example.code} />
@@ -134,16 +134,16 @@ export function DocPage({ title, intro, demo, props, examples, a11y }: DocPagePr
             <table className="w-full border-collapse text-left text-sm">
               <thead>
                 <tr className="border-b border-border bg-muted/70 text-xs uppercase tracking-wider text-muted-foreground">
-                  <th scope="col" className="px-4 py-3 font-semibold">
+                  <th scope="col" className="px-3 py-3 font-semibold sm:px-4">
                     Prop
                   </th>
-                  <th scope="col" className="px-4 py-3 font-semibold">
+                  <th scope="col" className="px-3 py-3 font-semibold sm:px-4">
                     Type
                   </th>
-                  <th scope="col" className="px-4 py-3 font-semibold">
+                  <th scope="col" className="px-3 py-3 font-semibold sm:px-4">
                     Default
                   </th>
-                  <th scope="col" className="px-4 py-3 font-semibold">
+                  <th scope="col" className="px-3 py-3 font-semibold sm:px-4">
                     Description
                   </th>
                 </tr>
@@ -159,20 +159,20 @@ export function DocPage({ title, intro, demo, props, examples, a11y }: DocPagePr
                   >
                     <th
                       scope="row"
-                      className="px-4 py-3 font-mono text-xs font-medium whitespace-nowrap"
+                      className="px-3 py-3 font-mono text-xs font-medium whitespace-nowrap sm:px-4"
                     >
                       {prop.name}
                       {prop.required ? (
                         <span className="ml-1 font-sans text-destructive">(required)</span>
                       ) : null}
                     </th>
-                    <td className="px-4 py-3 font-mono text-xs text-muted-foreground">
+                    <td className="px-3 py-3 font-mono text-xs text-muted-foreground sm:px-4">
                       {prop.type}
                     </td>
-                    <td className="px-4 py-3 font-mono text-xs text-muted-foreground">
+                    <td className="px-3 py-3 font-mono text-xs text-muted-foreground sm:px-4">
                       {prop.default ?? "—"}
                     </td>
-                    <td className="px-4 py-3 text-muted-foreground">{prop.description}</td>
+                    <td className="px-3 py-3 text-muted-foreground sm:px-4">{prop.description}</td>
                   </tr>
                 ))}
               </tbody>

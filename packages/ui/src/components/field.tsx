@@ -49,13 +49,16 @@ const Field = React.forwardRef<HTMLDivElement, FieldProps>(
         .filter(Boolean)
         .join(" ") || undefined
 
-    const field: FieldControlProps = {
-      id: controlId,
-      "aria-describedby": describedBy,
-      "aria-invalid": error ? true : undefined,
-      required: required || undefined,
-      disabled: disabled || undefined,
-    }
+    const field: FieldControlProps = React.useMemo(
+      () => ({
+        id: controlId,
+        "aria-describedby": describedBy,
+        "aria-invalid": error ? true : undefined,
+        required: required || undefined,
+        disabled: disabled || undefined,
+      }),
+      [controlId, describedBy, error, required, disabled]
+    )
 
     return (
       <div

@@ -110,7 +110,7 @@ export function SidebarMobileNav() {
 
   return (
     <details ref={detailsRef} className="group border-b border-border/70 lg:hidden">
-      <summary className="flex cursor-pointer list-none items-center justify-between px-4 py-3 text-sm font-medium outline-none transition-colors hover:bg-accent/60 focus-visible:ring-2 focus-visible:ring-ring sm:px-6 [&::-webkit-details-marker]:hidden">
+      <summary className="flex cursor-pointer list-none items-center justify-between px-3 py-3 text-sm font-medium outline-none transition-colors hover:bg-accent/60 focus-visible:ring-2 focus-visible:ring-ring sm:px-6 [&::-webkit-details-marker]:hidden">
         <span>Browse docs</span>
         <svg
           aria-hidden="true"
@@ -125,7 +125,7 @@ export function SidebarMobileNav() {
           <path d="m6 9 6 6 6-6" />
         </svg>
       </summary>
-      <div className="max-h-[60vh] overflow-y-auto border-t border-border/70 bg-card/60 px-4 py-4 sm:px-6">
+      <div className="max-h-[60vh] overflow-y-auto border-t border-border/70 bg-card/60 px-3 py-4 sm:px-6">
         <SidebarContent onNavigate={close} />
       </div>
     </details>

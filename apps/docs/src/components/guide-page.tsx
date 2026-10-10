@@ -65,8 +65,8 @@ export function Section({
       <div
         className={
           tinted
-            ? "rounded-2xl border border-info/30 bg-info-soft p-6 text-info-soft-foreground shadow-soft"
-            : "rounded-2xl border border-border bg-card p-6 shadow-soft"
+            ? "rounded-2xl border border-info/30 bg-info-soft p-4 text-info-soft-foreground shadow-soft sm:p-6"
+            : "rounded-2xl border border-border bg-card p-4 shadow-soft sm:p-6"
         }
       >
         {children}

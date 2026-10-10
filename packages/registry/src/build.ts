@@ -71,6 +71,7 @@ const items: ItemDef[] = [
     title: 'Theme',
     description:
       'vert-ui theme engine: design tokens, ready-made themes and base styles. Requires @import "tailwindcss" first.',
+    registryDependencies: ['vert-motion'],
     files: [
       { source: 'styles/vert.css', path: 'styles/vert.css' },
       { source: 'styles/themes.css', path: 'styles/themes.css' },
@@ -79,6 +80,24 @@ const items: ItemDef[] = [
       { source: 'styles/themes/midnight.css', path: 'styles/themes/midnight.css' },
       { source: 'styles/themes/rose.css', path: 'styles/themes/rose.css' },
       { source: 'styles/themes/ocean.css', path: 'styles/themes/ocean.css' },
+    ],
+  },
+  {
+    name: 'vert-motion',
+    type: 'registry:style',
+    title: 'Motion',
+    description:
+      'Shared keyframes for vert-ui animations (overlays, menus, accordion, collapsible, toast). Installed automatically by animated components.',
+    files: [{ source: 'styles/motion.css', path: 'styles/motion.css' }],
+  },
+  {
+    name: 'vert-theme',
+    type: 'registry:lib',
+    title: 'Theme provider',
+    description:
+      'Headless ThemeProvider, useTheme() hook and no-flash ThemeScript for runtime theme and tone switching. Pairs with the `vert` theme item.',
+    files: [
+      { source: 'providers/theme-provider.tsx', path: 'components/vert-ui/theme-provider.tsx' },
     ],
   },
   {
@@ -348,12 +367,116 @@ const items: ItemDef[] = [
     registryDependencies: ['vert-cn'],
     files: [{ source: 'components/hover-card.tsx', path: 'components/vert-ui/hover-card.tsx' }],
   },
+  {
+    name: 'container',
+    type: 'registry:component',
+    title: 'Container',
+    description: 'Centred, max-width content wrapper with viewport-scaled gutters.',
+    dependencies: ['@radix-ui/react-slot', 'class-variance-authority'],
+    registryDependencies: ['vert-cn'],
+    files: [{ source: 'components/container.tsx', path: 'components/vert-ui/container.tsx' }],
+  },
+  {
+    name: 'stack',
+    type: 'registry:component',
+    title: 'Stack',
+    description: 'Flex row/column with token gaps and responsive spacing.',
+    dependencies: ['@radix-ui/react-slot', 'class-variance-authority'],
+    registryDependencies: ['vert-cn'],
+    files: [{ source: 'components/stack.tsx', path: 'components/vert-ui/stack.tsx' }],
+  },
+  {
+    name: 'grid',
+    type: 'registry:component',
+    title: 'Grid',
+    description: 'CSS grid with responsive columns plus a GridItem span helper.',
+    dependencies: ['@radix-ui/react-slot', 'class-variance-authority'],
+    registryDependencies: ['vert-cn'],
+    files: [
+      { source: 'components/grid.tsx', path: 'components/vert-ui/grid.tsx' },
+    ],
+  },
+  {
+    name: 'cluster',
+    type: 'registry:component',
+    title: 'Cluster',
+    description: 'Wrapping inline group for tag rows, toolbars and button clusters.',
+    dependencies: ['@radix-ui/react-slot', 'class-variance-authority'],
+    registryDependencies: ['vert-cn'],
+    files: [{ source: 'components/cluster.tsx', path: 'components/vert-ui/cluster.tsx' }],
+  },
+  {
+    name: 'section',
+    type: 'registry:component',
+    title: 'Section',
+    description: 'Vertical-rhythm page section with responsive spacing.',
+    dependencies: ['@radix-ui/react-slot', 'class-variance-authority'],
+    registryDependencies: ['vert-cn'],
+    files: [{ source: 'components/section.tsx', path: 'components/vert-ui/section.tsx' }],
+  },
+  {
+    name: 'center',
+    type: 'registry:component',
+    title: 'Center',
+    description: 'Centres content on one or both axes with an optional measure cap.',
+    dependencies: ['@radix-ui/react-slot', 'class-variance-authority'],
+    registryDependencies: ['vert-cn'],
+    files: [{ source: 'components/center.tsx', path: 'components/vert-ui/center.tsx' }],
+  },
+  {
+    name: 'spacer',
+    type: 'registry:component',
+    title: 'Spacer',
+    description: 'Flexible or fixed gap for flex and grid layouts.',
+    dependencies: ['@radix-ui/react-slot', 'class-variance-authority'],
+    registryDependencies: ['vert-cn'],
+    files: [{ source: 'components/spacer.tsx', path: 'components/vert-ui/spacer.tsx' }],
+  },
+  {
+    name: 'aspect-ratio',
+    type: 'registry:component',
+    title: 'Aspect Ratio',
+    description: 'Locks content to a width-to-height ratio with an optional fill mode.',
+    dependencies: ['@radix-ui/react-slot'],
+    registryDependencies: ['vert-cn'],
+    files: [{ source: 'components/aspect-ratio.tsx', path: 'components/vert-ui/aspect-ratio.tsx' }],
+  },
+  {
+    name: 'split',
+    type: 'registry:component',
+    title: 'Split',
+    description: 'Two-region layout that stacks on mobile and splits at a breakpoint.',
+    dependencies: ['@radix-ui/react-slot', 'class-variance-authority'],
+    registryDependencies: ['vert-cn'],
+    files: [{ source: 'components/split.tsx', path: 'components/vert-ui/split.tsx' }],
+  },
 ]
 
 function fail(message: string): never {
   console.error(`✗ registry: ${message}`)
   process.exit(1)
 }
+
+/**
+ * Components whose markup references the shared keyframes in `styles/motion.css`.
+ * They declare `registryDependencies: ['vert-cn']` and get `vert-motion` appended
+ * below so `npx shadcn add @vert/<name>` installs the animation CSS too — the
+ * component animates without the consumer installing the whole theme.
+ */
+const motionComponents = new Set<string>([
+  'accordion',
+  'collapsible',
+  'dialog',
+  'dropdown-menu',
+  'hover-card',
+  'popover',
+  'select',
+  'tabs',
+  'tooltip',
+  'toast',
+  'progress',
+  'skeleton',
+])
 
 function transform(content: string, source: string): string {
   let result = content
@@ -386,7 +509,12 @@ function main(): void {
       return `${dep}@${version}`
     })
 
-    const registryDependencies = item.registryDependencies?.map((name) => {
+    const registryDependencyNames = [...(item.registryDependencies ?? [])]
+    if (motionComponents.has(item.name) && !registryDependencyNames.includes('vert-motion')) {
+      registryDependencyNames.push('vert-motion')
+    }
+
+    const registryDependencies = registryDependencyNames.map((name) => {
       if (!names.has(name)) fail(`item "${item.name}" references unknown registry item "${name}"`)
       return `${baseUrl}/${name}.json`
     })
