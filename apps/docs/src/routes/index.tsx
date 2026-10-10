@@ -17,10 +17,10 @@ export const Route = createFileRoute("/")({
 })
 
 const stats = [
-  { value: "28", label: "Components" },
-  { value: "163", label: "Tests passing" },
+  { value: "37", label: "Components" },
+  { value: "225", label: "Tests passing" },
   { value: "756", label: "Contrast pairs" },
-  { value: "30", label: "Registry items" },
+  { value: "41", label: "Registry items" },
 ]
 
 const features = [
@@ -228,7 +228,7 @@ export function Home() {
             Start growing your interface with precision
           </h2>
           <p className="mx-auto mt-3 max-w-xl text-sm text-brand-foreground">
-            Twenty-eight components, thirty registry items, zero lock-in. Open the
+            Thirty-seven components, forty-one registry items, zero lock-in. Open the
             catalog and copy the first one in.
           </p>
           <Button size="lg" variant="secondary" className="mt-6" asChild>

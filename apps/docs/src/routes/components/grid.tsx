@@ -35,6 +35,30 @@ const props: PropRow[] = [
     description: "Aligns items within their grid cells.",
   },
   {
+    name: "autoFit",
+    type: "boolean",
+    default: "false",
+    description:
+      "Responsive tracks that fit as many columns as possible — no breakpoints needed. Overrides the column props.",
+  },
+  {
+    name: "minItemWidth",
+    type: "string",
+    default: '"16rem"',
+    description: "Minimum track width for autoFit. Any CSS length.",
+  },
+  {
+    name: "templateColumns",
+    type: "string",
+    description:
+      "Fully custom grid-template-columns, e.g. \"minmax(0,1fr) 200px\". Overrides columns and autoFit.",
+  },
+  {
+    name: "templateRows",
+    type: "string",
+    description: "Custom grid-template-rows.",
+  },
+  {
     name: "GridItem · colSpan",
     type: "1 | 2 | … | 12 | full | auto",
     description: "How many columns the item spans (col-span-*).",
@@ -131,6 +155,21 @@ function GridPage() {
               <Cell>2</Cell>
               <Cell>3</Cell>
               <Cell>4</Cell>
+            </Grid>
+          ),
+        },
+        {
+          title: "Auto-fit without breakpoints",
+          code: `<Grid autoFit minItemWidth="14rem" gap={4}>
+  <Cell>…</Cell>
+  <Cell>…</Cell>
+  <Cell>…</Cell>
+</Grid>`,
+          render: (
+            <Grid autoFit minItemWidth="10rem" gap={3} className="w-full">
+              <Cell>auto</Cell>
+              <Cell>fit</Cell>
+              <Cell>tracks</Cell>
             </Grid>
           ),
         },

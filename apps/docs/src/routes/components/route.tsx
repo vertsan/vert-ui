@@ -9,9 +9,9 @@ function ComponentsLayout() {
   return (
     <div>
       <SidebarMobileNav />
-      <div className="mx-auto flex w-full max-w-6xl px-4 sm:px-6">
+      <div className="mx-auto flex w-full max-w-6xl px-3 sm:px-6">
         <SidebarAside />
-        <div className="min-w-0 flex-1 py-8 lg:pl-8">
+        <div className="min-w-0 flex-1 py-6 sm:py-8 lg:pl-8">
           <Outlet />
         </div>
       </div>

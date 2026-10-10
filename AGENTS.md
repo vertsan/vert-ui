@@ -40,7 +40,8 @@ the full product spec lives only in the maintainer's brief — there is no other
 - Docs dev: `pnpm --filter @vert-ui/docs dev` (port 3000); root `pnpm dev` is the same via turbo.
 - Docs build: `pnpm --filter @vert-ui/docs build` — passes (benign "use client" warnings).
 - Tests: only `@vert-ui/ui` has tests.
-  `pnpm --filter @vert-ui/ui exec vitest run` (124/124, 25 files);
+  `pnpm --filter @vert-ui/ui exec vitest run` (225/225, 38 files);
+  add `--maxWorkers=1` and `$env:NODE_OPTIONS='--max-old-space-size=6144'` if the full run OOMs;
   single file: `pnpm --filter @vert-ui/ui exec vitest run src/components/button.test.tsx`.
   jsdom polyfills (pointer capture, scrollIntoView, ResizeObserver, matchMedia) live in
   `src/test-setup.ts`; jest-dom matchers come from `@testing-library/jest-dom/vitest`.

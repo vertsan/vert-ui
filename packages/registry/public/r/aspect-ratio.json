@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "aspect-ratio",
+  "type": "registry:component",
+  "title": "Aspect Ratio",
+  "description": "Locks content to a width-to-height ratio with an optional fill mode.",
+  "dependencies": [
+    "@radix-ui/react-slot@^1.1.0"
+  ],
+  "registryDependencies": [
+    "https://vert-ui.dev/r/vert-cn.json"
+  ],
+  "files": [
+    {
+      "path": "components/vert-ui/aspect-ratio.tsx",
+      "type": "registry:component",
+      "content": "import { Slot } from \"@radix-ui/react-slot\"\nimport * as React from \"react\"\nimport { cn } from '@/lib/vert-ui/cn'\n\nexport interface AspectRatioProps extends React.HTMLAttributes<HTMLDivElement> {\n  /** Width divided by height, e.g. `16 / 9` or `1`. Defaults to `1`. */\n  ratio?: number\n  /** Render the child element instead of a <div> — keeps styles, defers semantics. */\n  asChild?: boolean\n  /** Makes direct children absolutely fill the box (image/video/overlay pattern). */\n  fill?: boolean\n}\n\nconst AspectRatio = React.forwardRef<HTMLDivElement, AspectRatioProps>(\n  ({ className, style, ratio = 1, fill = false, asChild = false, ...props }, ref) => {\n    const Comp = asChild ? Slot : \"div\"\n    return (\n      <Comp\n        ref={ref}\n        data-slot=\"aspect-ratio\"\n        data-ratio={ratio}\n        className={cn(\n          \"relative w-full overflow-hidden\",\n          fill && \"[&>*]:absolute [&>*]:inset-0 [&>*]:size-full [&>img]:object-cover [&>video]:object-cover\",\n          className,\n        )}\n        style={{ aspectRatio: `${ratio}`, ...style }}\n        {...props}\n      />\n    )\n  },\n)\nAspectRatio.displayName = \"AspectRatio\"\n\nexport { AspectRatio }\n"
+    }
+  ]
+}

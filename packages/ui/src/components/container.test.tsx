@@ -38,4 +38,20 @@ describe('Container', () => {
     expect(el).toHaveAttribute('data-slot', 'container')
     expect(el).toHaveClass('max-w-3xl')
   })
+
+  it('accepts an arbitrary maxWidth that overrides the size scale', () => {
+    const { container } = render(<Container size="xl" maxWidth="42rem" />)
+    const el = container.firstElementChild as HTMLElement
+    expect(el.style.maxWidth).toBe('42rem')
+    expect(el).not.toHaveClass('max-w-7xl')
+    expect(el).not.toHaveAttribute('data-size')
+  })
+
+  it('accepts a custom gutter instead of the responsive padding scale', () => {
+    const { container } = render(<Container gutter="1.25rem" />)
+    const el = container.firstElementChild as HTMLElement
+    expect(el.style.paddingLeft).toBe('1.25rem')
+    expect(el.style.paddingRight).toBe('1.25rem')
+    expect(el).not.toHaveClass('px-4')
+  })
 })

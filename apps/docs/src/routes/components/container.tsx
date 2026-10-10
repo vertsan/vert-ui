@@ -20,6 +20,16 @@ const props: PropRow[] = [
     description: "Adds px-4 / sm:px-6 / lg:px-8 gutters that scale with the viewport.",
   },
   {
+    name: "maxWidth",
+    type: "string",
+    description: "Arbitrary max-width (any CSS length). Overrides size.",
+  },
+  {
+    name: "gutter",
+    type: "string",
+    description: "Arbitrary gutter (any CSS length), used instead of the padded scale.",
+  },
+  {
     name: "asChild",
     type: "boolean",
     default: "false",

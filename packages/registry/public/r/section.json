@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "section",
+  "type": "registry:component",
+  "title": "Section",
+  "description": "Vertical-rhythm page section with responsive spacing.",
+  "dependencies": [
+    "@radix-ui/react-slot@^1.1.0",
+    "class-variance-authority@^0.7.1"
+  ],
+  "registryDependencies": [
+    "https://vert-ui.dev/r/vert-cn.json"
+  ],
+  "files": [
+    {
+      "path": "components/vert-ui/section.tsx",
+      "type": "registry:component",
+      "content": "import { Slot } from \"@radix-ui/react-slot\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\nimport * as React from \"react\"\nimport { cn } from '@/lib/vert-ui/cn'\n\nconst sectionVariants = cva(\"w-full\", {\n  variants: {\n    size: {\n      sm: \"py-8 sm:py-10\",\n      md: \"py-12 sm:py-16\",\n      lg: \"py-16 sm:py-24\",\n      xl: \"py-20 sm:py-32\",\n      none: \"\",\n    },\n  },\n  defaultVariants: {\n    size: \"md\",\n  },\n})\n\nexport interface SectionProps\n  extends React.HTMLAttributes<HTMLElement>,\n    VariantProps<typeof sectionVariants> {\n  /** Render the child element instead of a <section> — keeps styles, defers semantics. */\n  asChild?: boolean\n  /** Arbitrary vertical padding (any CSS length). Overrides `size`. */\n  space?: string\n}\n\nconst Section = React.forwardRef<HTMLElement, SectionProps>(\n  ({ className, style, size, space, asChild = false, ...props }, ref) => {\n    const Comp = asChild ? Slot : \"section\"\n    return (\n      <Comp\n        ref={ref}\n        data-slot=\"section\"\n        data-size={space ? undefined : size || \"md\"}\n        className={cn(sectionVariants({ size: space ? undefined : size }), className)}\n        style={{ paddingTop: space, paddingBottom: space, ...style }}\n        {...props}\n      />\n    )\n  },\n)\nSection.displayName = \"Section\"\n\nexport { Section, sectionVariants }\n"
+    }
+  ]
+}

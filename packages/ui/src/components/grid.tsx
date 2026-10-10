@@ -296,7 +296,7 @@ const Grid = React.forwardRef<HTMLDivElement, GridProps>(
         data-auto-fit={autoFit ? true : undefined}
         className={cn(
           gridVariants({
-            columns: customTemplate ? undefined : columns,
+            columns: customTemplate ? "none" : columns,
             smColumns: customTemplate ? undefined : smColumns,
             mdColumns: customTemplate ? undefined : mdColumns,
             lgColumns: customTemplate ? undefined : lgColumns,

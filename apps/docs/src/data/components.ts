@@ -16,6 +16,11 @@ export const componentDocs: ComponentDocMeta[] = [
     description: "Inline status blocks with semantic variants.",
   },
   {
+    name: "Aspect Ratio",
+    href: "/components/aspect-ratio",
+    description: "Locks media to a width-to-height ratio with no layout shift.",
+  },
+  {
     name: "Avatar",
     href: "/components/avatar",
     description: "Image with initials fallback, no layout shift.",
@@ -39,6 +44,11 @@ export const componentDocs: ComponentDocMeta[] = [
     name: "Carousel",
     href: "/components/carousel",
     description: "Scroll-snap slider with labelled controls and dots.",
+  },
+  {
+    name: "Center",
+    href: "/components/center",
+    description: "Centres content on one or both axes with an optional measure.",
   },
   {
     name: "Checkbox",
@@ -116,6 +126,11 @@ export const componentDocs: ComponentDocMeta[] = [
     description: "Single-choice group with arrow-key navigation.",
   },
   {
+    name: "Section",
+    href: "/components/section",
+    description: "Vertical-rhythm page section with responsive spacing.",
+  },
+  {
     name: "Select",
     href: "/components/select",
     description: "Single-value listbox trigger with typeahead.",
@@ -129,6 +144,16 @@ export const componentDocs: ComponentDocMeta[] = [
     name: "Skeleton",
     href: "/components/skeleton",
     description: "Decorative loading placeholder.",
+  },
+  {
+    name: "Spacer",
+    href: "/components/spacer",
+    description: "Flexible or fixed gap for flex and grid layouts.",
+  },
+  {
+    name: "Split",
+    href: "/components/split",
+    description: "Two-region layout that stacks on mobile and splits on desktop.",
   },
   {
     name: "Stack",

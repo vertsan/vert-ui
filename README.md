@@ -13,7 +13,7 @@
 <p align="center">
   <a href="#install"><img alt="npm" src="https://img.shields.io/npm/v/@vert-ui/ui?color=10b981&label=@vert-ui/ui" /></a>&nbsp;
   <a href="LICENSE"><img alt="MIT" src="https://img.shields.io/badge/license-MIT-green" /></a>&nbsp;
-  <a href="#components"><img alt="28 components" src="https://img.shields.io/badge/components-28-10b981" /></a>&nbsp;
+  <a href="#components"><img alt="37 components" src="https://img.shields.io/badge/components-37-10b981" /></a>&nbsp;
   <a href="#accessibility"><img alt="756 contrast pairs" src="https://img.shields.io/badge/contrast_pairs-756-10b981" /></a>
 </p>
 
@@ -32,11 +32,12 @@
 
 ## Components
 
-28 components, 30 registry items:
+37 components, 41 registry items:
 
 | Category | Components |
 | --- | --- |
 | **Inputs** | Button · Input · Textarea · Checkbox · Radio Group · Select · Switch |
+| **Layout primitives** | Container · Stack · Cluster · Grid · Split · Center · Section · Spacer · Aspect Ratio |
 | **Layout** | Card · Separator · Skeleton · Table · Field · Field Group |
 | **Feedback** | Alert · Badge · Progress · Toast |
 | **Overlay** | Dialog · Dropdown Menu · Popover · Tooltip · Hover Card · Command |
@@ -184,7 +185,7 @@ pnpm install
 # Docs dev server
 pnpm --filter @vert-ui/docs dev
 
-# Unit tests (vitest + jsdom, 28 components)
+# Unit tests (vitest + jsdom, 37 components)
 pnpm --filter @vert-ui/ui exec vitest run
 
 # Single test file

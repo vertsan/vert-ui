@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "center",
+  "type": "registry:component",
+  "title": "Center",
+  "description": "Centres content on one or both axes with an optional measure cap.",
+  "dependencies": [
+    "@radix-ui/react-slot@^1.1.0",
+    "class-variance-authority@^0.7.1"
+  ],
+  "registryDependencies": [
+    "https://vert-ui.dev/r/vert-cn.json"
+  ],
+  "files": [
+    {
+      "path": "components/vert-ui/center.tsx",
+      "type": "registry:component",
+      "content": "import { Slot } from \"@radix-ui/react-slot\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\nimport * as React from \"react\"\nimport { cn } from '@/lib/vert-ui/cn'\n\nconst centerVariants = cva(\"flex\", {\n  variants: {\n    axis: {\n      both: \"items-center justify-center\",\n      horizontal: \"justify-center\",\n      vertical: \"items-center\",\n    },\n  },\n  defaultVariants: {\n    axis: \"both\",\n  },\n})\n\nexport interface CenterProps\n  extends React.HTMLAttributes<HTMLDivElement>,\n    VariantProps<typeof centerVariants> {\n  /** Render the child element instead of a <div> — keeps styles, defers semantics. */\n  asChild?: boolean\n  /** Caps the content measure — a readable line length. Any CSS length. */\n  maxWidth?: string\n  /** Adds responsive horizontal gutters so edge content never touches the viewport. */\n  padded?: boolean\n}\n\nconst Center = React.forwardRef<HTMLDivElement, CenterProps>(\n  (\n    { className, style, axis, maxWidth, padded = false, asChild = false, ...props },\n    ref,\n  ) => {\n    const Comp = asChild ? Slot : \"div\"\n    return (\n      <Comp\n        ref={ref}\n        data-slot=\"center\"\n        data-axis={axis || \"both\"}\n        className={cn(centerVariants({ axis }), padded && \"px-4 sm:px-6\", className)}\n        style={{ maxWidth, ...style }}\n        {...props}\n      />\n    )\n  },\n)\nCenter.displayName = \"Center\"\n\nexport { Center, centerVariants }\n"
+    }
+  ]
+}

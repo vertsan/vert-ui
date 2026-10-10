@@ -15,11 +15,13 @@ import { Route as GuideRouteRouteImport } from './routes/guide/route'
 import { Route as ComponentsIndexRouteImport } from './routes/components/index'
 import { Route as ComponentsAccordionRouteImport } from './routes/components/accordion'
 import { Route as ComponentsAlertRouteImport } from './routes/components/alert'
+import { Route as ComponentsAspectRatioRouteImport } from './routes/components/aspect-ratio'
 import { Route as ComponentsAvatarRouteImport } from './routes/components/avatar'
 import { Route as ComponentsBadgeRouteImport } from './routes/components/badge'
 import { Route as ComponentsButtonRouteImport } from './routes/components/button'
 import { Route as ComponentsCardRouteImport } from './routes/components/card'
 import { Route as ComponentsCarouselRouteImport } from './routes/components/carousel'
+import { Route as ComponentsCenterRouteImport } from './routes/components/center'
 import { Route as ComponentsCheckboxRouteImport } from './routes/components/checkbox'
 import { Route as ComponentsClusterRouteImport } from './routes/components/cluster'
 import { Route as ComponentsCollapsibleRouteImport } from './routes/components/collapsible'
@@ -35,9 +37,12 @@ import { Route as ComponentsLabelRouteImport } from './routes/components/label'
 import { Route as ComponentsPopoverRouteImport } from './routes/components/popover'
 import { Route as ComponentsProgressRouteImport } from './routes/components/progress'
 import { Route as ComponentsRadioGroupRouteImport } from './routes/components/radio-group'
+import { Route as ComponentsSectionRouteImport } from './routes/components/section'
 import { Route as ComponentsSelectRouteImport } from './routes/components/select'
 import { Route as ComponentsSeparatorRouteImport } from './routes/components/separator'
 import { Route as ComponentsSkeletonRouteImport } from './routes/components/skeleton'
+import { Route as ComponentsSpacerRouteImport } from './routes/components/spacer'
+import { Route as ComponentsSplitRouteImport } from './routes/components/split'
 import { Route as ComponentsStackRouteImport } from './routes/components/stack'
 import { Route as ComponentsSwitchRouteImport } from './routes/components/switch'
 import { Route as ComponentsTableRouteImport } from './routes/components/table'
@@ -81,6 +86,11 @@ const ComponentsAlertRoute = ComponentsAlertRouteImport.update({
   path: '/alert',
   getParentRoute: () => ComponentsRouteRoute,
 } as any)
+const ComponentsAspectRatioRoute = ComponentsAspectRatioRouteImport.update({
+  id: '/aspect-ratio',
+  path: '/aspect-ratio',
+  getParentRoute: () => ComponentsRouteRoute,
+} as any)
 const ComponentsAvatarRoute = ComponentsAvatarRouteImport.update({
   id: '/avatar',
   path: '/avatar',
@@ -104,6 +114,11 @@ const ComponentsCardRoute = ComponentsCardRouteImport.update({
 const ComponentsCarouselRoute = ComponentsCarouselRouteImport.update({
   id: '/carousel',
   path: '/carousel',
+  getParentRoute: () => ComponentsRouteRoute,
+} as any)
+const ComponentsCenterRoute = ComponentsCenterRouteImport.update({
+  id: '/center',
+  path: '/center',
   getParentRoute: () => ComponentsRouteRoute,
 } as any)
 const ComponentsCheckboxRoute = ComponentsCheckboxRouteImport.update({
@@ -181,6 +196,11 @@ const ComponentsRadioGroupRoute = ComponentsRadioGroupRouteImport.update({
   path: '/radio-group',
   getParentRoute: () => ComponentsRouteRoute,
 } as any)
+const ComponentsSectionRoute = ComponentsSectionRouteImport.update({
+  id: '/section',
+  path: '/section',
+  getParentRoute: () => ComponentsRouteRoute,
+} as any)
 const ComponentsSelectRoute = ComponentsSelectRouteImport.update({
   id: '/select',
   path: '/select',
@@ -194,6 +214,16 @@ const ComponentsSeparatorRoute = ComponentsSeparatorRouteImport.update({
 const ComponentsSkeletonRoute = ComponentsSkeletonRouteImport.update({
   id: '/skeleton',
   path: '/skeleton',
+  getParentRoute: () => ComponentsRouteRoute,
+} as any)
+const ComponentsSpacerRoute = ComponentsSpacerRouteImport.update({
+  id: '/spacer',
+  path: '/spacer',
+  getParentRoute: () => ComponentsRouteRoute,
+} as any)
+const ComponentsSplitRoute = ComponentsSplitRouteImport.update({
+  id: '/split',
+  path: '/split',
   getParentRoute: () => ComponentsRouteRoute,
 } as any)
 const ComponentsStackRoute = ComponentsStackRouteImport.update({
@@ -263,11 +293,13 @@ export interface FileRoutesByFullPath {
   '/guide': typeof GuideRouteRouteWithChildren
   '/components/accordion': typeof ComponentsAccordionRoute
   '/components/alert': typeof ComponentsAlertRoute
+  '/components/aspect-ratio': typeof ComponentsAspectRatioRoute
   '/components/avatar': typeof ComponentsAvatarRoute
   '/components/badge': typeof ComponentsBadgeRoute
   '/components/button': typeof ComponentsButtonRoute
   '/components/card': typeof ComponentsCardRoute
   '/components/carousel': typeof ComponentsCarouselRoute
+  '/components/center': typeof ComponentsCenterRoute
   '/components/checkbox': typeof ComponentsCheckboxRoute
   '/components/cluster': typeof ComponentsClusterRoute
   '/components/collapsible': typeof ComponentsCollapsibleRoute
@@ -283,9 +315,12 @@ export interface FileRoutesByFullPath {
   '/components/popover': typeof ComponentsPopoverRoute
   '/components/progress': typeof ComponentsProgressRoute
   '/components/radio-group': typeof ComponentsRadioGroupRoute
+  '/components/section': typeof ComponentsSectionRoute
   '/components/select': typeof ComponentsSelectRoute
   '/components/separator': typeof ComponentsSeparatorRoute
   '/components/skeleton': typeof ComponentsSkeletonRoute
+  '/components/spacer': typeof ComponentsSpacerRoute
+  '/components/split': typeof ComponentsSplitRoute
   '/components/stack': typeof ComponentsStackRoute
   '/components/switch': typeof ComponentsSwitchRoute
   '/components/table': typeof ComponentsTableRoute
@@ -304,11 +339,13 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/components/accordion': typeof ComponentsAccordionRoute
   '/components/alert': typeof ComponentsAlertRoute
+  '/components/aspect-ratio': typeof ComponentsAspectRatioRoute
   '/components/avatar': typeof ComponentsAvatarRoute
   '/components/badge': typeof ComponentsBadgeRoute
   '/components/button': typeof ComponentsButtonRoute
   '/components/card': typeof ComponentsCardRoute
   '/components/carousel': typeof ComponentsCarouselRoute
+  '/components/center': typeof ComponentsCenterRoute
   '/components/checkbox': typeof ComponentsCheckboxRoute
   '/components/cluster': typeof ComponentsClusterRoute
   '/components/collapsible': typeof ComponentsCollapsibleRoute
@@ -324,9 +361,12 @@ export interface FileRoutesByTo {
   '/components/popover': typeof ComponentsPopoverRoute
   '/components/progress': typeof ComponentsProgressRoute
   '/components/radio-group': typeof ComponentsRadioGroupRoute
+  '/components/section': typeof ComponentsSectionRoute
   '/components/select': typeof ComponentsSelectRoute
   '/components/separator': typeof ComponentsSeparatorRoute
   '/components/skeleton': typeof ComponentsSkeletonRoute
+  '/components/spacer': typeof ComponentsSpacerRoute
+  '/components/split': typeof ComponentsSplitRoute
   '/components/stack': typeof ComponentsStackRoute
   '/components/switch': typeof ComponentsSwitchRoute
   '/components/table': typeof ComponentsTableRoute
@@ -348,11 +388,13 @@ export interface FileRoutesById {
   '/guide': typeof GuideRouteRouteWithChildren
   '/components/accordion': typeof ComponentsAccordionRoute
   '/components/alert': typeof ComponentsAlertRoute
+  '/components/aspect-ratio': typeof ComponentsAspectRatioRoute
   '/components/avatar': typeof ComponentsAvatarRoute
   '/components/badge': typeof ComponentsBadgeRoute
   '/components/button': typeof ComponentsButtonRoute
   '/components/card': typeof ComponentsCardRoute
   '/components/carousel': typeof ComponentsCarouselRoute
+  '/components/center': typeof ComponentsCenterRoute
   '/components/checkbox': typeof ComponentsCheckboxRoute
   '/components/cluster': typeof ComponentsClusterRoute
   '/components/collapsible': typeof ComponentsCollapsibleRoute
@@ -368,9 +410,12 @@ export interface FileRoutesById {
   '/components/popover': typeof ComponentsPopoverRoute
   '/components/progress': typeof ComponentsProgressRoute
   '/components/radio-group': typeof ComponentsRadioGroupRoute
+  '/components/section': typeof ComponentsSectionRoute
   '/components/select': typeof ComponentsSelectRoute
   '/components/separator': typeof ComponentsSeparatorRoute
   '/components/skeleton': typeof ComponentsSkeletonRoute
+  '/components/spacer': typeof ComponentsSpacerRoute
+  '/components/split': typeof ComponentsSplitRoute
   '/components/stack': typeof ComponentsStackRoute
   '/components/switch': typeof ComponentsSwitchRoute
   '/components/table': typeof ComponentsTableRoute
@@ -393,11 +438,13 @@ export interface FileRouteTypes {
     | '/guide'
     | '/components/accordion'
     | '/components/alert'
+    | '/components/aspect-ratio'
     | '/components/avatar'
     | '/components/badge'
     | '/components/button'
     | '/components/card'
     | '/components/carousel'
+    | '/components/center'
     | '/components/checkbox'
     | '/components/cluster'
     | '/components/collapsible'
@@ -413,9 +460,12 @@ export interface FileRouteTypes {
     | '/components/popover'
     | '/components/progress'
     | '/components/radio-group'
+    | '/components/section'
     | '/components/select'
     | '/components/separator'
     | '/components/skeleton'
+    | '/components/spacer'
+    | '/components/split'
     | '/components/stack'
     | '/components/switch'
     | '/components/table'
@@ -434,11 +484,13 @@ export interface FileRouteTypes {
     | '/'
     | '/components/accordion'
     | '/components/alert'
+    | '/components/aspect-ratio'
     | '/components/avatar'
     | '/components/badge'
     | '/components/button'
     | '/components/card'
     | '/components/carousel'
+    | '/components/center'
     | '/components/checkbox'
     | '/components/cluster'
     | '/components/collapsible'
@@ -454,9 +506,12 @@ export interface FileRouteTypes {
     | '/components/popover'
     | '/components/progress'
     | '/components/radio-group'
+    | '/components/section'
     | '/components/select'
     | '/components/separator'
     | '/components/skeleton'
+    | '/components/spacer'
+    | '/components/split'
     | '/components/stack'
     | '/components/switch'
     | '/components/table'
@@ -477,11 +532,13 @@ export interface FileRouteTypes {
     | '/guide'
     | '/components/accordion'
     | '/components/alert'
+    | '/components/aspect-ratio'
     | '/components/avatar'
     | '/components/badge'
     | '/components/button'
     | '/components/card'
     | '/components/carousel'
+    | '/components/center'
     | '/components/checkbox'
     | '/components/cluster'
     | '/components/collapsible'
@@ -497,9 +554,12 @@ export interface FileRouteTypes {
     | '/components/popover'
     | '/components/progress'
     | '/components/radio-group'
+    | '/components/section'
     | '/components/select'
     | '/components/separator'
     | '/components/skeleton'
+    | '/components/spacer'
+    | '/components/split'
     | '/components/stack'
     | '/components/switch'
     | '/components/table'
@@ -565,6 +625,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ComponentsAlertRouteImport
       parentRoute: typeof ComponentsRouteRoute
     }
+    '/components/aspect-ratio': {
+      id: '/components/aspect-ratio'
+      path: '/aspect-ratio'
+      fullPath: '/components/aspect-ratio'
+      preLoaderRoute: typeof ComponentsAspectRatioRouteImport
+      parentRoute: typeof ComponentsRouteRoute
+    }
     '/components/avatar': {
       id: '/components/avatar'
       path: '/avatar'
@@ -598,6 +665,13 @@ declare module '@tanstack/react-router' {
       path: '/carousel'
       fullPath: '/components/carousel'
       preLoaderRoute: typeof ComponentsCarouselRouteImport
+      parentRoute: typeof ComponentsRouteRoute
+    }
+    '/components/center': {
+      id: '/components/center'
+      path: '/center'
+      fullPath: '/components/center'
+      preLoaderRoute: typeof ComponentsCenterRouteImport
       parentRoute: typeof ComponentsRouteRoute
     }
     '/components/checkbox': {
@@ -705,6 +779,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ComponentsRadioGroupRouteImport
       parentRoute: typeof ComponentsRouteRoute
     }
+    '/components/section': {
+      id: '/components/section'
+      path: '/section'
+      fullPath: '/components/section'
+      preLoaderRoute: typeof ComponentsSectionRouteImport
+      parentRoute: typeof ComponentsRouteRoute
+    }
     '/components/select': {
       id: '/components/select'
       path: '/select'
@@ -724,6 +805,20 @@ declare module '@tanstack/react-router' {
       path: '/skeleton'
       fullPath: '/components/skeleton'
       preLoaderRoute: typeof ComponentsSkeletonRouteImport
+      parentRoute: typeof ComponentsRouteRoute
+    }
+    '/components/spacer': {
+      id: '/components/spacer'
+      path: '/spacer'
+      fullPath: '/components/spacer'
+      preLoaderRoute: typeof ComponentsSpacerRouteImport
+      parentRoute: typeof ComponentsRouteRoute
+    }
+    '/components/split': {
+      id: '/components/split'
+      path: '/split'
+      fullPath: '/components/split'
+      preLoaderRoute: typeof ComponentsSplitRouteImport
       parentRoute: typeof ComponentsRouteRoute
     }
     '/components/stack': {
@@ -816,11 +911,13 @@ declare module '@tanstack/react-router' {
 interface ComponentsRouteRouteChildren {
   ComponentsAccordionRoute: typeof ComponentsAccordionRoute
   ComponentsAlertRoute: typeof ComponentsAlertRoute
+  ComponentsAspectRatioRoute: typeof ComponentsAspectRatioRoute
   ComponentsAvatarRoute: typeof ComponentsAvatarRoute
   ComponentsBadgeRoute: typeof ComponentsBadgeRoute
   ComponentsButtonRoute: typeof ComponentsButtonRoute
   ComponentsCardRoute: typeof ComponentsCardRoute
   ComponentsCarouselRoute: typeof ComponentsCarouselRoute
+  ComponentsCenterRoute: typeof ComponentsCenterRoute
   ComponentsCheckboxRoute: typeof ComponentsCheckboxRoute
   ComponentsClusterRoute: typeof ComponentsClusterRoute
   ComponentsCollapsibleRoute: typeof ComponentsCollapsibleRoute
@@ -836,9 +933,12 @@ interface ComponentsRouteRouteChildren {
   ComponentsPopoverRoute: typeof ComponentsPopoverRoute
   ComponentsProgressRoute: typeof ComponentsProgressRoute
   ComponentsRadioGroupRoute: typeof ComponentsRadioGroupRoute
+  ComponentsSectionRoute: typeof ComponentsSectionRoute
   ComponentsSelectRoute: typeof ComponentsSelectRoute
   ComponentsSeparatorRoute: typeof ComponentsSeparatorRoute
   ComponentsSkeletonRoute: typeof ComponentsSkeletonRoute
+  ComponentsSpacerRoute: typeof ComponentsSpacerRoute
+  ComponentsSplitRoute: typeof ComponentsSplitRoute
   ComponentsStackRoute: typeof ComponentsStackRoute
   ComponentsSwitchRoute: typeof ComponentsSwitchRoute
   ComponentsTableRoute: typeof ComponentsTableRoute
@@ -852,11 +952,13 @@ interface ComponentsRouteRouteChildren {
 const ComponentsRouteRouteChildren: ComponentsRouteRouteChildren = {
   ComponentsAccordionRoute: ComponentsAccordionRoute,
   ComponentsAlertRoute: ComponentsAlertRoute,
+  ComponentsAspectRatioRoute: ComponentsAspectRatioRoute,
   ComponentsAvatarRoute: ComponentsAvatarRoute,
   ComponentsBadgeRoute: ComponentsBadgeRoute,
   ComponentsButtonRoute: ComponentsButtonRoute,
   ComponentsCardRoute: ComponentsCardRoute,
   ComponentsCarouselRoute: ComponentsCarouselRoute,
+  ComponentsCenterRoute: ComponentsCenterRoute,
   ComponentsCheckboxRoute: ComponentsCheckboxRoute,
   ComponentsClusterRoute: ComponentsClusterRoute,
   ComponentsCollapsibleRoute: ComponentsCollapsibleRoute,
@@ -872,9 +974,12 @@ const ComponentsRouteRouteChildren: ComponentsRouteRouteChildren = {
   ComponentsPopoverRoute: ComponentsPopoverRoute,
   ComponentsProgressRoute: ComponentsProgressRoute,
   ComponentsRadioGroupRoute: ComponentsRadioGroupRoute,
+  ComponentsSectionRoute: ComponentsSectionRoute,
   ComponentsSelectRoute: ComponentsSelectRoute,
   ComponentsSeparatorRoute: ComponentsSeparatorRoute,
   ComponentsSkeletonRoute: ComponentsSkeletonRoute,
+  ComponentsSpacerRoute: ComponentsSpacerRoute,
+  ComponentsSplitRoute: ComponentsSplitRoute,
   ComponentsStackRoute: ComponentsStackRoute,
   ComponentsSwitchRoute: ComponentsSwitchRoute,
   ComponentsTableRoute: ComponentsTableRoute,

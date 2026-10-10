@@ -41,6 +41,25 @@ describe('Grid', () => {
     expect(el).toHaveAttribute('data-slot', 'grid')
     expect(el).toHaveClass('grid-cols-2')
   })
+
+  it('supports auto-fit tracks with a custom minimum width', () => {
+    const { container } = render(<Grid autoFit minItemWidth="12rem" />)
+    const el = container.firstElementChild as HTMLElement
+    expect(el).toHaveAttribute('data-auto-fit', 'true')
+    expect(el.style.gridTemplateColumns).toBe('repeat(auto-fit, minmax(12rem, 1fr))')
+    expect(el).not.toHaveAttribute('data-columns')
+    expect(el).not.toHaveClass('grid-cols-1')
+  })
+
+  it('accepts a fully custom template that overrides columns', () => {
+    const { container } = render(
+      <Grid templateColumns="minmax(0,1fr) 200px" templateRows="auto 1fr" />,
+    )
+    const el = container.firstElementChild as HTMLElement
+    expect(el.style.gridTemplateColumns).toBe('minmax(0,1fr) 200px')
+    expect(el.style.gridTemplateRows).toBe('auto 1fr')
+    expect(el).not.toHaveClass('grid-cols-1')
+  })
 })
 
 describe('GridItem', () => {

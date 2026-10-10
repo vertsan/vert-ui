@@ -681,6 +681,100 @@
           "type": "registry:component"
         }
       ]
+    },
+    {
+      "name": "section",
+      "type": "registry:component",
+      "title": "Section",
+      "description": "Vertical-rhythm page section with responsive spacing.",
+      "dependencies": [
+        "@radix-ui/react-slot@^1.1.0",
+        "class-variance-authority@^0.7.1"
+      ],
+      "registryDependencies": [
+        "https://vert-ui.dev/r/vert-cn.json"
+      ],
+      "files": [
+        {
+          "path": "components/vert-ui/section.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "center",
+      "type": "registry:component",
+      "title": "Center",
+      "description": "Centres content on one or both axes with an optional measure cap.",
+      "dependencies": [
+        "@radix-ui/react-slot@^1.1.0",
+        "class-variance-authority@^0.7.1"
+      ],
+      "registryDependencies": [
+        "https://vert-ui.dev/r/vert-cn.json"
+      ],
+      "files": [
+        {
+          "path": "components/vert-ui/center.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "spacer",
+      "type": "registry:component",
+      "title": "Spacer",
+      "description": "Flexible or fixed gap for flex and grid layouts.",
+      "dependencies": [
+        "@radix-ui/react-slot@^1.1.0",
+        "class-variance-authority@^0.7.1"
+      ],
+      "registryDependencies": [
+        "https://vert-ui.dev/r/vert-cn.json"
+      ],
+      "files": [
+        {
+          "path": "components/vert-ui/spacer.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "aspect-ratio",
+      "type": "registry:component",
+      "title": "Aspect Ratio",
+      "description": "Locks content to a width-to-height ratio with an optional fill mode.",
+      "dependencies": [
+        "@radix-ui/react-slot@^1.1.0"
+      ],
+      "registryDependencies": [
+        "https://vert-ui.dev/r/vert-cn.json"
+      ],
+      "files": [
+        {
+          "path": "components/vert-ui/aspect-ratio.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "split",
+      "type": "registry:component",
+      "title": "Split",
+      "description": "Two-region layout that stacks on mobile and splits at a breakpoint.",
+      "dependencies": [
+        "@radix-ui/react-slot@^1.1.0",
+        "class-variance-authority@^0.7.1"
+      ],
+      "registryDependencies": [
+        "https://vert-ui.dev/r/vert-cn.json"
+      ],
+      "files": [
+        {
+          "path": "components/vert-ui/split.tsx",
+          "type": "registry:component"
+        }
+      ]
     }
   ]
 }
