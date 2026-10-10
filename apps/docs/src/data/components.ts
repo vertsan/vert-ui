@@ -46,6 +46,11 @@ export const componentDocs: ComponentDocMeta[] = [
     description: "Multi-select choice with indeterminate state.",
   },
   {
+    name: "Cluster",
+    href: "/components/cluster",
+    description: "Wrapping inline group for tags, toolbars and button rows.",
+  },
+  {
     name: "Collapsible",
     href: "/components/collapsible",
     description: "Single disclosure region with aria-expanded.",
@@ -54,6 +59,11 @@ export const componentDocs: ComponentDocMeta[] = [
     name: "Command",
     href: "/components/command",
     description: "Filterable command palette with keyboard navigation.",
+  },
+  {
+    name: "Container",
+    href: "/components/container",
+    description: "Centred, max-width content wrapper with responsive gutters.",
   },
   {
     name: "Dialog",
@@ -69,6 +79,11 @@ export const componentDocs: ComponentDocMeta[] = [
     name: "Field",
     href: "/components/field",
     description: "Wires label, description and error to any control.",
+  },
+  {
+    name: "Grid",
+    href: "/components/grid",
+    description: "Responsive CSS grid with column and span breakpoints.",
   },
   {
     name: "Hover Card",
@@ -114,6 +129,11 @@ export const componentDocs: ComponentDocMeta[] = [
     name: "Skeleton",
     href: "/components/skeleton",
     description: "Decorative loading placeholder.",
+  },
+  {
+    name: "Stack",
+    href: "/components/stack",
+    description: "Vertical or horizontal flex layout with responsive gaps.",
   },
   {
     name: "Switch",

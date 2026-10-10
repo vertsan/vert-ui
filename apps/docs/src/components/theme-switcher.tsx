@@ -6,8 +6,9 @@ import {
   DropdownMenuRadioItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
+  useTheme,
+  type ThemeTonePreference,
 } from "@vert-ui/ui"
-import { useEffect, useState } from "react"
 
 const themes = [
   { value: "vert", label: "Vert (default)" },
@@ -18,69 +19,14 @@ const themes = [
   { value: "ocean", label: "Ocean" },
 ] as const
 
-type Tone = "light" | "dark"
-
-const THEME_KEY = "vert-ui-theme"
-const TONE_KEY = "vert-ui-tone"
-
-function apply(theme: string, tone: Tone) {
-  const root = document.documentElement
-  root.setAttribute("data-theme", theme)
-  root.classList.toggle("dark", tone === "dark")
-  root.setAttribute("data-tone", tone)
-  try {
-    localStorage.setItem(THEME_KEY, theme)
-    localStorage.setItem(TONE_KEY, tone)
-  } catch {
-    /* private mode — attributes still apply for this session */
-  }
-}
-
-export function readStored(): { theme: string; tone: Tone } | null {
-  try {
-    const theme = localStorage.getItem(THEME_KEY)
-    const tone = localStorage.getItem(TONE_KEY)
-    if (!theme && !tone) return null
-    return {
-      theme: theme ?? "vert",
-      tone: tone === "dark" ? "dark" : "light",
-    }
-  } catch {
-    return null
-  }
-}
+const tones = [
+  { value: "system", label: "System" },
+  { value: "light", label: "Light" },
+  { value: "dark", label: "Dark" },
+] as const
 
 export function ThemeSwitcher() {
-  const [theme, setTheme] = useState<string>("vert")
-  const [tone, setTone] = useState<Tone>("light")
-
-  useEffect(() => {
-    const stored = readStored()
-    if (stored) {
-      setTheme(stored.theme)
-      setTone(stored.tone)
-      apply(stored.theme, stored.tone)
-      return
-    }
-    const root = document.documentElement
-    const currentTheme = root.getAttribute("data-theme") ?? "vert"
-    const prefersDark =
-      typeof window.matchMedia === "function" &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches
-    setTheme(currentTheme)
-    setTone(root.classList.contains("dark") || prefersDark ? "dark" : "light")
-  }, [])
-
-  const onTheme = (value: string) => {
-    setTheme(value)
-    apply(value, tone)
-  }
-
-  const onTone = (value: string) => {
-    const next = value === "dark" ? "dark" : "light"
-    setTone(next)
-    apply(theme, next)
-  }
+  const { theme, tone, setTheme, setTone } = useTheme()
 
   return (
     <DropdownMenu>
@@ -106,7 +52,7 @@ export function ThemeSwitcher() {
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-56">
         <DropdownMenuLabel>Theme</DropdownMenuLabel>
-        <DropdownMenuRadioGroup value={theme} onValueChange={onTheme}>
+        <DropdownMenuRadioGroup value={theme} onValueChange={setTheme}>
           {themes.map((t) => (
             <DropdownMenuRadioItem key={t.value} value={t.value}>
               {t.label}
@@ -115,9 +61,15 @@ export function ThemeSwitcher() {
         </DropdownMenuRadioGroup>
         <DropdownMenuSeparator />
         <DropdownMenuLabel>Tone</DropdownMenuLabel>
-        <DropdownMenuRadioGroup value={tone} onValueChange={onTone}>
-          <DropdownMenuRadioItem value="light">Light</DropdownMenuRadioItem>
-          <DropdownMenuRadioItem value="dark">Dark</DropdownMenuRadioItem>
+        <DropdownMenuRadioGroup
+          value={tone}
+          onValueChange={(value) => setTone(value as ThemeTonePreference)}
+        >
+          {tones.map((t) => (
+            <DropdownMenuRadioItem key={t.value} value={t.value}>
+              {t.label}
+            </DropdownMenuRadioItem>
+          ))}
         </DropdownMenuRadioGroup>
       </DropdownMenuContent>
     </DropdownMenu>

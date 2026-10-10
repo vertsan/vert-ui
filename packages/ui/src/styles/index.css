@@ -4,6 +4,12 @@
 @import "./theme-presets.css";
 @import "./motion.css";
 
+/* Flat-vocabulary tone hook: `dark:` follows the active tone attribute (or the
+ * `.dark` class) so `dark:` utilities respond to runtime switching exactly as
+ * they do in styles/vert.css. Explicit tone wins; non-JS users still get
+ * tone-aware *tokens* from the prefers-color-scheme block in dark.css. */
+@custom-variant dark (&:where(.dark, .dark *, [data-tone='dark'], [data-tone='dark'] *));
+
 /* Soft grain + luminous thin border signature */
 .grain {
   background-image: radial-gradient(circle at 50% 50%, rgb(0 0 0 / 0.02) 1px, transparent 1px);

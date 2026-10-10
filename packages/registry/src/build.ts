@@ -91,6 +91,16 @@ const items: ItemDef[] = [
     files: [{ source: 'styles/motion.css', path: 'styles/motion.css' }],
   },
   {
+    name: 'vert-theme',
+    type: 'registry:lib',
+    title: 'Theme provider',
+    description:
+      'Headless ThemeProvider, useTheme() hook and no-flash ThemeScript for runtime theme and tone switching. Pairs with the `vert` theme item.',
+    files: [
+      { source: 'providers/theme-provider.tsx', path: 'components/vert-ui/theme-provider.tsx' },
+    ],
+  },
+  {
     name: 'vert-cn',
     type: 'registry:lib',
     title: 'cn()',
@@ -356,6 +366,44 @@ const items: ItemDef[] = [
     dependencies: ['@radix-ui/react-hover-card'],
     registryDependencies: ['vert-cn'],
     files: [{ source: 'components/hover-card.tsx', path: 'components/vert-ui/hover-card.tsx' }],
+  },
+  {
+    name: 'container',
+    type: 'registry:component',
+    title: 'Container',
+    description: 'Centred, max-width content wrapper with viewport-scaled gutters.',
+    dependencies: ['@radix-ui/react-slot', 'class-variance-authority'],
+    registryDependencies: ['vert-cn'],
+    files: [{ source: 'components/container.tsx', path: 'components/vert-ui/container.tsx' }],
+  },
+  {
+    name: 'stack',
+    type: 'registry:component',
+    title: 'Stack',
+    description: 'Flex row/column with token gaps and responsive spacing.',
+    dependencies: ['@radix-ui/react-slot', 'class-variance-authority'],
+    registryDependencies: ['vert-cn'],
+    files: [{ source: 'components/stack.tsx', path: 'components/vert-ui/stack.tsx' }],
+  },
+  {
+    name: 'grid',
+    type: 'registry:component',
+    title: 'Grid',
+    description: 'CSS grid with responsive columns plus a GridItem span helper.',
+    dependencies: ['@radix-ui/react-slot', 'class-variance-authority'],
+    registryDependencies: ['vert-cn'],
+    files: [
+      { source: 'components/grid.tsx', path: 'components/vert-ui/grid.tsx' },
+    ],
+  },
+  {
+    name: 'cluster',
+    type: 'registry:component',
+    title: 'Cluster',
+    description: 'Wrapping inline group for tag rows, toolbars and button clusters.',
+    dependencies: ['@radix-ui/react-slot', 'class-variance-authority'],
+    registryDependencies: ['vert-cn'],
+    files: [{ source: 'components/cluster.tsx', path: 'components/vert-ui/cluster.tsx' }],
   },
 ]
 

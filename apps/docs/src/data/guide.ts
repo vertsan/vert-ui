@@ -21,6 +21,11 @@ export const guideDocs: GuideDocMeta[] = [
     description: "Render, theme and customize your first components in five minutes.",
   },
   {
+    name: "Theming",
+    href: "/guide/theming",
+    description: "Switch presets and light/dark tones at runtime with a headless provider.",
+  },
+  {
     name: "Command line",
     href: "/guide/cli",
     description: "vert-ui's own CLI: init, add, view, docs, search, build and diff.",
