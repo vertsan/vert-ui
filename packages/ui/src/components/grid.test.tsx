@@ -51,6 +51,12 @@ describe('Grid', () => {
     expect(el).not.toHaveClass('grid-cols-1')
   })
 
+  it('defaults auto-fit tracks to a 320px-safe minimum', () => {
+    const { container } = render(<Grid autoFit />)
+    const el = container.firstElementChild as HTMLElement
+    expect(el.style.gridTemplateColumns).toBe('repeat(auto-fit, minmax(14rem, 1fr))')
+  })
+
   it('accepts a fully custom template that overrides columns', () => {
     const { container } = render(
       <Grid templateColumns="minmax(0,1fr) 200px" templateRows="auto 1fr" />,

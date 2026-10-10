@@ -41,7 +41,7 @@ const Container = React.forwardRef<HTMLDivElement, ContainerProps>(
         data-size={maxWidth ? undefined : size || "lg"}
         data-padded={padded ? "true" : undefined}
         className={cn(
-          containerVariants({ size: maxWidth ? undefined : size }),
+          maxWidth ? "mx-auto w-full" : containerVariants({ size }),
           padded && !gutter && "px-4 sm:px-6 lg:px-8",
           className,
         )}

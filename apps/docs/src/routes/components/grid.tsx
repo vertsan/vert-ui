@@ -44,8 +44,9 @@ const props: PropRow[] = [
   {
     name: "minItemWidth",
     type: "string",
-    default: '"16rem"',
-    description: "Minimum track width for autoFit. Any CSS length.",
+    default: '"14rem"',
+    description:
+      "Minimum track width for autoFit. Any CSS length; keep it below your smallest container (~14rem fits a padded 320px viewport).",
   },
   {
     name: "templateColumns",

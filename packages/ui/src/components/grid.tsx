@@ -254,7 +254,7 @@ export interface GridProps
    * Overrides `columns` and the `*Columns` variants.
    */
   autoFit?: boolean
-  /** Minimum track width used by `autoFit`. Any CSS length. Defaults to `16rem`. */
+  /** Minimum track width used by `autoFit`. Any CSS length. Defaults to `14rem`. */
   minItemWidth?: string
   /** Fully custom `grid-template-columns`. Overrides columns / autoFit. */
   templateColumns?: string
@@ -278,7 +278,7 @@ const Grid = React.forwardRef<HTMLDivElement, GridProps>(
       mdGap,
       lgGap,
       autoFit = false,
-      minItemWidth = "16rem",
+      minItemWidth = "14rem",
       templateColumns,
       templateRows,
       asChild = false,

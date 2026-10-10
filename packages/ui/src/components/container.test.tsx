@@ -44,6 +44,7 @@ describe('Container', () => {
     const el = container.firstElementChild as HTMLElement
     expect(el.style.maxWidth).toBe('42rem')
     expect(el).not.toHaveClass('max-w-7xl')
+    expect(el).not.toHaveClass('max-w-6xl')
     expect(el).not.toHaveAttribute('data-size')
   })
 
