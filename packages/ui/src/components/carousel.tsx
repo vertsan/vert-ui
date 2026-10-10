@@ -279,7 +279,7 @@ const CarouselItem = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLD
 CarouselItem.displayName = "CarouselItem"
 
 const buttonClassName =
-  "absolute flex size-10 items-center justify-center rounded-full border border-border/70 bg-card/85 text-foreground shadow-soft backdrop-blur-md transition duration-[140ms] hover:border-border hover:bg-accent hover:text-accent-foreground hover:shadow-raised focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none active:scale-95 disabled:pointer-events-none disabled:opacity-40"
+  "absolute flex size-10 items-center justify-center rounded-full border border-border/70 bg-card/85 text-foreground shadow-soft backdrop-blur-md transition-[background-color,border-color,color,box-shadow,transform] duration-[140ms] ease-out-quart hover:border-border hover:bg-accent hover:text-accent-foreground hover:shadow-raised hover:scale-105 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none active:scale-95 disabled:pointer-events-none disabled:opacity-40"
 
 function carouselIcon(className?: string) {
   return (
@@ -384,8 +384,8 @@ function CarouselDots({ className, ...props }: React.HTMLAttributes<HTMLDivEleme
           <span
             aria-hidden="true"
             className={cn(
-              "size-2 rounded-full bg-border transition-colors",
-              i === index && "bg-primary"
+              "h-2 w-2 rounded-full bg-border transition-[width,background-color] duration-[240ms] ease-out-quart",
+              i === index && "w-4 bg-primary"
             )}
           />
         </button>

@@ -13,13 +13,5 @@
   box-shadow: 0 0 0 1px rgb(16 185 129 / 0.12);
 }
 
-/* Entry animations for overlays, menus and popovers live in ./motion.css */
-
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
+/* Entry/exit animations for overlays, menus and popovers — plus the global
+ * prefers-reduced-motion override — live in ./motion.css. */

@@ -55,7 +55,7 @@ function Tooltip({
             sideOffset={sideOffset}
             data-slot="tooltip-content"
             className={cn(
-              "z-50 max-w-[260px] rounded-md border border-border bg-foreground px-2.5 py-1.5 text-xs font-medium leading-snug text-background shadow-pop data-[state=delayed-open]:animate-[vert-pop-in_140ms_ease-out] data-[state=instant-open]:animate-[vert-pop-in_140ms_ease-out]",
+              "z-50 max-w-[260px] rounded-md border border-border bg-foreground px-2.5 py-1.5 text-xs font-medium leading-snug text-background shadow-pop data-[state=delayed-open]:animate-[vert-pop-in_140ms_ease-out] data-[state=instant-open]:animate-[vert-pop-in_140ms_ease-out] data-[state=closed]:animate-[vert-fade-out_100ms_ease-in]",
               sideOffsetClass[side],
               className
             )}

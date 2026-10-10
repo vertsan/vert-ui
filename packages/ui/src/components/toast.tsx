@@ -84,7 +84,7 @@ const ToastAction = React.forwardRef<
     ref={ref}
     data-slot="toast-action"
     className={cn(
-      "inline-flex h-7 shrink-0 items-center justify-center rounded-md border border-border bg-background px-2.5 text-xs font-medium text-foreground outline-none transition-colors hover:bg-accent focus-visible:ring-2 focus-visible:ring-ring",
+      "inline-flex h-7 shrink-0 items-center justify-center rounded-md border border-border bg-background px-2.5 text-xs font-medium text-foreground outline-none transition-colors duration-[140ms] ease-out-quart hover:bg-accent focus-visible:ring-2 focus-visible:ring-ring",
       className
     )}
     {...props}

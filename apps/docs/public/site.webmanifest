@@ -1,0 +1,26 @@
+{
+  "name": "vert-ui",
+  "short_name": "vert-ui",
+  "description": "Original React + TypeScript components with WCAG AA contrast, keyboard support and soft motion.",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#158048",
+  "background_color": "#fafcfb",
+  "display": "standalone",
+  "start_url": "/"
+}

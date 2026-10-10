@@ -20,15 +20,6 @@ const lineReveal: Variants = {
   },
 }
 
-const panelIn: Variants = {
-  hidden: { opacity: 0, scale: 0.98 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: { duration: 0.65, ease: EASE },
-  },
-}
-
 const cardUp: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
@@ -226,24 +217,16 @@ export function HeroNotched({
     <MotionConfig reducedMotion="user">
       <section
         data-slot="hero-notched"
-        className={cn(
-          "hero-notched mx-auto w-full max-w-6xl px-4 pt-2 sm:px-6 sm:pt-3",
-          className,
-        )}
+        className={cn("hero-notched w-full", className)}
         {...props}
       >
-        <motion.div
-          initial="hidden"
-          animate="visible"
-          variants={panelIn}
-          className="rounded-[28px] border border-border bg-card p-3"
-        >
+        <div className="flex w-full flex-1 min-h-0">
           <NotchedPanel
             media={media}
             topRightCta={cta?.slot ?? (cta ? <CtaButton cta={cta} /> : undefined)}
             floatingCard={floatingCard}
           />
-        </motion.div>
+        </div>
 
         {(subtext || secondaryCta) && (
           <div className="mx-auto mt-6 flex max-w-xl flex-col items-center gap-4 text-center sm:mt-7">

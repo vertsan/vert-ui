@@ -23,16 +23,37 @@ export const Route = createRootRoute({
         content:
           'Original React + TypeScript components with WCAG AA contrast, keyboard support and soft motion. Copy-paste ready via the shadcn registry.',
       },
+      {
+        name: 'theme-color',
+        content: '#158048',
+      },
     ],
     links: [
       {
         rel: 'icon',
+        href: '/favicon.ico',
+        sizes: 'any',
+      },
+      {
+        rel: 'icon',
         type: 'image/png',
-        href: '/vert-ui-logo.png',
+        sizes: '32x32',
+        href: '/favicon-32x32.png',
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '16x16',
+        href: '/favicon-16x16.png',
       },
       {
         rel: 'apple-touch-icon',
-        href: '/vert-ui-logo.png',
+        sizes: '180x180',
+        href: '/apple-touch-icon.png',
+      },
+      {
+        rel: 'manifest',
+        href: '/site.webmanifest',
       },
       {
         rel: 'stylesheet',

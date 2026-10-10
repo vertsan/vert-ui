@@ -76,6 +76,16 @@
     transform: none;
   }
 }
+@keyframes vert-pop-out {
+  from {
+    opacity: 1;
+    transform: none;
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-4px) scale(0.97);
+  }
+}
 @keyframes vert-swipe-out {
   from {
     transform: translateX(var(--radix-toast-swipe-end-x));
@@ -123,5 +133,22 @@
   }
   to {
     transform: translateX(100%);
+  }
+}
+
+/*
+ * Reduced-motion contract — single source of truth.
+ * Imported by both CSS entries, so the override applies everywhere without the
+ * two entries drifting apart. Overlays/menus stay mounted through Radix
+ * Presence; collapsing the duration to ~0 makes them resolve instantly.
+ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

@@ -4,6 +4,12 @@
  */
 
 .hero-notched {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 3.5rem);
+  min-height: calc(100svh - 3.5rem);
+  padding: 2.5rem;
   --r: 24px;
   --notch-h: clamp(8.125rem, 14vw, 9.375rem);
   --notch-w: min(55%, 36rem);
@@ -15,11 +21,10 @@
   position: relative;
   display: flex;
   flex-direction: column;
+  flex: 1 0 auto;
   overflow: hidden;
-  border-radius: 0;
+  border-radius: 1rem;
   background-color: var(--color-muted);
-  height: calc(100vh - 3.5rem);
-  height: calc(100svh - 3.5rem);
 }
 
 @media (min-width: 48rem) {
@@ -156,12 +161,6 @@
   .hero-notched {
     --notch-w: 100%;
     --notch-h: auto;
-  }
-
-  .hero-panel {
-    height: auto;
-    min-height: calc(100vh - 3.5rem);
-    min-height: calc(100svh - 3.5rem);
   }
 
   .hero-panel__notches-mobile {
